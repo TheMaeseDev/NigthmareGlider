@@ -1,7 +1,5 @@
 //Get inputs
-rightKey = keyboard_check(vk_right);
-leftKey = keyboard_check(vk_left);
-jumpKeyPressed = keyboard_check_pressed(vk_space);
+getControls();
 
 
 //X Movement
@@ -35,7 +33,12 @@ jumpKeyPressed = keyboard_check_pressed(vk_space);
 	if yspd > termVel {yspd = termVel};
 	
 	//Jump
-	if jumpKeyPressed && place_meeting(x,y+1,oWall){
+	if jumpKeyBuffered && place_meeting(x,y+1,oWall){
+		//Reset the Buffer
+		jumpKeyBuffered = false;
+		jumpKeyBufferTimer = 0;
+		
+		//set yspd to jump speed
 		yspd = jspd;	
 	}
 	
