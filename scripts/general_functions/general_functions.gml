@@ -15,10 +15,9 @@ function getControls(){
 	
 	//Actions inputs
 	jumpKeyPressed = keyboard_check_pressed(vk_space) + gamepad_button_check_pressed(0,gp_face1);
-	jumpKeyPressed = clamp(jumpKeyPressed,0,1);
-	
-	jumpKey = keyboard_check_pressed(vk_space) + gamepad_button_check_pressed(0,gp_face1);
-	jumpKey = clamp(jumpKeyPressed,0,1);
+		jumpKeyPressed = clamp(jumpKeyPressed,0,1);
+	jumpKey = keyboard_check(vk_space) + gamepad_button_check(0,gp_face1);
+		jumpKey = clamp(jumpKey,0,1);
 	
 	//Jump Key Buffering
 	if(jumpKeyPressed) jumpKeyBufferTimer = bufferTime;
