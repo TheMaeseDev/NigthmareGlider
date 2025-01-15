@@ -9,7 +9,11 @@ yspd = 0;
 
 
 //Jumping
-grav = .275;   //Gravedad
+grav = .375;   //Gravedad
 termVel = 50;   //Velocidad maxima de caida
-jspd = -7.15   //Velocidad de salto
-
+onGround = true;
+jspd = -7.15;  //Velocidad de salto
+jumpMax = 1;
+jumpCount = 0;
+jumpHoldTimer = 0;
+jumpHoldFrames = 10;

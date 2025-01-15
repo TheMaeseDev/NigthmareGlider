@@ -29,17 +29,38 @@ getControls();
 	//Gravity
 	yspd += grav;
 	
+	//Reset/Prepare jumping variables
+	if onGround{
+		jumpCount=0;
+	}else{
+		//if the player is in the air
+		if (jumpCount == 0) jumpCount = 1;
+	}
+	
 	//Cap falling speed
 	if yspd > termVel {yspd = termVel};
 	
-	//Jump
-	if jumpKeyBuffered && place_meeting(x,y+1,oWall){
+	//Initiate the Jump
+	if jumpKeyBuffered && jumpCount<jumpMax{
 		//Reset the Buffer
 		jumpKeyBuffered = false;
 		jumpKeyBufferTimer = 0;
+		//Increase the number of performed jumps
+		jumpCount++;
+		//Set the jump hold timer
+		jumpHoldTimer = jumpHoldFrames;
 		
-		//set yspd to jump speed
-		yspd = jspd;	
+	}
+	//Cut off the jump by releasing the jump button
+	if !jumpKey{
+		jumpHoldTimer=0;
+	}
+	//Jump based on the timer/holding the button
+	if jumpHoldTimer>0{
+		//Constantly set the yspd to be jumping speed
+		yspd=jspd;
+		//Count down the timer
+		jumpHoldTimer--;
 	}
 	
 	//Y Collision
@@ -54,6 +75,11 @@ getControls();
 		//Set yspd to zerp tp collide
 		yspd = 0;
 	}
+	
+	//Set if im on the ground
+	if (yspd >=0 && place_meeting(x,y+1,oWall)) onGround=true;
+	else onGround=false;
+	
 	
 	//Move
 	y+=yspd;
