@@ -29,4 +29,4 @@ function getControls(){
 	} else{
 		jumpKeyBuffered = 0;
 		}
-}
+		}
