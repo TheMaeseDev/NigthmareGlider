@@ -1,3 +1,14 @@
+//Custom functions for player
+function setOnGround(_val = true){
+	if(_val){
+		onGround = true;
+		coyoteHangTimer=coyoteHangFrames;
+	}else{
+		onGround = false;
+		coyoteHangTimer=0;
+	}
+}
+
 //ControlSetup
 controlsSetup();
 
@@ -17,3 +28,11 @@ jumpMax = 1;
 jumpCount = 0;
 jumpHoldTimer = 0;
 jumpHoldFrames = 10;
+//Coyote Time
+//Hang time
+coyoteHangFrames = 3;
+coyoteHangTimer = 0;
+//Coyote buffer time
+coyoteJumpFrames = 7;
+coyoteJumpTimer = 0;
+
