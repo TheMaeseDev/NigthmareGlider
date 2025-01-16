@@ -35,14 +35,17 @@ getControls();
 		//We're no longer on the ground
 		setOnGround(false);
 	}
-	yspd += grav;
 	
 	//Reset/Prepare jumping variables
 	if onGround{
 		jumpCount=0;
+		coyoteJumpTimer = coyoteJumpFrames;
 	}else{
-		//if the player is in the air
-		if (jumpCount == 0) jumpCount = 1;
+		//if the player is in the air, make sure they cant do an extra jump
+		coyoteJumpTimer--;
+		if (jumpCount == 0) && (coyoteJumpTimer <= 0){
+			jumpCount = 1;
+		}
 	}
 	
 	//Cap falling speed
@@ -57,6 +60,8 @@ getControls();
 		jumpCount++;
 		//Set the jump hold timer
 		jumpHoldTimer = jumpHoldFrames;
+		//Tell ourself we are no longer on the ground
+		setOnGround(false);
 		
 	}
 	//Cut off the jump by releasing the jump button

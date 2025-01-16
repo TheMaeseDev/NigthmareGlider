@@ -30,9 +30,9 @@ jumpHoldTimer = 0;
 jumpHoldFrames = 10;
 //Coyote Time
 //Hang time
-coyoteHangFrames = 1000;
+coyoteHangFrames = 3;
 coyoteHangTimer = 0;
 //Coyote buffer time
-coyoteJumpFrames = 5;
+coyoteJumpFrames = 7;
 coyoteJumpTimer = 0;
 
