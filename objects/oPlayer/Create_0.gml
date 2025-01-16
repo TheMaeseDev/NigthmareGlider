@@ -12,18 +12,28 @@ function setOnGround(_val = true){
 //ControlSetup
 controlsSetup();
 
+//Sprites
+idleSpr = sPlayer_Idle;
+walkSpr = sPlayer_Walk;
+runSpr = sPlayer_Run;
+jumpSpr = sPlayer_Jump;
+
+
 //Moving
+face = 1;
 moveDir = 0;
-moveSpd = 3.5;
+runType = 0;
+moveSpd[0] = 2;
+moveSpd[1] = 3.5;
 xspd = 0;
 yspd = 0;
 
 
 //Jumping
-grav = .375;   //Gravedad
-termVel = 50;   //Velocidad maxima de caida
+grav = .275;   //Gravedad
+termVel = 10;   //Velocidad maxima de caida
 onGround = true;
-jspd = -7.15;  //Velocidad de salto
+jspd = -3.50;  //Velocidad de salto
 jumpMax = 1;
 jumpCount = 0;
 jumpHoldTimer = 0;
