@@ -5,9 +5,12 @@ function setOnGround(_val = true){
 		coyoteHangTimer=coyoteHangFrames;
 	}else{
 		onGround = false;
+		myFloorPlat = noone;
 		coyoteHangTimer=0;
 	}
 }
+
+depth = -30;
 
 //ControlSetup
 controlsSetup();
@@ -45,4 +48,10 @@ coyoteHangTimer = 0;
 //Coyote buffer time
 coyoteJumpFrames = 7;
 coyoteJumpTimer = 0;
+
+
+//Moving Platforms
+myFloorPlat = noone;
+movePlatXspd = 0;
+moveplatMaxYspd = termVel;
 
