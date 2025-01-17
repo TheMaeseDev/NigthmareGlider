@@ -1,9 +1,11 @@
 {
   "$GMObject":"",
-  "%Name":"oWall",
-  "eventList":[],
+  "%Name":"oSemiSolidWall",
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
-  "name":"oWall",
+  "name":"oSemiSolidWall",
   "overriddenProperties":[],
   "parent":{
     "name":"Walls",
@@ -28,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sWall",
-    "path":"sprites/sWall/sWall.yy",
+    "name":"sSemiSolidWall",
+    "path":"sprites/sSemiSolidWall/sSemiSolidWall.yy",
   },
   "spriteMaskId":null,
   "visible":true,
