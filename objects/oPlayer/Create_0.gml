@@ -5,9 +5,39 @@ function setOnGround(_val = true){
 		coyoteHangTimer=coyoteHangFrames;
 	}else{
 		onGround = false;
+		myFloorPlat = noone;
 		coyoteHangTimer=0;
 	}
 }
+
+function checkForSemiSolidPlatform(_x,_y){
+	//Create a return variable
+	var _rtrn = noone;
+	
+	//We must not be moving upwards, and then we check for a normal collision
+	if yspd>=0 && place_meeting(_x,_y,oSemiSolidWall){
+		//Create a ds list to store all collising instanes of oSemiSolidWall
+		var _list = ds_list_create();
+		var _listSize = instance_place_list(_x,_y,oSemiSolidWall,_list,false);
+		
+		//Loop through the colliding instances and only return one of its top is below the player
+		for(var i=0 ; i<_listSize ; i++){
+			var _listInst = _list[|i];
+			if _listInst != forgetSemiSolid && floor(bbox_bottom)<= ceil(_listInst.bbox_top - _listInst.yspd){
+					//Return the id of a semisolid plarform
+					_rtrn = _listInst;
+					//Exit the loop early
+					i = _listSize;
+			}
+		}
+		//Destroy ds list to free memory
+		ds_list_destroy(_list);
+	}
+	//Return out variable
+	return _rtrn;
+}
+
+depth = -30;
 
 //ControlSetup
 controlsSetup();
@@ -45,4 +75,12 @@ coyoteHangTimer = 0;
 //Coyote buffer time
 coyoteJumpFrames = 7;
 coyoteJumpTimer = 0;
+
+
+//Moving Platforms
+myFloorPlat = noone;
+downSlopeSemiSolid = noone;
+forgetSemiSolid = noone;
+movePlatXspd = 0;
+moveplatMaxYspd = termVel;
 
