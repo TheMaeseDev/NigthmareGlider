@@ -19,7 +19,7 @@
   "height":16,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"f6ab074e-cd28-4138-bc91-d0de1cbb0b0c","blendMode":0,"displayName":"default","isLocked":false,"name":"f6ab074e-cd28-4138-bc91-d0de1cbb0b0c","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"f6ab074e-cd28-4138-bc91-d0de1cbb0b0c","blendMode":0,"displayName":"default","isLocked":false,"name":"f6ab074e-cd28-4138-bc91-d0de1cbb0b0c","opacity":75.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"sSemiSolidMovePlat",
   "nineSlice":{
