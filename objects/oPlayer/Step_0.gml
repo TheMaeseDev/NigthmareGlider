@@ -80,7 +80,13 @@ getControls();
 	if yspd > termVel {yspd = termVel};
 	
 	//Initiate the Jump
-	if jumpKeyBuffered && jumpCount<jumpMax{
+	var _floorIsSolid = false;
+	if instance_exists(myFloorPlat)
+	&& (myFloorPlat.object_index == oWall || object_is_ancestor(myFloorPlat.object_index,oWall)){
+		_floorIsSolid = true;	
+	}
+	
+	if jumpKeyBuffered && jumpCount<jumpMax && (!downKey || _floorIsSolid){
 		//Reset the Buffer
 		jumpKeyBuffered = false;
 		jumpKeyBufferTimer = 0;
@@ -163,7 +169,8 @@ getControls();
 		var _listInst = _list[| i];
 		
 		//Avoid magnetism
-		if ( _listInst.yspd <= yspd || instance_exists(myFloorPlat) )
+		if _listInst != forgetSemiSolid
+		&& ( _listInst.yspd <= yspd || instance_exists(myFloorPlat) )
 		&& ( _listInst.yspd > 0 || place_meeting(x,y+1+_clampYspd, _listInst) )
 		|| ( _listInst == _semiSolid) ///// (HIGH SPEED FIX)
 		{
@@ -215,9 +222,35 @@ getControls();
 	}
 	
 	//Manually Fall Through a semisolid platform
+	if downKey && jumpKeyPressed{
+		//Make sure we have a floor platform thats a semisolid
+		if instance_exists(myFloorPlat)
+		&& (myFloorPlat.object_index == oSemiSolidWall || object_is_ancestor(myFloorPlat.object_index,oSemiSolidWall)){
+			//Check if we CAN go below the semisolid
+			var _yCheck = max(1,myFloorPlat.yspd+1);
+			if !place_meeting(x,y+_yCheck,oWall){
+				//Move below the platform
+				y+=1;
+				
+				//Inherit any downward speed form my floor platform so it doesnt cartch me
+				yspd = _yCheck-1;
+				
+				//Forget this platform for a brief time so we dont get caught again
+				forgetSemiSolid = myFloorPlat;
+				
+				//No more floor Platform
+				setOnGround(false);
+			}
+		}
+	}
 	
 	//Move
 	y+=yspd;
+	
+	//Reset forgetSemiSolid variable
+	if instance_exists(forgetSemiSolid) && !place_meeting(x,y,forgetSemiSolid){
+		forgetSemiSolid = noone;	
+	}
 	
 /* --------- Final moving platform collisions and movement -------*/
 

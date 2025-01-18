@@ -23,7 +23,7 @@ function checkForSemiSolidPlatform(_x,_y){
 		//Loop through the colliding instances and only return one of its top is below the player
 		for(var i=0 ; i<_listSize ; i++){
 			var _listInst = _list[|i];
-			if floor(bbox_bottom)<= ceil(_listInst.bbox_top - _listInst.yspd){
+			if _listInst != forgetSemiSolid && floor(bbox_bottom)<= ceil(_listInst.bbox_top - _listInst.yspd){
 					//Return the id of a semisolid plarform
 					_rtrn = _listInst;
 					//Exit the loop early
