@@ -87,11 +87,38 @@ if instance_exists(myFloorPlat) && myFloorPlat.xspd !=0 && !place_meeting(x,y+mo
 image_blend = c_white;
 if place_meeting(x,y,oWall) image_blend = c_blue;
 
+/* ------------ Crouching ------------- */
+//Transition to Crouch
+	//Manual = downkey | Automatic = wall collision
+	if onGround && (downKey || place_meeting(x,y,oWall)){
+		crouching = true;
+	}
+	//Change collision mask
+	if crouching {mask_index=crouchSpr};
+
+//Transition out of Crouch
+	//Manual = !downkey | Automatic = !onGround
+	if crouching && (!downKey || !onGround){
+		//Check if I CAN uncrouch
+		mask_index = idleSpr;
+		//Uncrouch if no solid wall in the way
+		if !place_meeting(x,y,oWall){
+			crouching = false;	
+		}
+		//Go back to crouching mask index if we cant uncrouch
+		else{
+			mask_index = crouchSpr;	
+		}
+	}
+
 //X Movement
 	//Direction
 	moveDir = rightKey - leftKey;
+	
 	//Get my face
 	if(moveDir !=0) face=moveDir;
+	//No movement while crouching
+	if crouching { moveDir = 0;};
 
 	//Get xspd
 	runType = runKey;
@@ -410,13 +437,15 @@ if(abs(xspd)>=moveSpd[1]){sprite_index = runSpr};
 //Walking
 if( (abs(xspd)>0) && (abs(xspd)<moveSpd[1]) ) {sprite_index = walkSpr};
 
-
-
 //Not Moving
 if(xspd==0){sprite_index = idleSpr};
 
 //In the air
 if !onGround {sprite_index = jumpSpr};
 
+//Crouching
+if crouching {sprite_index = crouchSpr};
+
 //Set the collision mask
 mask_index = idleSpr;
+if crouching{mask_index=crouchSpr};
