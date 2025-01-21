@@ -47,6 +47,7 @@ idleSpr = sPlayer_Idle;
 walkSpr = sPlayer_Walk;
 runSpr = sPlayer_Run;
 jumpSpr = sPlayer_Jump;
+crouchSpr = sPlayer_Crouch;
 
 
 //Moving
@@ -58,6 +59,8 @@ moveSpd[1] = 3.5;
 xspd = 0;
 yspd = 0;
 
+//State variables
+crouching = false;
 
 //Jumping
 grav = .275;   //Gravedad
