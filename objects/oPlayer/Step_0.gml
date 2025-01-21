@@ -2,6 +2,38 @@
 getControls();
 
 
+//Get out of solid moveplats that have positioned themselves into the player in the begin step
+var _rightWall = noone;
+var _leftWall = noone;
+var _list = ds_list_create();
+var _listSize = instance_place_list(x,y,oMovePlat,_list, false);
+
+//Loop through all colliding move plats
+for(var i=0 ; i<_listSize ; i++){
+	var _listInst = _list[|i];
+	
+	//Find closest walls in each direction
+	//Right Walls
+	//If there are walls to the right of me, get the closest one
+	if _listInst.bbox_left - _listInst.xspd >= bbox_right-1{
+		if !instance_exists(_rightWall) || _listInst.bbox_left < _rightWall.bbox_left{
+			_rightWall = _listInst;	
+		}
+	}
+}
+
+//Destroy the ds list to free memory
+ds_list_destroy(_list);
+
+//Get out of the walls
+//Right Wall
+if instance_exists(_rightWall){
+	var _rightDist = bbox_right - x;
+	x = _rightWall.bbox_left - _rightDist;
+}
+
+
+
 //X Movement
 	//Direction
 	moveDir = rightKey - leftKey;
@@ -274,7 +306,12 @@ if place_meeting(x+movePlatXspd,y,oWall){
 x+=movePlatXspd;
 
 //Y - snap myself to myFloorPlat if its moving vertically
-if instance_exists(myFloorPlat) && myFloorPlat != 0{
+if instance_exists(myFloorPlat) 
+&& (myFloorPlat != 0
+|| myFloorPlat.object_index == oMovePlat
+|| object_is_ancestor(myFloorPlat.object_index,oMovePlat)
+|| myFloorPlat.object_index == oSemiSolidMovePlat
+|| object_is_ancestor(myFloorPlat.object_index,oSemiSolidMovePlat)){
 	//Snap to the top of the floor platform (un-floor our Y variable so its not choppy)
 	if !place_meeting(x,myFloorPlat.bbox_top, oWall)
 	&& myFloorPlat.bbox_top>= bbox_bottom
