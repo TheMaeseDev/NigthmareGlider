@@ -74,7 +74,7 @@ if instance_exists(_topWall){
 #endregion
 
 //Dont get left behind by my moveplat!!
-earlyMoveplatXspd = true;
+earlyMoveplatXspd = false;
 if instance_exists(myFloorPlat) && myFloorPlat.xspd !=0 && !place_meeting(x,y+moveplatMaxYspd+1,myFloorPlat){
 		//Go ahead and move outselves back onto that platform if there is no wall in the way
 		if !place_meeting(x+myFloorPlat.xspd,y,oWall){
@@ -82,6 +82,10 @@ if instance_exists(myFloorPlat) && myFloorPlat.xspd !=0 && !place_meeting(x,y+mo
 			earlyMoveplatXspd = true;
 		}
 }
+
+//Check if im "crushed"
+image_blend = c_white;
+if place_meeting(x,y,oWall) image_blend = c_blue;
 
 //X Movement
 	//Direction
@@ -326,7 +330,9 @@ if instance_exists(myFloorPlat) && myFloorPlat.xspd !=0 && !place_meeting(x,y+mo
 	}
 	
 	//Move
-	y+=yspd;
+	if !place_meeting(x,y+yspd,oWall){
+		y+=yspd;
+	}
 	
 	//Reset forgetSemiSolid variable
 	if instance_exists(forgetSemiSolid) && !place_meeting(x,y,forgetSemiSolid){
@@ -343,9 +349,9 @@ if instance_exists(myFloorPlat) movePlatXspd = myFloorPlat.xspd;
 //Move with moveplatXspd
 if !earlyMoveplatXspd{
 	if place_meeting(x+movePlatXspd,y,oWall){
-	//Scoot up to wall precisely
-	var _subPixel = .5;
-	var _pixelCheck = _subPixel*sign(movePlatXspd);
+		//Scoot up to wall precisely
+		var _subPixel = .5;
+		var _pixelCheck = _subPixel*sign(movePlatXspd);
 		while !place_meeting(x+_pixelCheck,y,oWall){
 			x+=_pixelCheck;	
 		}
@@ -370,25 +376,28 @@ if instance_exists(myFloorPlat)
 	{
 		y = myFloorPlat.bbox_top;
 	}
+}
+
+//Get push down through a semisolid by a moving solid platform
+if instance_exists(myFloorPlat)
+&&(myFloorPlat.object_index == oSemiSolidWall || object_is_ancestor(myFloorPlat.object_index,oSemiSolidWall))
+&& place_meeting(x,y,oWall){
+	//If im already stuck in a wall at this point, try and move me down to get below a semisolid
+	//if im still stuck afterwards, that just means ive been properly "crushed"
 	
-	//Going up into a solid wall while on a semisolid platform
-	if myFloorPlat.yspd <0 && place_meeting(x,y+myFloorPlat.yspd, oWall){
-		//Get pushed down through the semisolid floor platform
-		if myFloorPlat.object_index == oSemiSolidWall || object_is_ancestor(myFloorPlat.object_index,oSemiSolidWall){
-			//Get pushed down through semisolid
-			var _subPixel = .25;
-			while place_meeting(x,y+myFloorPlat.yspd,oWall){
-				y+=_subPixel;	
-			}
-			//if we got pushed into a solid wall while going downwards, push ourselfves back out
-			while place_meeting(x,y,oWall){
-				y-= _subPixel;	
-			}
-			y = round(y);
-		}
-		//Cancel the myFloorPlat variable
-		setOnGround(false);
+	//Also, dont check too far, we dont want to warp below walls
+	var _maxPushDist = 10;
+	var _pushedDist = 0;
+	var _startY = y;
+	while place_meeting(x,y,oWall) && _pushedDist <= _maxPushDist{
+		y++;
+		_pushedDist++;
 	}
+	//Forget myFloorPlat
+	myFloorPlat = noone;
+	
+	//if im still in a wall at this point, ive been crushed regardless, take me back to my start y to avoid the funk
+	if _pushedDist > _maxPushDist {y = _startY};
 }
 
 
