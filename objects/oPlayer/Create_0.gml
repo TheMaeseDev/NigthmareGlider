@@ -61,7 +61,7 @@ yspd = 0;
 
 //Jumping
 grav = .275;   //Gravedad
-termVel = 10;   //Velocidad maxima de caida
+termVel = 4;   //Velocidad maxima de caida
 onGround = true;
 jspd = -3.50;  //Velocidad de salto
 jumpMax = 1;
@@ -79,8 +79,10 @@ coyoteJumpTimer = 0;
 
 //Moving Platforms
 myFloorPlat = noone;
+earlyMoveplatXspd = false;
 downSlopeSemiSolid = noone;
 forgetSemiSolid = noone;
 movePlatXspd = 0;
 moveplatMaxYspd = termVel;
 
+mensaje = "";
