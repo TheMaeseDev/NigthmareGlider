@@ -1,6 +1,13 @@
 //Get inputs
 getControls();
 
+//Restart Game
+if restartKey room_restart();
+
+//Check for Glide debug
+if glideKey mensaje="Planeando";
+else mensaje="";
+
 //Get out of solid moveplats that have positioned themselves into the player in the begin step
 #region
 var _rightWall = noone;
@@ -116,7 +123,8 @@ if place_meeting(x,y,oWall) image_blend = c_blue;
 	moveDir = rightKey - leftKey;
 	
 	//Get my face
-	if(moveDir !=0) face=moveDir;
+	if moveDir > 0 face=1;
+	if moveDir < 0 face=-1;
 	//No movement while crouching
 	if crouching { moveDir = 0;};
 
