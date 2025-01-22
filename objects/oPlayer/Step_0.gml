@@ -123,7 +123,8 @@ if place_meeting(x,y,oWall) image_blend = c_blue;
 	moveDir = rightKey - leftKey;
 	
 	//Get my face
-	if(moveDir !=0) face=moveDir;
+	if moveDir > 0 face=1;
+	if moveDir < 0 face=-1;
 	//No movement while crouching
 	if crouching { moveDir = 0;};
 

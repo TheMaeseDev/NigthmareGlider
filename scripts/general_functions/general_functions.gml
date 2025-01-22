@@ -7,13 +7,19 @@ function controlsSetup(){
 
 function getControls(){
 	//Directions inputs
+	var stickValue = gamepad_axis_value(0, gp_axislh);
+	var stickVertical = gamepad_axis_value(0, gp_axislv);
+
 	rightKey = keyboard_check(vk_right) + keyboard_check(ord("D")) + gamepad_button_check(0,gp_padr);
+	if (stickValue > 0.2) rightKey += stickValue;
 		rightKey = clamp(rightKey,0,1);
 	
 	leftKey = keyboard_check(vk_left) + keyboard_check(ord("A")) + gamepad_button_check(0,gp_padl);
+	if (stickValue < -0.2) leftKey += abs(stickValue);
 		leftKey = clamp(leftKey,0,1);
 	
 	downKey = keyboard_check(vk_down) + keyboard_check(ord("S")) + gamepad_button_check(0,gp_padd);
+	if (stickVertical > 0.5) downKey += stickVertical;
 		downKey = clamp(downKey,0,1);
 	
 	//Actions inputs
