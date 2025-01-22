@@ -4,9 +4,16 @@ getControls();
 //Restart Game
 if restartKey room_restart();
 
-//Check for Glide debug
-if glideKey mensaje="Planeando";
-else mensaje="";
+if !onGround && glideKey{
+	if !glideStart{
+		if yspd < 0 yspd=0;
+		termVel = glideTermVel;
+		glideStart = true;
+	}
+}else{
+	termVel = defaultTermVel;	
+	glideStart = false;
+}
 
 //Get out of solid moveplats that have positioned themselves into the player in the begin step
 #region
@@ -449,10 +456,13 @@ if( (abs(xspd)>0) && (abs(xspd)<moveSpd[1]) ) {sprite_index = walkSpr};
 if(xspd==0){sprite_index = idleSpr};
 
 //In the air
-if !onGround {sprite_index = jumpSpr};
+if !onGround  {sprite_index = jumpSpr};
 
 //Crouching
 if crouching {sprite_index = crouchSpr};
+
+//Gliding
+if glideStart {sprite_index = glideSpr};
 
 //Set the collision mask
 mask_index = idleSpr;
