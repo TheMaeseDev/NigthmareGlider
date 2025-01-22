@@ -8,13 +8,13 @@ function controlsSetup(){
 function getControls(){
 	//Directions inputs
 	rightKey = keyboard_check(vk_right) + keyboard_check(ord("D")) + gamepad_button_check(0,gp_padr);
-	rightKey = clamp(rightKey,0,1);
+		rightKey = clamp(rightKey,0,1);
 	
 	leftKey = keyboard_check(vk_left) + keyboard_check(ord("A")) + gamepad_button_check(0,gp_padl);
-	leftKey = clamp(leftKey,0,1);
+		leftKey = clamp(leftKey,0,1);
 	
 	downKey = keyboard_check(vk_down) + keyboard_check(ord("S")) + gamepad_button_check(0,gp_padd);
-	downKey = clamp(downKey,0,1);
+		downKey = clamp(downKey,0,1);
 	
 	//Actions inputs
 	jumpKeyPressed = keyboard_check_pressed(vk_space) + gamepad_button_check_pressed(0,gp_face1);
@@ -22,8 +22,18 @@ function getControls(){
 	jumpKey = keyboard_check(vk_space) + gamepad_button_check(0,gp_face1);
 		jumpKey = clamp(jumpKey,0,1);
 		
-	runKey = keyboard_check(vk_shift) + gamepad_button_check(0,gp_face3);
+	runKey = keyboard_check(vk_shift) + gamepad_button_check(0,gp_shoulderr);
 		runKey = clamp(runKey,0,1);
+		
+	attackKey = keyboard_check_pressed(ord("K")) + gamepad_button_check_pressed(0,gp_face3);
+		attackKey = clamp(attackKey,0,1);
+		
+	glideKey = keyboard_check(vk_control) + gamepad_button_check(0,gp_face4);
+		glideKey = clamp(glideKey,0,1);
+		
+	//Miscellaneous inputs
+	restartKey = keyboard_check_pressed(ord("R")) + gamepad_button_check_pressed(0,gp_select);
+		restartKey = clamp(restartKey,0,1);
 	
 	//Jump Key Buffering
 	if(jumpKeyPressed) jumpKeyBufferTimer = bufferTime;

@@ -1,6 +1,13 @@
 //Get inputs
 getControls();
 
+//Restart Game
+if restartKey room_restart();
+
+//Check for Glide debug
+if glideKey mensaje="Planeando";
+else mensaje="";
+
 //Get out of solid moveplats that have positioned themselves into the player in the begin step
 #region
 var _rightWall = noone;
