@@ -4,6 +4,7 @@ getControls();
 //Restart Game
 if restartKey room_restart();
 
+//Glide Mechanic
 if !onGround && glideKey{
 	if !glideStart{
 		if yspd < 0 yspd=0;
