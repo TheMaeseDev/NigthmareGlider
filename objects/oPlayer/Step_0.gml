@@ -4,7 +4,7 @@ getControls();
 //Restart Game
 if restartKey room_restart();
 
-//Glide Mechanic
+#region Glide Mechanic
 if !onGround && glideKey{
 	if !glideStart{
 		if yspd < 0 yspd=0;
@@ -15,9 +15,9 @@ if !onGround && glideKey{
 	termVel = defaultTermVel;	
 	glideStart = false;
 }
+#endregion
 
-//Get out of solid moveplats that have positioned themselves into the player in the begin step
-#region
+#region Get out of solid moveplats that have positioned themselves into the player in the begin step
 var _rightWall = noone;
 var _leftWall = noone;
 var _bottomWall = noone;
@@ -88,7 +88,7 @@ if instance_exists(_topWall){
 }
 #endregion
 
-//Dont get left behind by my moveplat!!
+#region Dont get left behind by my moveplat!!
 earlyMoveplatXspd = false;
 if instance_exists(myFloorPlat) && myFloorPlat.xspd !=0 && !place_meeting(x,y+moveplatMaxYspd+1,myFloorPlat){
 		//Go ahead and move outselves back onto that platform if there is no wall in the way
@@ -97,12 +97,15 @@ if instance_exists(myFloorPlat) && myFloorPlat.xspd !=0 && !place_meeting(x,y+mo
 			earlyMoveplatXspd = true;
 		}
 }
+#endregion
 
-//Check if im "crushed"
+#region Check if im "crushed"
 image_blend = c_white;
 if place_meeting(x,y,oWall) image_blend = c_blue;
 
-/* ------------ Crouching ------------- */
+#endregion
+
+#region Crouching
 //Transition to Crouch
 	//Manual = downkey | Automatic = wall collision
 	if onGround && (downKey || place_meeting(x,y,oWall)){
@@ -125,6 +128,7 @@ if place_meeting(x,y,oWall) image_blend = c_blue;
 			mask_index = crouchSpr;	
 		}
 	}
+#endregion
 
 //X Movement
 	//Direction
