@@ -104,4 +104,4 @@ forgetSemiSolid = noone;
 movePlatXspd = 0;
 moveplatMaxYspd = termVel;
 
-mensaje = "";
+global.mensaje = "";

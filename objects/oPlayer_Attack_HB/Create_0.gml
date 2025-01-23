@@ -1,0 +1,2 @@
+
+durationFrames = 20;
