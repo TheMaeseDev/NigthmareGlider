@@ -3,6 +3,8 @@ function setOnGround(_val = true){
 	if(_val){
 		onGround = true;
 		coyoteHangTimer=coyoteHangFrames;
+		termVel = defaultTermVel;
+		glideStart = false;
 	}else{
 		onGround = false;
 		myFloorPlat = noone;
@@ -48,14 +50,15 @@ walkSpr = sPlayer_Walk;
 runSpr = sPlayer_Run;
 jumpSpr = sPlayer_Jump;
 crouchSpr = sPlayer_Crouch;
+glideSpr = sPlayerGlid;
 
 
 //Moving
 face = 1;
 moveDir = 0;
 runType = 0;
-moveSpd[0] = 2;
-moveSpd[1] = 3.5;
+moveSpd[0] = 2;	  //Caminando
+moveSpd[1] = 3.5; //Corriendo 3.5 default
 xspd = 0;
 yspd = 0;
 
@@ -63,8 +66,10 @@ yspd = 0;
 crouching = false;
 
 //Jumping
-grav = .275;   //Gravedad
-termVel = 4;   //Velocidad maxima de caida
+defaultGrav = .275;
+defaultTermVel = 4;
+grav = defaultGrav;   //Gravedad actual
+termVel = defaultTermVel;   //Velocidad maxima de caida
 onGround = true;
 jspd = -3.50;  //Velocidad de salto
 jumpMax = 1;
@@ -78,6 +83,10 @@ coyoteHangTimer = 0;
 //Coyote buffer time
 coyoteJumpFrames = 7;
 coyoteJumpTimer = 0;
+
+//Gliding
+glideStart = false; // Controla si se ha comenzado a planear
+glideTermVel = 0.5;
 
 
 //Moving Platforms
