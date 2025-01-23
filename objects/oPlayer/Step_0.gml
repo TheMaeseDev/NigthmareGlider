@@ -108,7 +108,7 @@ if place_meeting(x,y,oWall) image_blend = c_blue;
 #region Crouching
 //Transition to Crouch
 	//Manual = downkey | Automatic = wall collision
-	if onGround && (downKey || place_meeting(x,y,oWall)){
+	if onGround && (downKey || place_meeting(x,y,oWall)) && !attackStart{
 		crouching = true;
 	}
 	//Change collision mask
@@ -130,6 +130,30 @@ if place_meeting(x,y,oWall) image_blend = c_blue;
 	}
 #endregion
 
+#region Melee Attack
+
+mensaje = image_index;
+if onGround && attackKey && attackDelay<=0{
+	image_index = 0;
+	moveSpd[0] = 0;
+	crouching = false;
+	attackStart = true;
+	attackDelay = attackFrames;
+	
+}
+
+if attackStart && (!onGround || image_index > image_number-0.5){
+		moveSpd[0]=walkSpd;
+		mensaje = "entro";
+		image_index = 0;
+		attackStart = false;
+}
+
+if !attackStart && attackDelay>=0{
+	attackDelay--;
+}
+
+#endregion
 //X Movement
 	//Direction
 	moveDir = rightKey - leftKey;
@@ -468,6 +492,9 @@ if crouching {sprite_index = crouchSpr};
 
 //Gliding
 if glideStart {sprite_index = glideSpr};
+
+//Melee Attack
+if attackStart {sprite_index = attackSpr};
 
 //Set the collision mask
 mask_index = idleSpr;

@@ -51,14 +51,17 @@ runSpr = sPlayer_Run;
 jumpSpr = sPlayer_Jump;
 crouchSpr = sPlayer_Crouch;
 glideSpr = sPlayerGlid;
+attackSpr = sPlayer_Attack;
 
 
 //Moving
 face = 1;
 moveDir = 0;
 runType = 0;
-moveSpd[0] = 2;	  //Caminando
-moveSpd[1] = 3.5; //Corriendo 3.5 default
+walkSpd = 2;
+runSpd = 3.5;
+moveSpd[0] = walkSpd;	  //Caminando
+moveSpd[1] = runSpd; //Corriendo 3.5 default
 xspd = 0;
 yspd = 0;
 
@@ -88,6 +91,10 @@ coyoteJumpTimer = 0;
 glideStart = false; // Controla si se ha comenzado a planear
 glideTermVel = 0.5;
 
+//Melee Attack
+attackStart = false; //Controla si se ha comenzado a atacar
+attackDelay = 0;
+attackFrames = 10;
 
 //Moving Platforms
 myFloorPlat = noone;
