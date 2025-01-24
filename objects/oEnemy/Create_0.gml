@@ -1,5 +1,5 @@
 
-maxHealthPts = 3;
+maxHealthPts = 1;
 healthPts = maxHealthPts;
 
 hitedBy = noone;

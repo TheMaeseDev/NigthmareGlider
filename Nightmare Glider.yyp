@@ -55,6 +55,7 @@
     {"id":{"name":"general_functions","path":"scripts/general_functions/general_functions.yy",},},
     {"id":{"name":"sEnemy","path":"sprites/sEnemy/sEnemy.yy",},},
     {"id":{"name":"sMovePlat","path":"sprites/sMovePlat/sMovePlat.yy",},},
+    {"id":{"name":"sPlayer_Air_Attack_1","path":"sprites/sPlayer_Air_Attack_1/sPlayer_Air_Attack_1.yy",},},
     {"id":{"name":"sPlayer_Air_Attack","path":"sprites/sPlayer_Air_Attack/sPlayer_Air_Attack.yy",},},
     {"id":{"name":"sPlayer_Attack_HB","path":"sprites/sPlayer_Attack_HB/sPlayer_Attack_HB.yy",},},
     {"id":{"name":"sPlayer_Attack","path":"sprites/sPlayer_Attack/sPlayer_Attack.yy",},},

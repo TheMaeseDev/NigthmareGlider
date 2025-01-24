@@ -5,10 +5,15 @@ function setOnGround(_val = true){
 		coyoteHangTimer=coyoteHangFrames;
 		termVel = defaultTermVel;
 		glideStart = false;
+		airAttackStart = false;
+		airAttackDelay = airAttackFrame;
+		
 	}else{
 		onGround = false;
 		myFloorPlat = noone;
 		coyoteHangTimer=0;
+		//Descuenta el delay de ataque aereo
+		airAttackDelay--;
 	}
 }
 
@@ -52,6 +57,7 @@ jumpSpr = sPlayer_Jump;
 crouchSpr = sPlayer_Crouch;
 glideSpr = sPlayerGlid;
 attackSpr = sPlayer_Attack;
+AirAttackSpr = sPlayer_Air_Attack;
 
 
 //Moving
@@ -95,6 +101,12 @@ glideTermVel = 0.5;
 attackStart = false; //Controla si se ha comenzado a atacar
 attackDelay = 0;
 attackFrames = 10;
+
+//Air Attack
+airAttackStart = false; //Controla si se ha comenzado el ataque aereo
+airAttackDelay = 0;
+airAttackFrame = 7;
+
 
 //Moving Platforms
 myFloorPlat = noone;

@@ -157,7 +157,16 @@ if !attackStart && attackDelay>=0{
 }
 
 #endregion
-//X Movement
+
+#region Air Spin Attack
+
+if !onGround && (attackKey || airAttackBuffered) && airAttackDelay<=0{
+	airAttackStart = true;
+}
+
+#endregion
+
+#region X Movement
 	//Direction
 	moveDir = rightKey - leftKey;
 	
@@ -215,8 +224,10 @@ if !attackStart && attackDelay>=0{
 	}
 	//Move
 	x+= xspd;
+
+#endregion
 	
-// Y Movement
+#region Y Movement
 	//Gravity
 	if( coyoteHangTimer>0){
 		coyoteHangTimer--;	
@@ -257,6 +268,7 @@ if !attackStart && attackDelay>=0{
 		jumpCount++;
 		//Set the jump hold timer
 		jumpHoldTimer = jumpHoldFrames;
+		
 		//Tell ourself we are no longer on the ground
 		setOnGround(false);
 		
@@ -304,7 +316,9 @@ if !attackStart && attackDelay>=0{
 				y += _pixelCheck;	
 			}
 			//bonk (OPTIONAL)
-			if(yspd < 0) {jumpHoldTimer = 0};
+			if(yspd < 0){
+				jumpHoldTimer = 0
+			}
 			//Set yspd to zero to collide
 			yspd = 0;
 		}
@@ -416,8 +430,10 @@ if !attackStart && attackDelay>=0{
 	if instance_exists(forgetSemiSolid) && !place_meeting(x,y,forgetSemiSolid){
 		forgetSemiSolid = noone;	
 	}
+		
+#endregion
 	
-/* --------- Final moving platform collisions and movement -------*/
+#region Final moving platform collisions and movement
 
 //X - moveplatXspd and collision
 //Get the MoveplatXspd
@@ -478,10 +494,10 @@ if instance_exists(myFloorPlat)
 	if _pushedDist > _maxPushDist {y = _startY};
 }
 
-
+#endregion
 
 	
-/* ---------- Sprite Control ------------ */
+#region Sprite Control
 //Runing
 if(abs(xspd)>=moveSpd[1]){sprite_index = runSpr};
 
@@ -492,7 +508,7 @@ if( (abs(xspd)>0) && (abs(xspd)<moveSpd[1]) ) {sprite_index = walkSpr};
 if(xspd==0){sprite_index = idleSpr};
 
 //In the air
-if !onGround  {sprite_index = jumpSpr};
+if !onGround && !airAttackStart {sprite_index = jumpSpr};
 
 //Crouching
 if crouching {sprite_index = crouchSpr};
@@ -503,8 +519,14 @@ if glideStart {sprite_index = glideSpr};
 //Melee Attack
 if attackStart {sprite_index = attackSpr};
 
+//Air Attack
+if airAttackStart {sprite_index = AirAttackSpr}
+
 //Set the collision mask
 mask_index = idleSpr;
 if crouching{mask_index=crouchSpr};
+if airAttackStart {mask_index=AirAttackSpr};
 
-global.mensaje = attackStart;
+#endregion
+
+global.mensaje = airAttackBuffered;
