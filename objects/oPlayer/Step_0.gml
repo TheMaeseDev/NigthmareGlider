@@ -5,7 +5,7 @@ getControls();
 if restartKey room_restart();
 
 #region Glide Mechanic
-if !onGround && glideKey{
+if !onGround && glideKey && !airAttackStart{
 	if !glideStart{
 		if yspd < 0 yspd=0;
 		termVel = glideTermVel;
@@ -162,6 +162,25 @@ if !attackStart && attackDelay>=0{
 
 if !onGround && (attackKey || airAttackBuffered) && airAttackDelay<=0{
 	airAttackStart = true;
+	if airAttackHB == noone{
+		airAttackHB = instance_create_depth(x,y,depth,oPlayer_Air_Attack_HB);
+	}
+}
+
+//Si estoy atacando en el aire se cree el hitbox para el golpe
+if airAttackStart{
+	with(airAttackHB){
+		self.x = other.x;
+		self.y = other.y;
+	}
+}else{
+	//Una vez que llego al piso, desaparece el hitbox
+	if airAttackHB != noone{
+		with(airAttackHB){
+			instance_destroy();
+		}
+		airAttackHB = noone;
+	}
 }
 
 #endregion
@@ -525,8 +544,7 @@ if airAttackStart {sprite_index = AirAttackSpr}
 //Set the collision mask
 mask_index = idleSpr;
 if crouching{mask_index=crouchSpr};
-if airAttackStart {mask_index=AirAttackSpr};
 
 #endregion
 
-global.mensaje = airAttackBuffered;
+//global.mensaje = airAttackHB;

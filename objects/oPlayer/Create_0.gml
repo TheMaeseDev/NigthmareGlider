@@ -106,6 +106,7 @@ attackFrames = 10;
 airAttackStart = false; //Controla si se ha comenzado el ataque aereo
 airAttackDelay = 0;
 airAttackFrame = 7;
+airAttackHB = noone;
 
 
 //Moving Platforms
