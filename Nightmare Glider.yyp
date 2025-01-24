@@ -41,6 +41,7 @@
   "resources":[
     {"id":{"name":"oCamera","path":"objects/oCamera/oCamera.yy",},},
     {"id":{"name":"oEnemy","path":"objects/oEnemy/oEnemy.yy",},},
+    {"id":{"name":"oMoveObject","path":"objects/oMoveObject/oMoveObject.yy",},},
     {"id":{"name":"oMovePlat","path":"objects/oMovePlat/oMovePlat.yy",},},
     {"id":{"name":"oPlayer_Air_Attack_HB","path":"objects/oPlayer_Air_Attack_HB/oPlayer_Air_Attack_HB.yy",},},
     {"id":{"name":"oPlayer_Attack_HB","path":"objects/oPlayer_Attack_HB/oPlayer_Attack_HB.yy",},},
@@ -55,6 +56,7 @@
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"id":{"name":"general_functions","path":"scripts/general_functions/general_functions.yy",},},
     {"id":{"name":"sEnemy","path":"sprites/sEnemy/sEnemy.yy",},},
+    {"id":{"name":"sMoveObjects","path":"sprites/sMoveObjects/sMoveObjects.yy",},},
     {"id":{"name":"sMovePlat","path":"sprites/sMovePlat/sMovePlat.yy",},},
     {"id":{"name":"sPlayer_Air_Attack_HB","path":"sprites/sPlayer_Air_Attack_HB/sPlayer_Air_Attack_HB.yy",},},
     {"id":{"name":"sPlayer_Air_Attack","path":"sprites/sPlayer_Air_Attack/sPlayer_Air_Attack.yy",},},
