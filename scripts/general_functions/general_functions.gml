@@ -2,7 +2,11 @@ function controlsSetup(){
 	bufferTime = 5;
 	jumpKeyBuffered = 0;
 	jumpKeyBufferTimer = 0;
-	}
+	
+	airAttackBufferTime = 7;
+	airAttackBuffered = 0;
+	airAttackBufferTimer = 0;
+}
 
 
 function getControls(){
@@ -33,7 +37,7 @@ function getControls(){
 		
 	attackKey = keyboard_check_pressed(ord("K")) + gamepad_button_check_pressed(0,gp_face3);
 		attackKey = clamp(attackKey,0,1);
-		
+	
 	glideKey = keyboard_check(vk_control) + gamepad_button_check(0,gp_face4);
 		glideKey = clamp(glideKey,0,1);
 		
@@ -49,5 +53,15 @@ function getControls(){
 		jumpKeyBufferTimer--;
 	} else{
 		jumpKeyBuffered = 0;
-		}
+	}
+	
+	//Air Attack Buffering
+	if (attackKey) airAttackBufferTimer = airAttackBufferTime;
+	
+	if (airAttackBufferTimer>0){
+		airAttackBuffered=1;
+		airAttackBufferTimer--;
+	}else{
+		airAttackBuffered  = 0;
+	}
 }
