@@ -12,9 +12,9 @@ var texto_x = view_x + view_w / 2;
 var texto_y = view_y + view_h / 2;
 
 // Dibuja el mensaje en el centro de la vista si no está vacío
-if (mensaje != "") {
+if (global.mensaje != "") {
     draw_set_halign(fa_center); // Alineación horizontal centrada
     draw_set_valign(fa_middle); // Alineación vertical centrada
     draw_set_color(c_white); // Color del texto
-    draw_text(texto_x, texto_y, mensaje); // Dibuja el texto en el centro
+    draw_text(texto_x, texto_y, global.mensaje); // Dibuja el texto en el centro
 }

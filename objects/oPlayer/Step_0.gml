@@ -108,7 +108,7 @@ if place_meeting(x,y,oWall) image_blend = c_blue;
 #region Crouching
 //Transition to Crouch
 	//Manual = downkey | Automatic = wall collision
-	if onGround && (downKey || place_meeting(x,y,oWall)){
+	if onGround && (downKey || place_meeting(x,y,oWall)) && !attackStart{
 		crouching = true;
 	}
 	//Change collision mask
@@ -130,13 +130,44 @@ if place_meeting(x,y,oWall) image_blend = c_blue;
 	}
 #endregion
 
+#region Melee Attack
+
+if onGround && attackKey && attackDelay<=0{
+	image_index = 0;
+	moveSpd[0] = 0;
+	crouching = false;
+	attackStart = true;
+	attackDelay = attackFrames;
+	var _hitbox = instance_create_depth(x,y,self.depth-1,oPlayer_Attack_HB);
+	with(_hitbox){
+		x=other.x+(16*other.face);
+		y=other.y;
+		self.image_xscale = self.image_xscale*other.face;
+	}
+}
+
+if attackStart && (!onGround || image_index > image_number-0.5){
+		moveSpd[0]=walkSpd;
+		image_index = 0;
+		attackStart = false;
+}
+
+if !attackStart && attackDelay>=0{
+	attackDelay--;
+}
+
+#endregion
 //X Movement
 	//Direction
 	moveDir = rightKey - leftKey;
 	
-	//Get my face
-	if moveDir > 0 face=1;
-	if moveDir < 0 face=-1;
+	//Cant change face while attacking
+	if(!attackStart){
+		//Get my face
+		if moveDir > 0 face=1;
+		if moveDir < 0 face=-1;
+	}
+	
 	//No movement while crouching
 	if crouching { moveDir = 0;};
 
@@ -218,7 +249,7 @@ if place_meeting(x,y,oWall) image_blend = c_blue;
 		_floorIsSolid = true;	
 	}
 	
-	if jumpKeyBuffered && jumpCount<jumpMax && (!downKey || _floorIsSolid){
+	if jumpKeyBuffered && jumpCount<jumpMax && (!downKey || _floorIsSolid)  && !attackStart {
 		//Reset the Buffer
 		jumpKeyBuffered = false;
 		jumpKeyBufferTimer = 0;
@@ -469,6 +500,11 @@ if crouching {sprite_index = crouchSpr};
 //Gliding
 if glideStart {sprite_index = glideSpr};
 
+//Melee Attack
+if attackStart {sprite_index = attackSpr};
+
 //Set the collision mask
 mask_index = idleSpr;
 if crouching{mask_index=crouchSpr};
+
+global.mensaje = attackStart;
