@@ -17,12 +17,12 @@ if (place_meeting(x, y + 1, oWall)) {
     y -= 1;
 }
 
-var _objTop = instance_place(x,y-1,oMoveObject);
+objTop = instance_place(x,y-1,oMoveObject);
 
-if _objTop!=noone{
-	with(_objTop){
-		//self.x = other.x;	
-		//canMove=false;
+/*if objTop!=noone{
+	with(objTop){
+		
 	}
-	canMove=false;
-}
+}*/
+
+//global.mensaje = isMoving;

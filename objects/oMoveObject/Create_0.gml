@@ -5,4 +5,7 @@ grv = .275;
 termVel = 4;
 vsp = 0;
 
+objTop = noone;
+
 canMove = true;
+isMoving = false;

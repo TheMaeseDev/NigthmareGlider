@@ -525,6 +525,9 @@ if glideKey && _moveObject!=noone && onGround && moveDir!=0{
 		}else{
 			//Aca se podria hacer que se puedan mover de a varias horizontalmente
 		}
+		if self.objTop != noone{
+			self.objTop.x += other.moveDir*1;	
+		}
 	}
 }
 
