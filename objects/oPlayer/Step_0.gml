@@ -520,13 +520,16 @@ if instance_exists(myFloorPlat)
 var _moveObject = instance_place(x+(1*face),y,oMoveObject);
 if glideKey && _moveObject!=noone && onGround && moveDir!=0{
 	with(_moveObject){
-		if !instance_place(x+(1*other.face),y,oWall) && canMove{
+		if !instance_place(x+(1*other.face),y,oWall){
 			self.x += other.moveDir*1;
+			if self.objTop != noone{
+				self.objTop.face = other.face;
+				if self.objTop.canMove{
+					self.objTop.x += other.moveDir*1;
+				}
+			}
 		}else{
 			//Aca se podria hacer que se puedan mover de a varias horizontalmente
-		}
-		if self.objTop != noone{
-			self.objTop.x += other.moveDir*1;	
 		}
 	}
 }

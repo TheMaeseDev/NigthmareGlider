@@ -8,4 +8,5 @@ vsp = 0;
 objTop = noone;
 
 canMove = true;
+face = 0;
 isMoving = false;
