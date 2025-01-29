@@ -6,8 +6,3 @@ grv = 0.5;
 xFriction = 0.9; //Reduccion de velocidad horizontal
 bounce_factor = 0.9;
 
-grabbed = false;
-owner = noone;
-flying = false;
-face = 0;
-

@@ -1,20 +1,20 @@
 {
   "$GMObject":"",
-  "%Name":"oGrabbable",
+  "%Name":"oSmallBox",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"oGrabbable",
+  "name":"oSmallBox",
   "overriddenProperties":[],
   "parent":{
     "name":"Walls",
     "path":"folders/Objects/Walls.yy",
   },
   "parentObjectId":{
-    "name":"oWall",
-    "path":"objects/oWall/oWall.yy",
+    "name":"oGrabbable",
+    "path":"objects/oGrabbable/oGrabbable.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
@@ -34,8 +34,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Sprite24",
-    "path":"sprites/Sprite24/Sprite24.yy",
+    "name":"sSmallBox",
+    "path":"sprites/sSmallBox/sSmallBox.yy",
   },
   "spriteMaskId":null,
   "visible":true,

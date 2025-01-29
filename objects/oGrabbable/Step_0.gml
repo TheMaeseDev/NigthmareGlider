@@ -1,27 +1,19 @@
 
+//Follow Player
 if(grabbed){
 	x=owner.x + 15*owner.face;
 	y=owner.y-5;
 	mask_index = sNoMask;
 }
-
 else{
-	mask_index = sGrabbable;	
+	mask_index = Sprite24;	
 }
 
 if flying{
-	x+=throwXSpd*face;
-	vspeed += grv;
-	y+=vspeed;
-}
-
-if (instance_place(x,y,oWall) || instance_place(x,y,oSemiSolidWall)) && flying{
-	if !canExplode{
-		vspeed=throwYSpd;
-		bounceCount--;
-		
+	// Que pasa cuando es arrojado?
+	if place_meeting(x+(1*face),y,oWall){
+		instance_destroy();	
 	}
-	else instance_destroy();
 }
 
-if bounceCount <= 0 canExplode=true;
+

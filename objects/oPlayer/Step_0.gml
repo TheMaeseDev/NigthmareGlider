@@ -529,11 +529,9 @@ if !isGrabbing{
 }
 if isGrabbing && attackKey{
 	with grabbed{
-		self.vspeed = self.throwYSpd; // Impulso inicial
 		self.grabbed = false;
 		self.owner = noone;
 		self.face = other.face;
-		
 		self.flying = true;
 	}
 	isGrabbing = false;
