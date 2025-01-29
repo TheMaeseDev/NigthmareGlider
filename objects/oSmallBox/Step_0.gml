@@ -14,6 +14,6 @@ if flying{
 	y+=vsp;
 	
 	if place_meeting(x,y,oWall) || place_meeting(x,y,oSemiSolidWall){
-		instance_destroy();
+		Destroy();
 	}
 }
