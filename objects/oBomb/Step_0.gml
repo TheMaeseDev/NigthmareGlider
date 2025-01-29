@@ -19,7 +19,7 @@ if flying{
 	
 	if place_meeting(x,y+1,oWall){
 		y-=1;
-		vsp *= -bounce_factor;
+		vsp = max(vsp*-bounce_factor, -4);
 		hsp *= xFriction;
 		//Detener si la energia de rebote es muy baja
 		if(abs(vsp)<1){
