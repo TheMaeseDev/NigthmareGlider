@@ -308,7 +308,7 @@ if airAttackStart{
 	var _subPixel = .5;
 	
 	//Upwards Y Collisions (with ceiling slopes)
-	if((yspd<0) && (place_meeting(x,y+yspd,oWall))){
+	if( ( yspd<0 ) && ( place_meeting(x,y+yspd,oWall) ) ){
 		//Jump into sloped ceilings
 		var _slopeSlide=false;
 		
@@ -511,6 +511,27 @@ if instance_exists(myFloorPlat)
 	
 	//if im still in a wall at this point, ive been crushed regardless, take me back to my start y to avoid the funk
 	if _pushedDist > _maxPushDist {y = _startY};
+}
+
+#endregion
+
+#region Mover Objetos
+
+var _moveObject = instance_place(x+(1*face),y,oMoveObject);
+if glideKey && _moveObject!=noone && onGround && moveDir!=0{
+	with(_moveObject){
+		if !instance_place(x+(1*other.face),y,oWall){
+			self.x += other.moveDir*1;
+			if self.objTop != noone{
+				self.objTop.face = other.face;
+				if self.objTop.canMove{
+					self.objTop.x += other.moveDir*1;
+				}
+			}
+		}else{
+			//Aca se podria hacer que se puedan mover de a varias horizontalmente
+		}
+	}
 }
 
 #endregion
