@@ -2,7 +2,7 @@ function getHitted(_dmg){
 	healthPts -= _dmg;
 }
 
-maxHealthPts = 1;
+maxHealthPts = 4;
 healthPts = maxHealthPts;
 
 hitedBy = noone;

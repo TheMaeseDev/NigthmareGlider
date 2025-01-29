@@ -13,37 +13,55 @@ else{
 }
 
 if flying{
-	vsp += grv;
 	x+=hsp*face;
-	y+=vsp;
 	timerStart = true;
+	vsp += grv;
+	if (place_meeting(x, y + vsp, oWall) || place_meeting(x, y + vsp, oSemiSolidWall)) {
+	    while (!place_meeting(x, y + sign(vsp), oWall) && !place_meeting(x, y + sign(vsp), oSemiSolidWall)) {
+	        y += sign(vsp);
+	    }
+	    vsp = 0;
+	}
+	y += vsp;
+
+	//Si "pisa" una cajita, explota.
+	if(place_meeting(x,y+vsp,oSmallBox)){
+		Destroy();
+	}
 	
+	//Si toca el suelo, rebota.
 	if place_meeting(x,y+vsp,oWall) || place_meeting(x,y+vsp,oSemiSolidWall){
 		vsp = max(vsp*-bounce_factor, -8);
 		hsp *= xFriction;
 		//Detener si la energia de rebote es muy baja
-		if(abs(vsp)<0.5){
+		if(abs(vsp)<1){
 			vsp = 0;
 		}
 		if(abs(hsp)< 0.1){
 			hsp = 0;	
 		}
 		if vsp == 0 || hsp == 0{
-			y-=1;
 			flying = false;
 		}
 	}
-	if place_meeting(x+(1*face),y-1,oWall){
-		instance_destroy();	
+	
+	//Si toca cualquier "pared" de costado, explota.
+	if place_meeting(x+(1*face),y,oWall) || place_meeting(x+(1*face),y,oSemiSolidWall){
+		Destroy();
 	}
+	
+	//Si choca un enemigo, explota
+	if(place_meeting(x,y,oEnemy)) Destroy();
 }
 
+//Si choca otra bomba, explotan las dos
+if(place_meeting(x,y,oBomb)) Destroy();
 
-//Codigo de explosion
+//Codigo de explosion por tiempo
 if timerStart{
 	timerFrames--	
 }
 
 if timerFrames<=0{
-	instance_destroy();
+	Destroy();
 }
