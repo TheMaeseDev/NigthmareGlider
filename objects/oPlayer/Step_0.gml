@@ -5,7 +5,7 @@ getControls();
 if restartKey room_restart();
 
 #region Glide Mechanic
-if !onGround && glideKey && !airAttackStart{
+if !onGround && glideKey && !airAttackStart && !isGrabbing{
 	if !glideStart{
 		if yspd < 0 yspd=0;
 		termVel = glideTermVel;
@@ -108,7 +108,7 @@ if place_meeting(x,y,oWall) image_blend = c_blue;
 #region Crouching
 //Transition to Crouch
 	//Manual = downkey | Automatic = wall collision
-	if onGround && (downKey || place_meeting(x,y,oWall)) && !attackStart{
+	if onGround && (downKey || place_meeting(x,y,oWall)) && !attackStart && !isGrabbing{
 		crouching = true;
 	}
 	//Change collision mask
@@ -160,7 +160,7 @@ if !attackStart && attackDelay>=0{
 
 #region Air Spin Attack
 
-if !onGround && (attackKey || airAttackBuffered) && airAttackDelay<=0{
+if !onGround && (attackKey || airAttackBuffered) && airAttackDelay<=0 && !isGrabbing{
 	airAttackStart = true;
 	if airAttackHB == noone{
 		airAttackHB = instance_create_depth(x,y,depth,oPlayer_Air_Attack_HB);
@@ -535,7 +535,44 @@ if glideKey && _moveObject!=noone && onGround && moveDir!=0{
 }
 
 #endregion
-	
+
+#region Agarrar y tirar objetos
+
+if !isGrabbing && onGround{
+	if instance_place(x+(1*face),y,oGrabbable) && glideKey{
+		grabbed = instance_place(x+(1*face),y,oGrabbable);
+		isGrabbing = true;
+		with (grabbed){
+			self.owner = other;
+			self.grabbed = true;
+		}
+	}
+}
+if isGrabbing && attackKey{
+	with grabbed{
+		self.grabbed = false;
+		self.owner = noone;
+		self.face = other.face;
+		self.flying = true;
+	}
+	isGrabbing = false;
+}
+
+#endregion
+
+#region Romper cajas cayendo encima
+
+var _breakThreshold = 2.7; // Velocidad mínima para romperla
+smallBox = instance_place(x,y+yspd,oSmallBox);
+if smallBox != noone && !onGround{
+	if yspd >= _breakThreshold{
+		instance_destroy(smallBox);
+	}
+}
+
+global.mensaje = yspd;
+#endregion
+
 #region Sprite Control
 //Runing
 if(abs(xspd)>=moveSpd[1]){sprite_index = runSpr};
@@ -566,5 +603,3 @@ mask_index = idleSpr;
 if crouching{mask_index=crouchSpr};
 
 #endregion
-
-//global.mensaje = airAttackHB;
