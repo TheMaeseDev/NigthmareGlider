@@ -1,4 +1,9 @@
 event_inherited();
+
+function Destroy(){
+	instance_create_depth(x,y-sprite_height/3,depth,oBomb_Explosion);
+	instance_destroy();		
+}
 //Bouncing Mechanic
 hsp = 4;
 vsp = -4;

@@ -42,6 +42,7 @@
   },
   "name":"Nightmare Glider",
   "resources":[
+    {"id":{"name":"oBomb_Explosion","path":"objects/oBomb_Explosion/oBomb_Explosion.yy",},},
     {"id":{"name":"oBomb","path":"objects/oBomb/oBomb.yy",},},
     {"id":{"name":"oCamera","path":"objects/oCamera/oCamera.yy",},},
     {"id":{"name":"oEnemy","path":"objects/oEnemy/oEnemy.yy",},},
@@ -63,6 +64,7 @@
     {"id":{"name":"oWall","path":"objects/oWall/oWall.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"id":{"name":"general_functions","path":"scripts/general_functions/general_functions.yy",},},
+    {"id":{"name":"sBomb_Explosion","path":"sprites/sBomb_Explosion/sBomb_Explosion.yy",},},
     {"id":{"name":"sBomb","path":"sprites/sBomb/sBomb.yy",},},
     {"id":{"name":"sEnemy","path":"sprites/sEnemy/sEnemy.yy",},},
     {"id":{"name":"sMoveObject","path":"sprites/sMoveObject/sMoveObject.yy",},},
