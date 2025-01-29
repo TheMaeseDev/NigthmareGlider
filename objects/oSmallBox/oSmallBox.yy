@@ -1,18 +1,21 @@
 {
   "$GMObject":"",
-  "%Name":"oEnemy",
+  "%Name":"oSmallBox",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"oEnemy",
+  "name":"oSmallBox",
   "overriddenProperties":[],
   "parent":{
-    "name":"Enemies",
-    "path":"folders/Objects/Enemies.yy",
+    "name":"Walls",
+    "path":"folders/Objects/Walls.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"oGrabbable",
+    "path":"objects/oGrabbable/oGrabbable.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -31,8 +34,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sEnemy",
-    "path":"sprites/sEnemy/sEnemy.yy",
+    "name":"sSmallBox",
+    "path":"sprites/sSmallBox/sSmallBox.yy",
   },
   "spriteMaskId":null,
   "visible":true,
