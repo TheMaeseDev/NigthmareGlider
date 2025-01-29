@@ -16,6 +16,7 @@ if flying{
 	vsp += grv;
 	x+=hsp*face;
 	y+=vsp;
+	timerStart = true;
 	
 	if place_meeting(x,y+1,oWall){
 		y-=1;
@@ -33,3 +34,15 @@ if flying{
 		instance_destroy();	
 	}*/
 }
+
+
+//Codigo de explosion
+if timerStart{
+	timerFrames--	
+}
+
+if timerFrames<=0{
+	instance_destroy();
+}
+
+global.mensaje = timerFrames;
