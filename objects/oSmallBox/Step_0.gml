@@ -13,7 +13,7 @@ if flying{
 	x+=hsp*face;
 	y+=vsp;
 	
-	if place_meeting(x,y+1,oWall) || place_meeting(x,y+1,oSemiSolidWall){
+	if place_meeting(x,y,oWall) || place_meeting(x,y,oSemiSolidWall){
 		instance_destroy();
 	}
 }
