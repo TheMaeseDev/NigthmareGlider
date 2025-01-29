@@ -515,7 +515,35 @@ if instance_exists(myFloorPlat)
 
 #endregion
 
-	
+#region Agarrar y tirar objetos
+
+if !isGrabbing{
+	if instance_place(x+(1*face),y,oGrabbable) && glideKey{
+		grabbed = instance_place(x+(1*face),y,oGrabbable);
+		isGrabbing = true;
+		with (grabbed){
+			self.owner = other;
+			self.grabbed = true;
+		}
+	}
+}
+if isGrabbing && attackKey{
+	with grabbed{
+		self.vspeed = self.throwYSpd; // Impulso inicial
+		self.grabbed = false;
+		self.owner = noone;
+		self.face = other.face;
+		
+		self.flying = true;
+	}
+	isGrabbing = false;
+}
+
+#endregion
+
+
+
+
 #region Sprite Control
 //Runing
 if(abs(xspd)>=moveSpd[1]){sprite_index = runSpr};
