@@ -558,6 +558,7 @@ if glideKey && _moveObject!=noone && onGround && moveDir!=0{
 	with(_moveObject){
 		if !instance_place(x+(1*other.face),y,oWall){
 			self.x += other.moveDir*1;
+			self.hsp = other.moveDir*1;
 			if self.objTop != noone{
 				self.objTop.face = other.face;
 				if self.objTop.canMove{

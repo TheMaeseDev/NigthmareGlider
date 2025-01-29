@@ -1,9 +1,10 @@
 // Inherit the parent event
 event_inherited();
 
-grv = .275;
+grv = .1;
 termVel = 4;
 vsp = 0;
+hsp = 0;
 
 objTop = noone;
 

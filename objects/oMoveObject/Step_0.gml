@@ -1,23 +1,18 @@
 
-if !place_meeting(x,y+1,oWall) && !place_meeting(x,y+1,oSemiSolidWall){
-	vsp += grv;
-	if vsp>termVel{
-		vsp = termVel;	
-	}
-}else{
-	vsp = 0;	
-}
-y+=vsp;
+vsp += grv;
 
-if (place_meeting(x, y + 1, oWall)){
-    // Ajustar la posición justo encima del objeto colisionado
-    while (!place_meeting(x, y, oWall)) {
-        y += 1;
+if (place_meeting(x, y + vsp, oWall) || place_meeting(x, y + vsp, oSemiSolidWall)) {
+    while (!place_meeting(x, y + sign(vsp), oWall) && !place_meeting(x, y + sign(vsp), oSemiSolidWall)) {
+        y += sign(vsp);
     }
-    y -= 1;
+    vsp = 0;
 }
+
+y += vsp;
+
 objTop = instance_place(x,y-1,oMoveObject);
 
 if !instance_place(x+(1*face),y,oWall){
 	canMove = true;	
 }else canMove = false;
+
