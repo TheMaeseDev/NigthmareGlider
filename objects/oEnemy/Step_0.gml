@@ -15,7 +15,7 @@ if (beignHitedBy != hitedBy){
 	hitedBy = beignHitedBy;
 	
 	//Que pasa cuando recibe un golpe?
-	healthPts--;
+	getHitted(1);
 }
 
 //global.mensaje = _existAirHB;

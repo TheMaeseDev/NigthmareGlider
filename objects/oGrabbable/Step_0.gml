@@ -11,9 +11,6 @@ else{
 
 if flying{
 	// Que pasa cuando es arrojado?
-	if place_meeting(x+(1*face),y,oWall){
-		instance_destroy();	
-	}
 }
 
 

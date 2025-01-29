@@ -545,7 +545,7 @@ var _breakThreshold = 2.7; // Velocidad mínima para romperla
 smallBox = instance_place(x,y+yspd,oSmallBox);
 if smallBox != noone && !onGround{
 	if yspd >= _breakThreshold{
-		instance_destroy(smallBox);
+		smallBox.Destroy();
 	}
 }
 
