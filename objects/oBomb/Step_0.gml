@@ -18,7 +18,7 @@ if flying{
 	y+=vsp;
 	timerStart = true;
 	
-	if place_meeting(x,y+1,oWall){
+	if place_meeting(x,y+1,oWall) || place_meeting(x,y+1,oSemiSolidWall){
 		y-=1;
 		vsp = max(vsp*-bounce_factor, -4);
 		hsp *= xFriction;

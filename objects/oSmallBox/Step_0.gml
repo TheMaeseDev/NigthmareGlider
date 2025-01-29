@@ -13,17 +13,7 @@ if flying{
 	x+=hsp*face;
 	y+=vsp;
 	
-	if place_meeting(x,y+1,oWall){
-		//y-=1;
-		/*vsp *= -bounce_factor;
-		hsp *= xFriction;
-		//Detener si la energia de rebote es muy baja
-		if(abs(vsp)<1){
-			vsp = 0;	
-		}
-		if(abs(hsp)< 0.1){
-			hsp = 0;	
-		}*/
+	if place_meeting(x,y+1,oWall) || place_meeting(x,y+1,oSemiSolidWall){
 		instance_destroy();
 	}
 }
