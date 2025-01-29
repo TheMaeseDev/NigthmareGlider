@@ -44,5 +44,3 @@ if timerStart{
 if timerFrames<=0{
 	instance_destroy();
 }
-
-global.mensaje = timerFrames;

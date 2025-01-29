@@ -108,12 +108,9 @@ airAttackDelay = 0;
 airAttackFrame = 7;
 airAttackHB = noone;
 
-
 //Grab Mechanic
 isGrabbing = false;
 grabbing = noone;
-
-
 
 //Moving Platforms
 myFloorPlat = noone;
