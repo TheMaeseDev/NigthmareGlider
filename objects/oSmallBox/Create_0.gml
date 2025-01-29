@@ -6,5 +6,3 @@ vsp = -4;
 grv = 0.3;
 
 quietState = true;
-canBreake = true;
-playerInstance = noone;

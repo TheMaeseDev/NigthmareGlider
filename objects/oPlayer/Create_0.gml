@@ -12,8 +12,8 @@ function setOnGround(_val = true){
 		onGround = false;
 		myFloorPlat = noone;
 		coyoteHangTimer=0;
-		//Descuenta el delay de ataque aereo
-		airAttackDelay--;
+		airAttackDelay--; //Descuenta el delay de ataque aereo
+		smallBox = noone;
 	}
 }
 
@@ -111,6 +111,8 @@ airAttackHB = noone;
 //Grab Mechanic
 isGrabbing = false;
 grabbing = noone;
+
+smallBox = noone;
 
 //Moving Platforms
 myFloorPlat = noone;

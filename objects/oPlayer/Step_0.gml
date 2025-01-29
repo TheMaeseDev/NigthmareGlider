@@ -539,6 +539,19 @@ if isGrabbing && attackKey{
 
 #endregion
 
+#region Romper cajas cayendo encima
+
+var _breakThreshold = 3.75; // Velocidad mínima para romperla
+smallBox = instance_place(x,y+yspd,oSmallBox);
+if smallBox != noone && !onGround{
+	if yspd >= _breakThreshold{
+		instance_destroy(smallBox);
+	}
+}
+
+global.mensaje = yspd;
+#endregion
+
 #region Sprite Control
 //Runing
 if(abs(xspd)>=moveSpd[1]){sprite_index = runSpr};
