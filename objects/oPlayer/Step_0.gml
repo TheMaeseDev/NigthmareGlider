@@ -192,7 +192,7 @@ if airAttackStart{
 	}
 	
 	//Cant change face while attacking
-	if(!attackStart){
+	if(!attackStart && !beingHitted){
 		//Get my face
 		if moveDir > 0 face=1;
 		if moveDir < 0 face=-1;
@@ -605,4 +605,3 @@ mask_index = idleSpr;
 if crouching{mask_index=crouchSpr};
 
 #endregion
-
