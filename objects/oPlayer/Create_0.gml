@@ -7,6 +7,7 @@ function setOnGround(_val = true){
 		glideStart = false;
 		airAttackStart = false;
 		airAttackDelay = airAttackFrame;
+		beingHitted = false;
 		
 	}else{
 		onGround = false;
@@ -15,6 +16,28 @@ function setOnGround(_val = true){
 		airAttackDelay--; //Descuenta el delay de ataque aereo
 		smallBox = noone;
 	}
+}
+
+/// takeDamage(_dmg,_attackX)
+/// _dmg: Cantidad de vida a restar
+/// _attackX: Posición en X del atacante (para calcular dirección)
+function takeDamage(_dmg,_attackX){
+	//Restar vida
+	hp-=_dmg; 
+	yspd=-5;
+	
+	// Determina la dirección del golpe
+    if (_attackX < x) {
+        // Golpe desde la izquierda → Empuja a la derecha  
+        face = -1; 
+    } else {
+        // Golpe desde la derecha → Empuja a la izquierda 
+        face = 1;
+    }
+	//beingHitted = true;
+	//moveDir = face*-1;
+	
+	//global.mensaje = hsp;
 }
 
 function checkForSemiSolidPlatform(_x,_y){
@@ -45,6 +68,10 @@ function checkForSemiSolidPlatform(_x,_y){
 }
 
 depth = -30;
+
+hp = 10;
+
+beingHitted = false;
 
 //ControlSetup
 controlsSetup();
@@ -123,3 +150,4 @@ movePlatXspd = 0;
 moveplatMaxYspd = termVel;
 
 global.mensaje = "";
+global.showEnemyHealth = true;

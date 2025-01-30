@@ -187,7 +187,9 @@ if airAttackStart{
 
 #region X Movement
 	//Direction
-	moveDir = rightKey - leftKey;
+	if !beingHitted{
+		moveDir = rightKey - leftKey;
+	}
 	
 	//Cant change face while attacking
 	if(!attackStart){
@@ -279,7 +281,7 @@ if airAttackStart{
 		_floorIsSolid = true;	
 	}
 	
-	if jumpKeyBuffered && jumpCount<jumpMax && (!downKey || _floorIsSolid)  && !attackStart {
+	if (jumpKeyBuffered && jumpCount<jumpMax && (!downKey || _floorIsSolid)  && !attackStart){
 		//Reset the Buffer
 		jumpKeyBuffered = false;
 		jumpKeyBufferTimer = 0;
@@ -290,7 +292,6 @@ if airAttackStart{
 		
 		//Tell ourself we are no longer on the ground
 		setOnGround(false);
-		
 	}
 	//Cut off the jump by releasing the jump button
 	if !jumpKey{
@@ -604,3 +605,4 @@ mask_index = idleSpr;
 if crouching{mask_index=crouchSpr};
 
 #endregion
+
