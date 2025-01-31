@@ -12,4 +12,4 @@ xFriction = 0.9; //Reduccion de velocidad horizontal
 bounce_factor = 0.9;
 
 timerStart = false;
-timerFrames = 180;
+timerFrames = 300;

@@ -7,6 +7,7 @@ if(grabbed){
 	hsp = 4.5;
 	vsp = -4.5;
 	mask_index = sNoMask;
+	timerStart = true;
 }
 else{
 	mask_index = sBomb;	
@@ -14,7 +15,7 @@ else{
 
 if flying{
 	x+=hsp*face;
-	timerStart = true;
+	//timerStart = true;
 	vsp += grv;
 	if (place_meeting(x, y + vsp, oWall) || place_meeting(x, y + vsp, oSemiSolidWall)) {
 	    while (!place_meeting(x, y + sign(vsp), oWall) && !place_meeting(x, y + sign(vsp), oSemiSolidWall)) {
@@ -59,7 +60,9 @@ if(place_meeting(x,y,oBomb)) Destroy();
 
 //Codigo de explosion por tiempo
 if timerStart{
-	timerFrames--	
+	timerFrames--
+	//Sprite Control
+	sprite_index = sBomb_On;
 }
 
 if timerFrames<=0{
