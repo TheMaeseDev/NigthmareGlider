@@ -19,3 +19,10 @@ if place_meeting(x,y,oEnemy){
 		self.getHitted(3);
 	}
 }
+
+if place_meeting(x,y,oPlayer){
+	var _collision = instance_place(x,y,oPlayer);
+	with _collision{
+		self.takeDamage(3,other.x);
+	}
+}
