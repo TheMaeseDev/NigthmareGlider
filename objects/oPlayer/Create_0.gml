@@ -13,8 +13,6 @@ function setOnGround(_val = true){
 		jumpHoldFrames = 10; //reset var
 		//moveSpd[1] = runSpd;
 		
-		
-		
 	}else{
 		onGround = false;
 		myFloorPlat = noone;
@@ -61,7 +59,6 @@ function takeDamage(_dmg,_attackX){
 			with(grabbed) Destroy();
 			isGrabbing = false;
 		}
-		
 	}
 }
 
@@ -112,7 +109,6 @@ glideSpr = sPlayerGlid;
 attackSpr = sPlayer_Attack;
 AirAttackSpr = sPlayer_Air_Attack;
 hittedSpr = sPlayer_Hit;
-
 
 //Moving
 face = 1;
@@ -165,7 +161,6 @@ airAttackHB = noone;
 //Grab Mechanic
 isGrabbing = false;
 grabbing = noone;
-
 smallBox = noone;
 
 //Moving Platforms
@@ -177,5 +172,3 @@ movePlatXspd = 0;
 moveplatMaxYspd = termVel;
 
 global.mensaje = "";
-global.showHp = false;
-global.showEnemyHealth = false;

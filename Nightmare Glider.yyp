@@ -45,6 +45,7 @@
     {"id":{"name":"oBomb_Explosion","path":"objects/oBomb_Explosion/oBomb_Explosion.yy",},},
     {"id":{"name":"oBomb","path":"objects/oBomb/oBomb.yy",},},
     {"id":{"name":"oCamera","path":"objects/oCamera/oCamera.yy",},},
+    {"id":{"name":"oDebugText","path":"objects/oDebugText/oDebugText.yy",},},
     {"id":{"name":"oEnemy_Pumpkin","path":"objects/oEnemy_Pumpkin/oEnemy_Pumpkin.yy",},},
     {"id":{"name":"oEnemy","path":"objects/oEnemy/oEnemy.yy",},},
     {"id":{"name":"oGrabbable","path":"objects/oGrabbable/oGrabbable.yy",},},
