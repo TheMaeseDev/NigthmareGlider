@@ -13,6 +13,8 @@ function setOnGround(_val = true){
 		jumpHoldFrames = 10; //reset var
 		//moveSpd[1] = runSpd;
 		
+		
+		
 	}else{
 		onGround = false;
 		myFloorPlat = noone;
@@ -35,7 +37,7 @@ function takeDamage(_dmg,_attackX){
 		/*------- Y Knockback ----------- */
 		grav = defaultGrav/1.5; //opcional si queremos la caida mas lenta
 		yspd = 0; 
-		yspd += -3.5;
+		yspd += -3;
 		
 		// "despegar al player del suelo"
 	    jumpKeyBuffered = true;  // Activa el buffer de salto
@@ -50,6 +52,16 @@ function takeDamage(_dmg,_attackX){
 	    else face = 1; // Golpe desde la derecha → Empuja a la izquierda 
 	    //Mover horizontalmente a Player
 		moveDir = -face;
+		
+		//Manejo de sprite
+		image_index = 0;
+		
+		//Que pasa con el objeto "agarrado"
+		if isGrabbing{
+			with(grabbed) Destroy();
+			isGrabbing = false;
+		}
+		
 	}
 }
 
@@ -99,6 +111,7 @@ crouchSpr = sPlayer_Crouch;
 glideSpr = sPlayerGlid;
 attackSpr = sPlayer_Attack;
 AirAttackSpr = sPlayer_Air_Attack;
+hittedSpr = sPlayer_Hit;
 
 
 //Moving
