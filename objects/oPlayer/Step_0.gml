@@ -132,7 +132,7 @@ if place_meeting(x,y,oWall) image_blend = c_blue;
 
 #region Melee Attack
 
-if onGround && attackKey && attackDelay<=0 && !beingHitted{
+if onGround && attackKey && attackDelay<=0 && !beingHitted && !isGrabbing{
 	image_index = 0;
 	moveSpd[0] = 0;
 	crouching = false;
@@ -542,7 +542,7 @@ if isGrabbing && attackKey{
 
 #region Romper cajas cayendo encima
 
-var _breakThreshold = 2.7; // Velocidad mínima para romperla
+var _breakThreshold = 3.5; // Velocidad mínima para romperla
 smallBox = instance_place(x,y+yspd,oSmallBox);
 if smallBox != noone && !onGround{
 	if yspd >= _breakThreshold{
