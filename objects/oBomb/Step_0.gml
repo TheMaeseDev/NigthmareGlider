@@ -71,3 +71,7 @@ if timerStart{
 if timerFrames<=0{
 	Destroy();
 }
+
+if place_meeting(x,y,oPlayer_Attack_HB) || place_meeting(x,y,oPlayer_Air_Attack_HB){
+	Destroy();	
+}	

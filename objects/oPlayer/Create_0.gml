@@ -11,7 +11,7 @@ function setOnGround(_val = true){
 		alreadyHit = false;   //player can take dmg again
 		grav = defaultGrav;	  //set grv back to default
 		jumpHoldFrames = 10; //reset var
-		//moveSpd[1] = runSpd;
+		moveSpd[1] = runSpd;
 		
 	}else{
 		onGround = false;
@@ -28,6 +28,12 @@ function takeDamage(_dmg,_attackX){
 		//Manejo de flags
 		alreadyHit = true;
 		beingHitted = true;
+		
+		//Cancelar ataque en curso
+		
+		attackStart = false;
+		moveSpd[0] = walkSpd;
+		moveSpd[1] = walkSpd;
 		
 		//Restar vida
 		hp-=_dmg;
@@ -50,6 +56,8 @@ function takeDamage(_dmg,_attackX){
 	    else face = 1; // Golpe desde la derecha → Empuja a la izquierda 
 	    //Mover horizontalmente a Player
 		moveDir = -face;
+		
+		
 		
 		//Manejo de sprite
 		image_index = 0;

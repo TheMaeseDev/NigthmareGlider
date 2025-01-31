@@ -135,6 +135,7 @@ if place_meeting(x,y,oWall) image_blend = c_blue;
 if onGround && attackKey && attackDelay<=0 && !beingHitted && !isGrabbing{
 	image_index = 0;
 	moveSpd[0] = 0;
+	moveSpd[1] = 0;
 	crouching = false;
 	attackStart = true;
 	attackDelay = attackFrames;
@@ -148,6 +149,7 @@ if onGround && attackKey && attackDelay<=0 && !beingHitted && !isGrabbing{
 
 if attackStart && (!onGround || image_index > image_number-0.5){
 		moveSpd[0]=walkSpd;
+		moveSpd[1] = runSpd;
 		image_index = 0;
 		attackStart = false;
 }
