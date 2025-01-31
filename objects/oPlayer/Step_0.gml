@@ -613,4 +613,4 @@ if crouching{mask_index=crouchSpr};
 
 #endregion
 
-global.mensaje = "";
+//global.mensaje = "";

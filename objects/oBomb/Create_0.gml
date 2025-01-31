@@ -8,8 +8,10 @@ function Destroy(){
 hsp = 4;
 vsp = -4;
 grv = 0.5;
-xFriction = 0.9; //Reduccion de velocidad horizontal
-bounce_factor = 0.9;
+xFriction = 0.8; //Reduccion de velocidad horizontal
+bounce_factor = 0.7;
+canBounce = true;
+lastBounceY = 0;
 
 timerStart = false;
 timerFrames = 300;
