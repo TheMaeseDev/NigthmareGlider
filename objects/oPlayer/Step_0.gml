@@ -201,7 +201,7 @@ if airAttackStart{
 	}
 	
 	//No movement while crouching
-	if crouching { moveDir = 0;};
+	if crouching && !beingHitted { moveDir = 0;};
 
 	//Get xspd
 	runType = runKey;
@@ -523,10 +523,12 @@ if instance_exists(myFloorPlat)
 if !isGrabbing && onGround{
 	if instance_place(x+(1*face),y,oGrabbable) && glideKey{
 		grabbed = instance_place(x+(1*face),y,oGrabbable);
-		isGrabbing = true;
-		with (grabbed){
-			self.owner = other;
-			self.grabbed = true;
+		if(!grabbed.flying){
+			isGrabbing = true;
+			with (grabbed){
+				self.owner = other;
+				self.grabbed = true;
+			}
 		}
 	}
 }

@@ -30,7 +30,6 @@ function takeDamage(_dmg,_attackX){
 		beingHitted = true;
 		
 		//Cancelar ataque en curso
-		
 		attackStart = false;
 		moveSpd[0] = walkSpd;
 		moveSpd[1] = walkSpd;

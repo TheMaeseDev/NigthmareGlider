@@ -44,6 +44,7 @@ if flying{
 		}
 	}
 	
+	//Y Collision
 	if (place_meeting(x, y + vsp, oWall) || place_meeting(x, y + vsp, oSemiSolidWall)) {
 	    while (!place_meeting(x, y + sign(vsp), oWall) && !place_meeting(x, y + sign(vsp), oSemiSolidWall)) {
 	        y += sign(vsp);
@@ -59,6 +60,10 @@ if flying{
 	
 	//Si choca un enemigo, explota
 	if(place_meeting(x,y,oEnemy)) Destroy();
+	
+	if(place_meeting(x,y,oPlayer)) Destroy();
+	if(place_meeting(x,y-1,oPlayer)) Destroy();
+	if(place_meeting(x+(-3*face),y,oPlayer)) Destroy();
 }
 
 //Codigo de explosion por tiempo
@@ -67,11 +72,11 @@ if timerStart{
 	//Sprite Control
 	sprite_index = sBomb_On;
 }
-
 if timerFrames<=0{
 	Destroy();
 }
 
+//Explota cuando el player la golpea.
 if place_meeting(x,y,oPlayer_Attack_HB) || place_meeting(x,y,oPlayer_Air_Attack_HB){
 	Destroy();	
-}	
+}
