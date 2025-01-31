@@ -44,7 +44,7 @@ function getControls(){
 	//Miscellaneous inputs
 	restartKey = keyboard_check_pressed(ord("R")) + gamepad_button_check_pressed(0,gp_select);
 		restartKey = clamp(restartKey,0,1);
-	
+		
 	//Jump Key Buffering
 	if(jumpKeyPressed) jumpKeyBufferTimer = bufferTime;
 	

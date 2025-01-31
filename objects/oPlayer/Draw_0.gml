@@ -18,3 +18,8 @@ if (global.mensaje != "") {
     draw_set_color(c_white); // Color del texto
     draw_text(texto_x, texto_y, global.mensaje); // Dibuja el texto en el centro
 }
+
+// Mostrar salus
+if global.showDebug{
+	draw_text(x, y-sprite_height+3, string(hp));
+}

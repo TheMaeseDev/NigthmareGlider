@@ -6,6 +6,6 @@ draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 
 // Dibujar el número de vida sobre el enemigo
-if global.showEnemyHealth{
+if global.showDebug{
 	draw_text(x, y-sprite_height*1.5, string(healthPts));
 }
