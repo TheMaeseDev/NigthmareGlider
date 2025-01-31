@@ -7,7 +7,13 @@ function setOnGround(_val = true){
 		glideStart = false;
 		airAttackStart = false;
 		airAttackDelay = airAttackFrame;
-		beingHitted = false;
+		beingHitted = false;	
+		alreadyHit = false;   //player can take dmg again
+		grav = defaultGrav;	  //set grv back to default
+		jumpHoldFrames = 10; //reset var
+		//moveSpd[1] = runSpd;
+		
+		
 		
 	}else{
 		onGround = false;
@@ -15,29 +21,48 @@ function setOnGround(_val = true){
 		coyoteHangTimer=0;
 		airAttackDelay--; //Descuenta el delay de ataque aereo
 		smallBox = noone;
+		//moveSpd[1] = moveSpd[0];
 	}
 }
 
-/// takeDamage(_dmg,_attackX)
-/// _dmg: Cantidad de vida a restar
-/// _attackX: Posición en X del atacante (para calcular dirección)
 function takeDamage(_dmg,_attackX){
-	//Restar vida
-	hp-=_dmg; 
-	yspd=-5;
-	
-	// Determina la dirección del golpe
-    if (_attackX < x) {
-        // Golpe desde la izquierda → Empuja a la derecha  
-        face = -1; 
-    } else {
-        // Golpe desde la derecha → Empuja a la izquierda 
-        face = 1;
-    }
-	//beingHitted = true;
-	//moveDir = face*-1;
-	
-	//global.mensaje = hsp;
+	if !alreadyHit{
+		//Manejo de flags
+		alreadyHit = true;
+		beingHitted = true;
+		
+		//Restar vida
+		hp-=_dmg;
+		
+		/*------- Y Knockback ----------- */
+		grav = defaultGrav/1.5; //opcional si queremos la caida mas lenta
+		yspd = 0; 
+		yspd += -3;
+		
+		// "despegar al player del suelo"
+	    jumpKeyBuffered = true;  // Activa el buffer de salto
+		jumpHoldFrames = 1;
+	    jumpKeyBufferTimer = jumpHoldFrames;  // Simula el tiempo de presionado
+		jumpCount = min(jumpCount, jumpMax - 1); // Asegura que no se excedan los saltos
+		//jumpHoldTimer=0;
+		
+		/*------- X Knockback ----------- */
+		// Determina la dirección del golpe
+	    if (_attackX < x) face = -1;  // Golpe desde la izquierda → Empuja a la derecha  
+	    else face = 1; // Golpe desde la derecha → Empuja a la izquierda 
+	    //Mover horizontalmente a Player
+		moveDir = -face;
+		
+		//Manejo de sprite
+		image_index = 0;
+		
+		//Que pasa con el objeto "agarrado"
+		if isGrabbing{
+			with(grabbed) Destroy();
+			isGrabbing = false;
+		}
+		
+	}
 }
 
 function checkForSemiSolidPlatform(_x,_y){
@@ -72,6 +97,7 @@ depth = -30;
 hp = 10;
 
 beingHitted = false;
+alreadyHit = false;
 
 //ControlSetup
 controlsSetup();
@@ -85,6 +111,7 @@ crouchSpr = sPlayer_Crouch;
 glideSpr = sPlayerGlid;
 attackSpr = sPlayer_Attack;
 AirAttackSpr = sPlayer_Air_Attack;
+hittedSpr = sPlayer_Hit;
 
 
 //Moving
@@ -150,4 +177,5 @@ movePlatXspd = 0;
 moveplatMaxYspd = termVel;
 
 global.mensaje = "";
-global.showEnemyHealth = true;
+global.showHp = false;
+global.showEnemyHealth = false;

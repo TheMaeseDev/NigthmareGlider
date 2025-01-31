@@ -5,7 +5,7 @@ getControls();
 if restartKey room_restart();
 
 #region Glide Mechanic
-if !onGround && glideKey && !airAttackStart && !isGrabbing{
+if !onGround && glideKey && !airAttackStart && !isGrabbing && !beingHitted{
 	if !glideStart{
 		if yspd < 0 yspd=0;
 		termVel = glideTermVel;
@@ -132,7 +132,7 @@ if place_meeting(x,y,oWall) image_blend = c_blue;
 
 #region Melee Attack
 
-if onGround && attackKey && attackDelay<=0{
+if onGround && attackKey && attackDelay<=0 && !beingHitted{
 	image_index = 0;
 	moveSpd[0] = 0;
 	crouching = false;
@@ -192,7 +192,7 @@ if airAttackStart{
 	}
 	
 	//Cant change face while attacking
-	if(!attackStart){
+	if(!attackStart && !beingHitted){
 		//Get my face
 		if moveDir > 0 face=1;
 		if moveDir < 0 face=-1;
@@ -586,7 +586,7 @@ if( (abs(xspd)>0) && (abs(xspd)<moveSpd[1]) ) {sprite_index = walkSpr};
 if(xspd==0){sprite_index = idleSpr};
 
 //In the air
-if !onGround && !airAttackStart {sprite_index = jumpSpr};
+if !onGround && !airAttackStart && !beingHitted {sprite_index = jumpSpr};
 
 //Crouching
 if crouching {sprite_index = crouchSpr};
@@ -598,7 +598,14 @@ if glideStart {sprite_index = glideSpr};
 if attackStart {sprite_index = attackSpr};
 
 //Air Attack
-if airAttackStart {sprite_index = AirAttackSpr}
+if airAttackStart {sprite_index = AirAttackSpr};
+
+if beingHitted {
+	sprite_index = hittedSpr
+	if(floor(image_index) == 3){
+		image_index = 3;
+	}
+}
 
 //Set the collision mask
 mask_index = idleSpr;
@@ -606,3 +613,4 @@ if crouching{mask_index=crouchSpr};
 
 #endregion
 
+global.mensaje = "";
