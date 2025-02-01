@@ -610,6 +610,8 @@ if beingHitted {
 	}
 }
 
+if isDead {sprite_index = deathSpr};
+
 //Set the collision mask
 mask_index = idleSpr;
 if crouching{mask_index=crouchSpr};

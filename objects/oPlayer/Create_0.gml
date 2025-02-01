@@ -117,6 +117,7 @@ glideSpr = sPlayerGlid;
 attackSpr = sPlayer_Attack;
 AirAttackSpr = sPlayer_Air_Attack;
 hittedSpr = sPlayer_Hit;
+deathSpr = sPlayer_Death;
 
 //Moving
 face = 1;
@@ -131,6 +132,7 @@ yspd = 0;
 
 //State variables
 crouching = false;
+isDead = false;
 
 //Jumping
 defaultGrav = .275;
