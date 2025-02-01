@@ -615,5 +615,3 @@ mask_index = idleSpr;
 if crouching{mask_index=crouchSpr};
 
 #endregion
-
-global.mensaje = airAttackHB;

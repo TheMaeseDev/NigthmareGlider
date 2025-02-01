@@ -4,6 +4,8 @@ if(grabbed){
 	x=owner.x + 15*owner.face;
 	y=owner.y-5;
 	flying = false;
+	hsp = hspDefault;
+	vsp = vspDefault;
 	mask_index = sNoMask;
 	timerStart = true;
 }
@@ -78,3 +80,5 @@ if timerFrames<=0{
 if place_meeting(x,y,oPlayer_Attack_HB) || place_meeting(x,y,oPlayer_Air_Attack_HB){
 	Destroy();	
 }
+
+global.mensaje = mask_index;
