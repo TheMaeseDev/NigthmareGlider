@@ -539,6 +539,7 @@ if isGrabbing && attackKey{
 		self.face = other.face;
 		self.flying = true;
 	}
+	airAttackDelay = airAttackFrame;
 	isGrabbing = false;
 }
 
