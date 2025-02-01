@@ -99,7 +99,7 @@ function checkForSemiSolidPlatform(_x,_y){
 
 depth = -30;
 
-hp = 10;
+hp = 2;
 
 beingHitted = false;
 alreadyHit = false;
@@ -180,5 +180,8 @@ downSlopeSemiSolid = noone;
 forgetSemiSolid = noone;
 movePlatXspd = 0;
 moveplatMaxYspd = termVel;
+
+//Death Event
+roomTransition_delay = 60;
 
 global.mensaje = "";

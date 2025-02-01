@@ -5,3 +5,6 @@ debugKey = clamp(debugKey,0,1);
 if debugKey{
 	global.showDebug = !global.showDebug;	
 }
+
+object_set_visible(oPlayer_Air_Attack_HB,global.showDebug);
+object_set_visible(oPlayer_Attack_HB,global.showDebug);

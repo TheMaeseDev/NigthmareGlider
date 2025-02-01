@@ -32,5 +32,5 @@
     "path":"sprites/sPlayer_Air_Attack_HB/sPlayer_Air_Attack_HB.yy",
   },
   "spriteMaskId":null,
-  "visible":false,
+  "visible":true,
 }
