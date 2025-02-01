@@ -63,7 +63,7 @@ if flying{
 	
 	if(place_meeting(x,y,oPlayer)) Destroy();
 	if(place_meeting(x,y-1,oPlayer)) Destroy();
-	if(place_meeting(x+(-3*face),y,oPlayer)) Destroy();
+	if(place_meeting(x+(-2*face),y,oPlayer)) Destroy();
 }
 
 //Codigo de explosion por tiempo
