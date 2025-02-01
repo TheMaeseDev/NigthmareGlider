@@ -141,7 +141,7 @@ if onGround && attackKey && attackDelay<=0 && !beingHitted && !isGrabbing{
 	attackDelay = attackFrames;
 	var _hitbox = instance_create_depth(x,y,self.depth-1,oPlayer_Attack_HB);
 	with(_hitbox){
-		x=other.x+(16*other.face);
+		x=other.x+(8*other.face);
 		y=other.y;
 		self.image_xscale = self.image_xscale*other.face;
 	}
@@ -162,7 +162,7 @@ if !attackStart && attackDelay>=0{
 
 #region Air Spin Attack
 
-if !onGround && (attackKey || airAttackBuffered) && airAttackDelay<=0 && !isGrabbing{
+if !onGround && (attackKey || airAttackBuffered) && airAttackDelay<=0 && !isGrabbing && !beingHitted{
 	airAttackStart = true;
 	if airAttackHB == noone{
 		airAttackHB = instance_create_depth(x,y,depth,oPlayer_Air_Attack_HB);
@@ -175,14 +175,11 @@ if airAttackStart{
 		self.x = other.x;
 		self.y = other.y;
 	}
-}else{
-	//Una vez que llego al piso, desaparece el hitbox
-	if airAttackHB != noone{
-		with(airAttackHB){
-			instance_destroy();
-		}
-		airAttackHB = noone;
-	}
+}
+
+if beingHitted || !airAttackStart{
+	instance_destroy(airAttackHB);
+	airAttackHB = noone;
 }
 
 #endregion
@@ -619,4 +616,4 @@ if crouching{mask_index=crouchSpr};
 
 #endregion
 
-//global.mensaje = "";
+global.mensaje = airAttackHB;

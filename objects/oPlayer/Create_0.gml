@@ -33,6 +33,7 @@ function takeDamage(_dmg,_attackX){
 		attackStart = false;
 		moveSpd[0] = walkSpd;
 		moveSpd[1] = walkSpd;
+		//if airAttackHB instance_destroy(airAttackHB);
 		
 		//Restar vida
 		hp-=_dmg;
