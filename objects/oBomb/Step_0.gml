@@ -61,6 +61,7 @@ if flying{
 	//Si choca un enemigo, explota
 	if(place_meeting(x,y,oEnemy)) Destroy();
 	
+	//Colision con el player
 	if(place_meeting(x,y,oPlayer)) Destroy();
 	if(place_meeting(x,y-1,oPlayer)) Destroy();
 	if(place_meeting(x+(-2*face),y,oPlayer)) Destroy();
@@ -71,6 +72,7 @@ if timerStart{
 	timerFrames--
 	//Sprite Control
 	sprite_index = sBomb_On;
+	if(place_meeting(x,y-1,oPlayer)) Destroy();
 }
 if timerFrames<=0{
 	Destroy();
@@ -80,5 +82,3 @@ if timerFrames<=0{
 if place_meeting(x,y,oPlayer_Attack_HB) || place_meeting(x,y,oPlayer_Air_Attack_HB){
 	Destroy();	
 }
-
-global.mensaje = mask_index;
