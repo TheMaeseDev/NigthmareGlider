@@ -135,12 +135,13 @@ if place_meeting(x,y,oWall) image_blend = c_blue;
 if onGround && attackKey && attackDelay<=0 && !beingHitted && !isGrabbing{
 	image_index = 0;
 	moveSpd[0] = 0;
+	moveSpd[1] = 0;
 	crouching = false;
 	attackStart = true;
 	attackDelay = attackFrames;
 	var _hitbox = instance_create_depth(x,y,self.depth-1,oPlayer_Attack_HB);
 	with(_hitbox){
-		x=other.x+(16*other.face);
+		x=other.x+(8*other.face);
 		y=other.y;
 		self.image_xscale = self.image_xscale*other.face;
 	}
@@ -148,6 +149,7 @@ if onGround && attackKey && attackDelay<=0 && !beingHitted && !isGrabbing{
 
 if attackStart && (!onGround || image_index > image_number-0.5){
 		moveSpd[0]=walkSpd;
+		moveSpd[1] = runSpd;
 		image_index = 0;
 		attackStart = false;
 }
@@ -160,7 +162,7 @@ if !attackStart && attackDelay>=0{
 
 #region Air Spin Attack
 
-if !onGround && (attackKey || airAttackBuffered) && airAttackDelay<=0 && !isGrabbing{
+if !onGround && (attackKey || airAttackBuffered) && airAttackDelay<=0 && !isGrabbing && !beingHitted{
 	airAttackStart = true;
 	if airAttackHB == noone{
 		airAttackHB = instance_create_depth(x,y,depth,oPlayer_Air_Attack_HB);
@@ -173,14 +175,11 @@ if airAttackStart{
 		self.x = other.x;
 		self.y = other.y;
 	}
-}else{
-	//Una vez que llego al piso, desaparece el hitbox
-	if airAttackHB != noone{
-		with(airAttackHB){
-			instance_destroy();
-		}
-		airAttackHB = noone;
-	}
+}
+
+if beingHitted || !airAttackStart{
+	instance_destroy(airAttackHB);
+	airAttackHB = noone;
 }
 
 #endregion
@@ -199,7 +198,7 @@ if airAttackStart{
 	}
 	
 	//No movement while crouching
-	if crouching { moveDir = 0;};
+	if crouching && !beingHitted { moveDir = 0;};
 
 	//Get xspd
 	runType = runKey;
@@ -521,10 +520,12 @@ if instance_exists(myFloorPlat)
 if !isGrabbing && onGround{
 	if instance_place(x+(1*face),y,oGrabbable) && glideKey{
 		grabbed = instance_place(x+(1*face),y,oGrabbable);
-		isGrabbing = true;
-		with (grabbed){
-			self.owner = other;
-			self.grabbed = true;
+		if(!grabbed.flying){
+			isGrabbing = true;
+			with (grabbed){
+				self.owner = other;
+				self.grabbed = true;
+			}
 		}
 	}
 }
@@ -534,7 +535,9 @@ if isGrabbing && attackKey{
 		self.owner = noone;
 		self.face = other.face;
 		self.flying = true;
+		self.hsp += (other.xspd/3)*other.face;
 	}
+	airAttackDelay = airAttackFrame;
 	isGrabbing = false;
 }
 
@@ -612,5 +615,3 @@ mask_index = idleSpr;
 if crouching{mask_index=crouchSpr};
 
 #endregion
-
-global.mensaje = "";

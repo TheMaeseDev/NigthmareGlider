@@ -1,16 +1,16 @@
 {
   "$GMObject":"",
-  "%Name":"oBomb_Explosion",
+  "%Name":"oEnemy_Canon",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":7,"eventType":7,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"oBomb_Explosion",
+  "name":"oEnemy_Canon",
   "overriddenProperties":[],
   "parent":{
-    "name":"Enemies",
-    "path":"folders/Objects/Enemies.yy",
+    "name":"Objects",
+    "path":"folders/Objects.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sBomb_Explosion",
-    "path":"sprites/sBomb_Explosion/sBomb_Explosion.yy",
+    "name":"sEnemy_Canon",
+    "path":"sprites/sEnemy_Canon/sEnemy_Canon.yy",
   },
   "spriteMaskId":null,
   "visible":true,

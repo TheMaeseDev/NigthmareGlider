@@ -1,4 +1,9 @@
+//No hace daño en sus ultimos frames
+if(floor(image_index)>=9){
+	mask_index = sNoMask;
+}
 
+//Si colisiona con una caja pequeña
 if place_meeting(x,y,oSmallBox){
 		var _collision = instance_place(x,y,oSmallBox);
 		with _collision{
@@ -6,6 +11,7 @@ if place_meeting(x,y,oSmallBox){
 		}
 }
 
+//Si colisiona con otra bomba
 if place_meeting(x,y,oBomb){
 		var _collision = instance_place(x,y,oBomb);
 		with _collision{
@@ -13,6 +19,7 @@ if place_meeting(x,y,oBomb){
 		}
 }
 
+//Si colisiona con un enemigo
 if place_meeting(x,y,oEnemy){
 	var _collision = instance_place(x,y,oEnemy);
 	with _collision{
@@ -20,6 +27,7 @@ if place_meeting(x,y,oEnemy){
 	}
 }
 
+//Si colisiona con el player
 if place_meeting(x,y,oPlayer){
 	var _collision = instance_place(x,y,oPlayer);
 	with _collision{

@@ -19,7 +19,7 @@ if (global.mensaje != "") {
     draw_text(texto_x, texto_y, global.mensaje); // Dibuja el texto en el centro
 }
 
-// Mostrar salus
+// Mostrar salud
 if global.showDebug{
 	draw_text(x, y-sprite_height+3, string(hp));
 }
