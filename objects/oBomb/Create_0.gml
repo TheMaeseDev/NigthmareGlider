@@ -5,8 +5,8 @@ function Destroy(){
 	instance_destroy();		
 }
 //Bouncing Mechanic
-hsp = 4;
-vsp = -4;
+hsp = 4.5;
+vsp = -4.5;
 grv = 0.5;
 xFriction = 0.8; //Reduccion de velocidad horizontal
 bounce_factor = 0.7;

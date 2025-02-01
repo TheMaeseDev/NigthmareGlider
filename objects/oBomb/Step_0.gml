@@ -4,8 +4,6 @@ if(grabbed){
 	x=owner.x + 15*owner.face;
 	y=owner.y-5;
 	flying = false;
-	hsp = 4.5;
-	vsp = -4.5;
 	mask_index = sNoMask;
 	timerStart = true;
 }
