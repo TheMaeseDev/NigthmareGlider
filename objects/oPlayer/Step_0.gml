@@ -590,10 +590,10 @@ if isDead{
 }
 
 if roomTransition_delay<=0{
-	/*if !instance_exists(oTransition){
+	if !instance_exists(oTransition){
 		var _transition = instance_create_depth(x,y,-10000,oTransition);	
 		_transition.targetRoom = room;
-	}*/
+	}
 }
 
 #endregion
@@ -606,7 +606,7 @@ if(abs(xspd)>=moveSpd[1]){sprite_index = runSpr};
 if( (abs(xspd)>0) && (abs(xspd)<moveSpd[1]) ) {sprite_index = walkSpr};
 
 //Not Moving
-if(xspd==0){sprite_index = idleSpr};
+if(xspd==0) && !isDead {sprite_index = idleSpr};
 
 //In the air
 if !onGround && !airAttackStart && !beingHitted {sprite_index = jumpSpr};
@@ -623,19 +623,24 @@ if attackStart {sprite_index = attackSpr};
 //Air Attack
 if airAttackStart {sprite_index = AirAttackSpr};
 
-if beingHitted {
+if beingHitted{
 	sprite_index = hittedSpr
-	if(floor(image_index) == 3){
-		image_index = 3;
+	if (image_index >= image_number - 1) {
+	    image_index = image_number - 1; // Fijar el último frame
+	    //image_speed = 0; // Congelar la animación
 	}
 }
 
 if isDead {
-	sprite_index = deathSpr;
-	image_index = 0;
-	if(floor(sprite_get_number(deathSpr)) >= 3){
-		image_index = 4;
-	}
+	if (sprite_index != deathSpr) { 
+        sprite_index = deathSpr;
+        image_index = 0; // Reiniciar desde el primer frame
+    }
+    // Si la animación llegó al último frame, detenerla
+    if (image_index >= image_number - 1) {
+        image_index = image_number - 1; // Fijar el último frame
+        image_speed = 0; // Detener animación
+    }
 }
 
 //Set the collision mask
@@ -643,3 +648,4 @@ mask_index = idleSpr;
 if crouching{mask_index=crouchSpr};
 
 #endregion
+

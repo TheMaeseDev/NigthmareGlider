@@ -57,8 +57,6 @@ function takeDamage(_dmg,_attackX){
 	    //Mover horizontalmente a Player
 		moveDir = -face;
 		
-		
-		
 		//Manejo de sprite
 		image_index = 0;
 		
