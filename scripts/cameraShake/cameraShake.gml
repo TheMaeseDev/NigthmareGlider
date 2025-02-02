@@ -1,0 +1,11 @@
+// SCRIPT: cameraShake
+// Agrega un temblor a la cámara según la magnitud indicada
+
+/// cameraShake(magnitude, duration)
+/// @param magnitude - Intensidad del temblor (ej: 2 = leve, 10 = fuerte)
+/// @param duration  - Cuántos frames durará el temblor
+
+/// Variables globales para la sacudida
+global.shakeMagnitude = argument0;
+global.shakeDuration = argument1;
+global.shakeTimer = global.shakeDuration;

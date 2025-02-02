@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"cameraShake",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"cameraShake",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
