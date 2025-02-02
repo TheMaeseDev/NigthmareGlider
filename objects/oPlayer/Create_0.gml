@@ -57,8 +57,6 @@ function takeDamage(_dmg,_attackX){
 	    //Mover horizontalmente a Player
 		moveDir = -face;
 		
-		
-		
 		//Manejo de sprite
 		image_index = 0;
 		
@@ -99,7 +97,7 @@ function checkForSemiSolidPlatform(_x,_y){
 
 depth = -30;
 
-hp = 10;
+hp = 2;
 
 beingHitted = false;
 alreadyHit = false;
@@ -117,6 +115,7 @@ glideSpr = sPlayerGlid;
 attackSpr = sPlayer_Attack;
 AirAttackSpr = sPlayer_Air_Attack;
 hittedSpr = sPlayer_Hit;
+deathSpr = sPlayer_Death;
 
 //Moving
 face = 1;
@@ -131,6 +130,7 @@ yspd = 0;
 
 //State variables
 crouching = false;
+isDead = false;
 
 //Jumping
 defaultGrav = .275;
@@ -178,5 +178,8 @@ downSlopeSemiSolid = noone;
 forgetSemiSolid = noone;
 movePlatXspd = 0;
 moveplatMaxYspd = termVel;
+
+//Death Event
+roomTransition_delay = 60;
 
 global.mensaje = "";

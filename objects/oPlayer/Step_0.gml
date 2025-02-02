@@ -108,7 +108,7 @@ if place_meeting(x,y,oWall) image_blend = c_blue;
 #region Crouching
 //Transition to Crouch
 	//Manual = downkey | Automatic = wall collision
-	if onGround && (downKey || place_meeting(x,y,oWall)) && !attackStart && !isGrabbing{
+	if onGround && (downKey || place_meeting(x,y,oWall)) && !attackStart && !isGrabbing && !isDead{
 		crouching = true;
 	}
 	//Change collision mask
@@ -132,7 +132,7 @@ if place_meeting(x,y,oWall) image_blend = c_blue;
 
 #region Melee Attack
 
-if onGround && attackKey && attackDelay<=0 && !beingHitted && !isGrabbing{
+if onGround && attackKey && attackDelay<=0 && !beingHitted && !isGrabbing && !isDead{
 	image_index = 0;
 	moveSpd[0] = 0;
 	moveSpd[1] = 0;
@@ -162,7 +162,7 @@ if !attackStart && attackDelay>=0{
 
 #region Air Spin Attack
 
-if !onGround && (attackKey || airAttackBuffered) && airAttackDelay<=0 && !isGrabbing && !beingHitted{
+if !onGround && (attackKey || airAttackBuffered) && airAttackDelay<=0 && !isGrabbing && !beingHitted && !isDead{
 	airAttackStart = true;
 	if airAttackHB == noone{
 		airAttackHB = instance_create_depth(x,y,depth,oPlayer_Air_Attack_HB);
@@ -186,19 +186,19 @@ if beingHitted || !airAttackStart{
 
 #region X Movement
 	//Direction
-	if !beingHitted{
+	if !beingHitted && !isDead{
 		moveDir = rightKey - leftKey;
 	}
 	
 	//Cant change face while attacking
-	if(!attackStart && !beingHitted){
+	if(!attackStart && !beingHitted && !isDead){
 		//Get my face
 		if moveDir > 0 face=1;
 		if moveDir < 0 face=-1;
 	}
 	
 	//No movement while crouching
-	if crouching && !beingHitted { moveDir = 0;};
+	if crouching && !beingHitted  { moveDir = 0;};
 
 	//Get xspd
 	runType = runKey;
@@ -280,7 +280,7 @@ if beingHitted || !airAttackStart{
 		_floorIsSolid = true;	
 	}
 	
-	if (jumpKeyBuffered && jumpCount<jumpMax && (!downKey || _floorIsSolid)  && !attackStart){
+	if (jumpKeyBuffered && jumpCount<jumpMax && (!downKey || _floorIsSolid)  && !attackStart && !isDead){
 		//Reset the Buffer
 		jumpKeyBuffered = false;
 		jumpKeyBufferTimer = 0;
@@ -578,6 +578,26 @@ if glideKey && _moveObject!=noone && onGround && moveDir!=0{
 
 #endregion
 
+#region Muerte de Player
+
+if hp<=0 && onGround{
+	isDead = true;
+}
+	
+if isDead{
+	moveDir = 0;
+	roomTransition_delay--;
+}
+
+if roomTransition_delay<=0{
+	if !instance_exists(oTransition){
+		var _transition = instance_create_depth(x,y,-10000,oTransition);	
+		_transition.targetRoom = room;
+	}
+}
+
+#endregion
+
 #region Sprite Control
 //Runing
 if(abs(xspd)>=moveSpd[1]){sprite_index = runSpr};
@@ -586,7 +606,7 @@ if(abs(xspd)>=moveSpd[1]){sprite_index = runSpr};
 if( (abs(xspd)>0) && (abs(xspd)<moveSpd[1]) ) {sprite_index = walkSpr};
 
 //Not Moving
-if(xspd==0){sprite_index = idleSpr};
+if(xspd==0) && !isDead {sprite_index = idleSpr};
 
 //In the air
 if !onGround && !airAttackStart && !beingHitted {sprite_index = jumpSpr};
@@ -603,11 +623,24 @@ if attackStart {sprite_index = attackSpr};
 //Air Attack
 if airAttackStart {sprite_index = AirAttackSpr};
 
-if beingHitted {
+if beingHitted{
 	sprite_index = hittedSpr
-	if(floor(image_index) == 3){
-		image_index = 3;
+	if (image_index >= image_number - 1) {
+	    image_index = image_number - 1; // Fijar el último frame
+	    //image_speed = 0; // Congelar la animación
 	}
+}
+
+if isDead {
+	if (sprite_index != deathSpr) { 
+        sprite_index = deathSpr;
+        image_index = 0; // Reiniciar desde el primer frame
+    }
+    // Si la animación llegó al último frame, detenerla
+    if (image_index >= image_number - 1) {
+        image_index = image_number - 1; // Fijar el último frame
+        image_speed = 0; // Detener animación
+    }
 }
 
 //Set the collision mask
@@ -615,3 +648,4 @@ mask_index = idleSpr;
 if crouching{mask_index=crouchSpr};
 
 #endregion
+
