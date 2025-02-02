@@ -574,6 +574,7 @@ if glideKey && _moveObject!=noone && onGround && moveDir!=0{
 			//Aca se podria hacer que se puedan mover de a varias horizontalmente
 		}
 	}
+	cameraShake(0.3,1);
 }
 
 #endregion
