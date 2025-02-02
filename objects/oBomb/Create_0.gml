@@ -2,6 +2,7 @@ event_inherited();
 
 function Destroy(){
 	instance_create_depth(x,y-sprite_height/3,depth,oBomb_Explosion);
+	cameraShake(4,7);
 	instance_destroy();		
 }
 //Bouncing Mechanic
