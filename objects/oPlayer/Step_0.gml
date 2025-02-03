@@ -579,6 +579,24 @@ if glideKey && _moveObject!=noone && onGround && moveDir!=0{
 
 #endregion
 
+#region Take Damage Delay
+if(!beingHitted && alreadyHit){
+	invulTimer --;	
+	if invulTimer <= 0 alreadyHit = false;   //player can take dmg again
+	
+	var _t = invulTimer/invulFrames;
+	
+	// Calcular frecuencia de parpadeo (rápido al inicio, lento al final)
+    var _blinkSpeed = 1+(_t*2); //Mas alto el numero '8, mas fura la fase rapida.
+	if _blinkSpeed > 0.5{
+		image_alpha = (floor(invulTimer/_blinkSpeed) mod 2); // Alterna entre 0 y 1
+	}
+}
+if (invulTimer <= 0) {
+	image_alpha = 1; // Asegurar visibilidad
+}
+#endregion
+
 #region Muerte de Player
 
 if hp<=0 && onGround{
