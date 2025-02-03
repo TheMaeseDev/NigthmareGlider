@@ -580,7 +580,7 @@ if glideKey && _moveObject!=noone && onGround && moveDir!=0{
 #endregion
 
 #region Take Damage Delay
-if(!beingHitted && alreadyHit){
+if(!beingHitted && alreadyHit && !isDead){
 	invulTimer --;	
 	if invulTimer <= 0 alreadyHit = false;   //player can take dmg again
 	
