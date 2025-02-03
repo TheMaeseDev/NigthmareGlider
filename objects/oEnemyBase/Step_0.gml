@@ -17,17 +17,17 @@ if place_meeting(x, y + vsp, oWall) || place_meeting(x, y + vsp, oSemiSolidWall)
 
 //Hitbox del player
 if instance_place(x,y,oPlayer_Air_Attack_HB) || instance_place(x,y,oPlayer_Attack_HB){
-	enemy_take_damage(self.id, 1, true, oPlayer.x, 180);
+	enemy_take_damage(self.id, 1, true,3,3,oPlayer.x, 180);
 }
 
 //Explosion de Bomba
 if instance_place(x,y,oBomb_Explosion){
-	enemy_take_damage(self.id, 3, true, oPlayer.x, 180);
+	enemy_take_damage(self.id, 3, true,5,3, oPlayer.x, 180);
 }
 
 //Smallbox
 if instance_place(x+hsp*face,y,oSmallBox){
-	enemy_take_damage(self.id, 3, true, oPlayer.x, 180);
+	enemy_take_damage(self.id, 3, true, 3, 3,oPlayer.x, 180);
 }
 
 #endregion

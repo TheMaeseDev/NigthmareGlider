@@ -1,5 +1,5 @@
 /// enemy_take_damage(_enemy, _damage, _knockback, _attackerX, _invulnTime)
-function enemy_take_damage(_enemy, _damage, _knockback, _attackerX, _invulnTime) {
+function enemy_take_damage(_enemy, _damage, _knockback, _kbX, _kbY, _attackerX, _invulnTime) {
     with (_enemy) {
         // Si es invulnerable, ignorar el golpe
         if (invulnerable) return;
@@ -24,8 +24,8 @@ function enemy_take_damage(_enemy, _damage, _knockback, _attackerX, _invulnTime)
         if (_knockback) {
             // Determinar dirección del knockback según la posición del atacante
             var _knockDir = (x < _attackerX) ? -1 : 1;
-            hsp = _knockDir * 3;  // Empuje horizontal
-            vsp = -3;  // Pequeño salto al recibir daño
+            hsp = _knockDir * _kbX;  // Empuje horizontal
+            vsp = -_kbY;  // Pequeño salto al recibir daño
         }
     }
 }
