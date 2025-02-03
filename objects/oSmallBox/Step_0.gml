@@ -2,6 +2,7 @@
 if(grabbed){
 	x=owner.x + 15*owner.face;
 	y=owner.y-5;
+	vsp=0;
 	mask_index = sNoMask;
 }
 else{
@@ -9,9 +10,11 @@ else{
 }
 
 if flying{
-	vsp += grv;
-	x+=hsp*face;
-	y+=vsp;
+	if(!isFlying){
+		hsp = 5;
+		vsp = -4;
+		isFlying = true;
+	}
 	
 	if place_meeting(x,y,oSmallBox){
 		var _collision = instance_place(x,y,oSmallBox);
@@ -29,7 +32,7 @@ if flying{
 		Destroy();	
 	}
 	
-	if place_meeting(x,y,oWall) || place_meeting(x,y,oSemiSolidWall){
+	if place_meeting(x,y+vsp,oWall) || place_meeting(x,y+vsp,oSemiSolidWall){
 		Destroy();
 	}
 }else{
@@ -37,3 +40,7 @@ if flying{
 		Destroy();	
 	}	
 }
+
+var movement = object_movement(hsp,vsp,grv,face);
+hsp = movement[0]; 
+vsp = movement[1];

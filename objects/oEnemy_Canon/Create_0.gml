@@ -16,6 +16,9 @@ function fireBomb() {
 
 //Variables del Cannon
 face = -1;
+hsp = 0;
+vsp = 0;
+grv = 0.275;
 shootTimer = 60; //Cuenta regresiva para disparar
 shootFrames = 360; //Intervalo de disparo
 shootMinDelay = 90;

@@ -10,8 +10,9 @@ function Destroy(){
 }
 
 //Box Throwed Mechanic
-hsp = 5;
-vsp = -4;
-grv = 0.3;
+hsp = 0;
+vsp = 0;
+grv = 0.275;
 
 quietState = true;
+isFlying = false;
