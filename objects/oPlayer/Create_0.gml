@@ -7,8 +7,7 @@ function setOnGround(_val = true){
 		glideStart = false;
 		airAttackStart = false;
 		airAttackDelay = airAttackFrame;
-		beingHitted = false;	
-		alreadyHit = false;   //player can take dmg again
+		beingHitted = false;
 		grav = defaultGrav;	  //set grv back to default
 		jumpHoldFrames = 10; //reset var
 		moveSpd[1] = runSpd;
@@ -28,6 +27,7 @@ function takeDamage(_dmg,_attackX){
 		//Manejo de flags
 		alreadyHit = true;
 		beingHitted = true;
+		invulTimer = invulFrames;
 		
 		//Cancelar ataque en curso
 		attackStart = false;
@@ -97,10 +97,13 @@ function checkForSemiSolidPlatform(_x,_y){
 
 depth = -30;
 
-hp = 2;
+hp = 25;
 
 beingHitted = false;
 alreadyHit = false;
+invulTimer = 0;
+invulFrames = 90;
+
 
 //ControlSetup
 controlsSetup();
