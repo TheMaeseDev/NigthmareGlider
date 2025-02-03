@@ -72,6 +72,7 @@
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"id":{"name":"cameraShake","path":"scripts/cameraShake/cameraShake.yy",},},
     {"id":{"name":"general_functions","path":"scripts/general_functions/general_functions.yy",},},
+    {"id":{"name":"object_movement","path":"scripts/object_movement/object_movement.yy",},},
     {"id":{"name":"sBomb_Explosion","path":"sprites/sBomb_Explosion/sBomb_Explosion.yy",},},
     {"id":{"name":"sBomb_On","path":"sprites/sBomb_On/sBomb_On.yy",},},
     {"id":{"name":"sBomb","path":"sprites/sBomb/sBomb.yy",},},

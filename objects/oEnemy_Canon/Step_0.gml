@@ -34,3 +34,11 @@ switch(state) {
         break;
 }
 #endregion
+
+#region Movement
+	
+	var movement = object_movement(hsp,vsp,grv,face);
+	hsp=movement[0];
+	vsp=movement[1];
+	
+#endregion
