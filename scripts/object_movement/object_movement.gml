@@ -1,8 +1,17 @@
 /// object_movement(_hsp, _vsp, _grv, _face)
 function object_movement(_hsp, _vsp, _grv, _face) {
     // Movimiento horizontal
-    x += _hsp * _face;
-
+	var _pixelCheck = 0.5 * sign(_hsp);
+	if place_meeting(x+_hsp, y, oWall){
+		while !place_meeting(x + _pixelCheck, y,oWall){
+			x+=_pixelCheck;
+		}
+		_hsp = 0;
+	}
+	
+	x+= _hsp *face;
+	
+	
     // Aplicar gravedad
     _vsp += _grv;
 
@@ -16,6 +25,7 @@ function object_movement(_hsp, _vsp, _grv, _face) {
 
     // Aplicar movimiento vertical
     y += _vsp;
+	
 
     // Retornar las nuevas velocidades
     return [_hsp, _vsp];

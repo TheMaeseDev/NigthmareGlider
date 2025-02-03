@@ -59,7 +59,7 @@ if flying{
 	}
 	
 	//Si choca un enemigo, explota
-	if(place_meeting(x,y,oEnemy)) Destroy();
+	if(place_meeting(x,y,oEnemyBase)) Destroy();
 	
 	//Colision con el player
 	if(place_meeting(x,y,oPlayer)) Destroy();

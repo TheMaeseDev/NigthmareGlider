@@ -16,25 +16,23 @@ if flying{
 		isFlying = true;
 	}
 	
-	if place_meeting(x,y,oSmallBox){
-		var _collision = instance_place(x,y,oSmallBox);
+	if place_meeting(x+hsp*face,y+vsp,oSmallBox){
+		var _collision = instance_place(x+hsp*face,y+vsp,oSmallBox);
 		with _collision{
 			Destroy();
 		}
 		Destroy();
 	}
 	
-	if place_meeting(x,y,oEnemy){
-		var _collision = instance_place(x,y,oEnemy);
-		with _collision{
-			self.getHitted(1);
-		}
+	if place_meeting(x,y,oEnemyBase){
 		Destroy();	
 	}
 	
 	if place_meeting(x,y+vsp,oWall) || place_meeting(x,y+vsp,oSemiSolidWall){
 		Destroy();
 	}
+	
+	global.mensaje = hsp*face;
 }else{
 	if place_meeting(x,y,oPlayer_Attack_HB) || place_meeting(x,y,oPlayer_Air_Attack_HB){
 		Destroy();	
@@ -44,3 +42,4 @@ if flying{
 var movement = object_movement(hsp,vsp,grv,face);
 hsp = movement[0]; 
 vsp = movement[1];
+
