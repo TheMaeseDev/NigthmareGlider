@@ -9,4 +9,5 @@ face = 1;
 invulnerable = false;
 invulnTimer = 0;
 blinkTimer = 0;
+maxBlinkTimer = 0;
 blinkSpeed = 5;

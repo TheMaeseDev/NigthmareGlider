@@ -42,3 +42,27 @@ switch(state) {
 	vsp=movement[1];
 	
 #endregion
+
+blink_effect(id);
+
+#region Fuentes de daño
+
+//Hitbox del player
+if instance_place(x,y,oPlayer_Air_Attack_HB) || instance_place(x,y,oPlayer_Attack_HB){
+	enemy_take_damage(self.id, 1, false,3,3,oPlayer.x, 180);
+}
+
+//Explosion de Bomba
+var _collision = instance_place(x,y,oBomb_Explosion)
+if instance_exists(_collision){
+	enemy_take_damage(self.id, 3, false,5,3,_collision.x, 180);
+}
+
+//Smallbox
+var _collision = instance_place(x,y,oSmallBox)
+if instance_exists(_collision){
+	enemy_take_damage(self.id, 3, false,5,3,_collision.x, 180);
+}
+#endregion
+
+if hp<=0 instance_destroy();

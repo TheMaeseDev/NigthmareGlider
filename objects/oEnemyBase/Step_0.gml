@@ -21,13 +21,15 @@ if instance_place(x,y,oPlayer_Air_Attack_HB) || instance_place(x,y,oPlayer_Attac
 }
 
 //Explosion de Bomba
-if instance_place(x,y,oBomb_Explosion){
-	enemy_take_damage(self.id, 3, true,5,3, oPlayer.x, 180);
+var _collision = instance_place(x,y,oBomb_Explosion)
+if instance_exists(_collision){
+	enemy_take_damage(self.id, 3, true,5,3,_collision.x, 180);
 }
 
 //Smallbox
-if instance_place(x+hsp*face,y,oSmallBox){
-	enemy_take_damage(self.id, 3, true, 3, 3,oPlayer.x, 180);
+var _collision = instance_place(x,y,oSmallBox)
+if instance_exists(_collision){
+	enemy_take_damage(self.id, 3, true,5,3,_collision.x, 180);
 }
 
 #endregion

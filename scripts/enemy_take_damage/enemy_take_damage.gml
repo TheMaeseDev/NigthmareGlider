@@ -14,6 +14,7 @@ function enemy_take_damage(_enemy, _damage, _knockback, _kbX, _kbY, _attackerX, 
 
         // Hacerlo invulnerable
         invulnerable = true;
+		maxBlinkTimer = _invulnTime;
         invulnTimer = _invulnTime; // Duración de la invulnerabilidad
 
         // Aplicar parpadeo (alternar visibilidad)
