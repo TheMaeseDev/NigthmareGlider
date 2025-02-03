@@ -1,16 +1,33 @@
 /// object_movement(_hsp, _vsp, _grv, _face)
 function object_movement(_hsp, _vsp, _grv, _face) {
-    // Movimiento horizontal
-	var _pixelCheck = 0.5 * sign(_hsp);
+    
+	//X collision
+	var _subPixel = .5;
 	if place_meeting(x+_hsp, y, oWall){
-		while !place_meeting(x + _pixelCheck, y,oWall){
-			x+=_pixelCheck;
+		//First check if there is a slope to go up
+		if !place_meeting(x+_hsp,y-abs(_hsp)-1,oWall){
+			while place_meeting(x+_hsp,y,oWall){ y-=_subPixel};
 		}
-		_hsp = 0;
+		//Next, check for ceiling slopes, otherwise, do a regular collision
+		else{
+			//Ceiling Slopes
+			if(!place_meeting(x+_hsp,y+abs(_hsp)+1,oWall)){
+				while place_meeting(x+_hsp,y,oWall) {y+= _subPixel}	
+			}
+			//Normal Collision
+			else{
+				//Scoot up to wall precisely
+				var _pixelCheck = _subPixel * sign(_hsp);
+				while !place_meeting(x + _pixelCheck, y,oWall){
+					x+=_pixelCheck;
+				}
+				//Set xspd to zero to "collide"
+				_hsp = 0;
+			}
+		}	
 	}
 	
-	x+= _hsp *face;
-	
+	x+= _hsp*face;
 	
     // Aplicar gravedad
     _vsp += _grv;
