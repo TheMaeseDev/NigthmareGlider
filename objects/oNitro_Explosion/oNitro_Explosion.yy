@@ -1,21 +1,18 @@
 {
   "$GMObject":"",
-  "%Name":"oGrabbable",
+  "%Name":"oNitro_Explosion",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":7,"eventType":7,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"oGrabbable",
+  "name":"oNitro_Explosion",
   "overriddenProperties":[],
   "parent":{
-    "name":"Boxes",
-    "path":"folders/Objects/Boxes.yy",
+    "name":"Enemies",
+    "path":"folders/Objects/Enemies.yy",
   },
-  "parentObjectId":{
-    "name":"oWall",
-    "path":"objects/oWall/oWall.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -34,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Sprite24",
-    "path":"sprites/Sprite24/Sprite24.yy",
+    "name":"sNitro_Explosion",
+    "path":"sprites/sNitro_Explosion/sNitro_Explosion.yy",
   },
   "spriteMaskId":null,
   "visible":true,

@@ -1,21 +1,17 @@
 {
   "$GMObject":"",
-  "%Name":"oGrabbable",
+  "%Name":"oNitro_Smoke",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"oGrabbable",
+  "name":"oNitro_Smoke",
   "overriddenProperties":[],
   "parent":{
-    "name":"Boxes",
-    "path":"folders/Objects/Boxes.yy",
+    "name":"Particles",
+    "path":"folders/Objects/Particles.yy",
   },
-  "parentObjectId":{
-    "name":"oWall",
-    "path":"objects/oWall/oWall.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -34,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Sprite24",
-    "path":"sprites/Sprite24/Sprite24.yy",
+    "name":"sSmallBox_Smoke",
+    "path":"sprites/sSmallBox_Smoke/sSmallBox_Smoke.yy",
   },
   "spriteMaskId":null,
   "visible":true,
