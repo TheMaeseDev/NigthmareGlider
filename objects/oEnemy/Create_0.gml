@@ -1,9 +1,9 @@
 function getHitted(_dmg){
-	healthPts -= _dmg;
+	hp -= _dmg;
 }
 
 maxHealthPts = 4;
-healthPts = maxHealthPts;
+hp = maxHealthPts;
 
 hitedBy = noone;
 beignHitedBy = noone;

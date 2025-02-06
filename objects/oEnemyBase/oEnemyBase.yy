@@ -1,22 +1,19 @@
 {
   "$GMObject":"",
-  "%Name":"oEnemy_Canon",
+  "%Name":"oEnemyBase",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"oEnemy_Canon",
+  "name":"oEnemyBase",
   "overriddenProperties":[],
   "parent":{
     "name":"Enemies",
     "path":"folders/Objects/Enemies.yy",
   },
-  "parentObjectId":{
-    "name":"oEnemyBase",
-    "path":"objects/oEnemyBase/oEnemyBase.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -35,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sEnemy_Cannon",
-    "path":"sprites/sEnemy_Cannon/sEnemy_Cannon.yy",
+    "name":"sEnemy_Pumpkin",
+    "path":"sprites/sEnemy_Pumpkin/sEnemy_Pumpkin.yy",
   },
   "spriteMaskId":null,
   "visible":true,

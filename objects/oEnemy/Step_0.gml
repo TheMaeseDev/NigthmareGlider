@@ -20,7 +20,7 @@ if (beignHitedBy != hitedBy){
 
 //global.mensaje = _existAirHB;
 
-if healthPts<=0 instance_destroy();
+if hp<=0 instance_destroy();
 
 //Colision con Player
 var _player = instance_place(x,y,oPlayer);
