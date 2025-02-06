@@ -15,7 +15,7 @@ function fireBomb() {
 }
 
 //Variables del Cannon
-hp = 1;
+hp = 2;
 hspDefault = 0;
 hsp = hspDefault;
 face = -1;
