@@ -9,8 +9,8 @@
   "name":"oSmallBox",
   "overriddenProperties":[],
   "parent":{
-    "name":"Walls",
-    "path":"folders/Objects/Walls.yy",
+    "name":"Boxes",
+    "path":"folders/Objects/Boxes.yy",
   },
   "parentObjectId":{
     "name":"oGrabbable",
