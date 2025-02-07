@@ -6,7 +6,7 @@ if(grabbed){
 	mask_index = sNoMask;
 }
 else{
-	mask_index = Sprite24;	
+	mask_index = sGrabbable;	
 }
 
 if flying{

@@ -1,4 +1,8 @@
 
+function enemyDestroy(){
+	instance_destroy();
+}
+
 hp = 5;
 hspDefault = 0;
 hsp = hspDefault;
@@ -11,3 +15,7 @@ invulnTimer = 0;
 blinkTimer = 0;
 maxBlinkTimer = 0;
 blinkSpeed = 5;
+
+canAttack = true;
+canAttackFrames = 20;
+canAttackTimer = 0;
