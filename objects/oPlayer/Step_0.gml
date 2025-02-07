@@ -546,7 +546,7 @@ if isGrabbing && attackKey{
 #region Romper cajas cayendo encima
 
 var _breakThreshold = 3.5; // Velocidad mínima para romperla
-smallBox = instance_place(x,y+yspd,oSmallBox);
+smallBox = instance_place(x,y+yspd,oSmallBox)
 if smallBox != noone && !onGround{
 	if yspd >= _breakThreshold{
 		yspd=-1;
