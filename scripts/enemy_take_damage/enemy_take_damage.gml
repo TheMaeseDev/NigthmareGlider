@@ -4,13 +4,22 @@ function enemy_take_damage(_enemy, _damage, _knockback, _kbX, _kbY, _attackerX, 
         // Si es invulnerable, ignorar el golpe
         if (invulnerable) return;
         
+		//Chequear si es golpe final
+		if hp-_damage<=0{
+			_knockback=true;
+			_kbX = 3;
+			_kbY = 4;
+		}
         // Restar vida
         hp -= _damage;
 		
-		// Cambiar sprite a animación de golpe
-        /*sprite_index = sprHitted;
-        image_index = 0;
-        image_speed = 1;*/
+		// Si el enemigo tiene un sprite de daño, cambiar al estado "hurt"
+        if sprHitted != noone{
+            state = "hurt";
+            sprite_index = sprHitted;
+            image_index = 0;
+            image_speed = 1;
+        }
 
         // Hacerlo invulnerable
         invulnerable = true;

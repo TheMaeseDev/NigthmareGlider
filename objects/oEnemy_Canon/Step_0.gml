@@ -1,3 +1,4 @@
+event_inherited();
 
 #region Shooting Sistem and Sprite Control
 /// Estados del cañón
@@ -17,7 +18,6 @@ switch(state) {
             state = "firing"; // Cambiar a animación de disparo
             sprite_index = sEnemy_Cannon_Fire;
             image_index = 0;
-            //image_speed = 1; // Iniciar animación de disparo
         }
         break;
 
@@ -32,6 +32,13 @@ switch(state) {
             state = "idle";
         }
         break;
+		
+	case "hurt":
+    // Esperar a que termine la animación de daño
+    if (image_index >= image_number - 1) {
+        state = "idle"; // Volver al estado normal
+    }
+    break;
 }
 #endregion
 
@@ -43,26 +50,12 @@ switch(state) {
 	
 #endregion
 
+if place_meeting(x, y + vsp, oWall) || place_meeting(x, y + vsp, oSemiSolidWall) {
+	hsp = hspDefault; // Detener Movimiento
+}
+
+if hp<=0 && state!="hurt"{
+	enemyDestroy();	
+}
+
 blink_effect(id);
-
-#region Fuentes de daño
-
-//Hitbox del player
-if instance_place(x,y,oPlayer_Air_Attack_HB) || instance_place(x,y,oPlayer_Attack_HB){
-	enemy_take_damage(self.id, 1, false,3,3,oPlayer.x, 180);
-}
-
-//Explosion de Bomba
-var _collision = instance_place(x,y,oBomb_Explosion)
-if instance_exists(_collision){
-	enemy_take_damage(self.id, 3, false,5,3,_collision.x, 180);
-}
-
-//Smallbox
-var _collision = instance_place(x,y,oSmallBox)
-if instance_exists(_collision){
-	enemy_take_damage(self.id, 3, false,5,3,_collision.x, 180);
-}
-#endregion
-
-if hp<=0 instance_destroy();
