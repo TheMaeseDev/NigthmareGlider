@@ -1,3 +1,6 @@
+event_inherited();
+
+knockback = false;
 
 /// Dispara una bomba y crea el efecto de humo
 function fireBomb() {

@@ -2,6 +2,7 @@
 function enemyDestroy(){
 	instance_destroy();
 }
+knockback = true;
 
 hp = 5;
 hspDefault = 0;
@@ -19,3 +20,4 @@ blinkSpeed = 5;
 canAttack = true;
 canAttackFrames = 20;
 canAttackTimer = 0;
+
