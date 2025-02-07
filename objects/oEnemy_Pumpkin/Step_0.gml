@@ -8,4 +8,9 @@ if jumpDelay<=0{
 }
 
 
-global.mensaje = jumpDelay;
+if instance_exists(oPlayer){
+	if (x<oPlayer.x) face=1;
+	if (x>oPlayer.x) face=-1;
+}
+
+image_xscale = -face;

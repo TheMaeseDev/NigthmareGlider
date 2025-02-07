@@ -27,3 +27,5 @@ sprHitted = noone;
 sprDead = noone;
 
 color = c_white;
+
+isFlying = false;

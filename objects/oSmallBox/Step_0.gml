@@ -24,10 +24,6 @@ if flying{
 		Destroy();
 	}
 	
-	if place_meeting(x,y,oEnemyBase){
-		Destroy();	
-	}
-	
 	if place_meeting(x,y+vsp,oWall) || place_meeting(x,y+vsp,oSemiSolidWall){
 		Destroy();
 	}

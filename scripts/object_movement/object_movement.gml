@@ -1,6 +1,7 @@
 /// object_movement(_hsp, _vsp, _grv, _face)
 function object_movement(_hsp, _vsp, _grv, _face) {
     
+	
 	//X collision
 	var _subPixel = .5;
 	if place_meeting(x+_hsp, y, oWall){
