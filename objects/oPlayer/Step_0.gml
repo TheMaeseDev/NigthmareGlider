@@ -556,6 +556,22 @@ if smallBox != noone && !onGround{
 
 #endregion
 
+#region Trampolin
+
+var _trampolinePower = 0;
+if instance_place(x,y+1,oTrampoline) && !beingHitted{
+	if jumpKey _trampolinePower = -7;
+	else _trampolinePower = -5
+	
+	//jumpKeyBuffered = true;  // Activa el buffer de salto
+	jumpHoldFrames = 0;
+	jumpKeyBufferTimer = 1;  // Simula el tiempo de presionado
+	//jumpCount = min(jumpCount, jumpMax - 1); // Asegura que no se excedan los saltos
+	yspd=_trampolinePower;
+}
+
+#endregion
+
 #region Mover Objetos
 
 var _moveObject = instance_place(x+(1*face),y,oMoveObject);
