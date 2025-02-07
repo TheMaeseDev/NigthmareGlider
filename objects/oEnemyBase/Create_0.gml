@@ -1,10 +1,12 @@
 
 function enemyDestroy(){
 	instance_destroy();
+	with instance_create_depth(x,y,depth,oSmallBox_Smoke) image_blend = other.color;
 }
-knockback = true;
 
-hp = 5;
+knockback = true;
+state=noone;
+hp = 1;
 hspDefault = 0;
 hsp = hspDefault;
 vsp = 0;
@@ -21,3 +23,7 @@ canAttack = true;
 canAttackFrames = 20;
 canAttackTimer = 0;
 
+sprHitted = noone;
+sprDead = noone;
+
+color = c_white;

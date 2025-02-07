@@ -30,19 +30,21 @@ if canAttack with instance_place(x,y,oPlayer) self.takeDamage(1,other.x);
 //Explosion de Bomba
 var _collision = instance_place(x,y,oBomb_Explosion)
 if instance_exists(_collision){
-	enemy_take_damage(self.id, 3, knockBack,5,3,_collision.x, 180);
+	enemy_take_damage(self.id, 3, knockback,5,3,_collision.x, 180);
 }
 
 //Smallbox
 var _collision = instance_place(x,y,oSmallBox)
 if instance_exists(_collision){
-	enemy_take_damage(self.id, 3, knockBack,5,3,_collision.x, 180);
+	enemy_take_damage(self.id, 3, knockback,5,3,_collision.x, 180);
 }
 
 #endregion
 
 #region Enemy Death
 
-if hp<=0 && (place_meeting(x, y + vsp, oWall) || place_meeting(x, y + vsp, oSemiSolidWall)) enemyDestroy();
+if hp<=0 && state!="hurt"{
+	enemyDestroy();	
+}
 
 #endregion

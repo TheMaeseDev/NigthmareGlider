@@ -18,7 +18,6 @@ switch(state) {
             state = "firing"; // Cambiar a animación de disparo
             sprite_index = sEnemy_Cannon_Fire;
             image_index = 0;
-            //image_speed = 1; // Iniciar animación de disparo
         }
         break;
 
@@ -33,6 +32,13 @@ switch(state) {
             state = "idle";
         }
         break;
+		
+	case "hurt":
+    // Esperar a que termine la animación de daño
+    if (image_index >= image_number - 1) {
+        state = "idle"; // Volver al estado normal
+    }
+    break;
 }
 #endregion
 
@@ -43,5 +49,13 @@ switch(state) {
 	vsp=movement[1];
 	
 #endregion
+
+if place_meeting(x, y + vsp, oWall) || place_meeting(x, y + vsp, oSemiSolidWall) {
+	hsp = hspDefault; // Detener Movimiento
+}
+
+if hp<=0 && state!="hurt"{
+	enemyDestroy();	
+}
 
 blink_effect(id);

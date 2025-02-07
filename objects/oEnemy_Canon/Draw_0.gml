@@ -1,6 +1,6 @@
 draw_self();
 
-image_xscale = -face;
+image_xscale = face;
 
 // Configurar el color y la alineación del texto
 draw_set_color(c_white);  

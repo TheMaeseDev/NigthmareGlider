@@ -87,7 +87,6 @@
     {"id":{"name":"sBomb_Explosion","path":"sprites/sBomb_Explosion/sBomb_Explosion.yy",},},
     {"id":{"name":"sBomb_On","path":"sprites/sBomb_On/sBomb_On.yy",},},
     {"id":{"name":"sBomb","path":"sprites/sBomb/sBomb.yy",},},
-    {"id":{"name":"sEnemy_Cannon_Destroy","path":"sprites/sEnemy_Cannon_Destroy/sEnemy_Cannon_Destroy.yy",},},
     {"id":{"name":"sEnemy_Cannon_Fire_Effect","path":"sprites/sEnemy_Cannon_Fire_Effect/sEnemy_Cannon_Fire_Effect.yy",},},
     {"id":{"name":"sEnemy_Cannon_Fire","path":"sprites/sEnemy_Cannon_Fire/sEnemy_Cannon_Fire.yy",},},
     {"id":{"name":"sEnemy_Cannon_Hit","path":"sprites/sEnemy_Cannon_Hit/sEnemy_Cannon_Hit.yy",},},
