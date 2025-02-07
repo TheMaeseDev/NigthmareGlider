@@ -19,14 +19,6 @@ if place_meeting(x,y,oBomb){
 		}
 }
 
-//Si colisiona con un enemigo
-if place_meeting(x,y,oEnemy){
-	var _collision = instance_place(x,y,oEnemy);
-	with _collision{
-		self.getHitted(3);
-	}
-}
-
 //Si colisiona con el player
 if place_meeting(x,y,oPlayer){
 	var _collision = instance_place(x,y,oPlayer);

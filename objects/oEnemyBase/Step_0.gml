@@ -36,7 +36,7 @@ if instance_exists(_collision){
 //Smallbox
 var _collision = instance_place(x,y,oSmallBox)
 if instance_exists(_collision){
-	enemy_take_damage(self.id, 3, knockback,5,3,_collision.x, 180);
+	enemy_take_damage(self.id, 1, knockback,3,3,_collision.x, 180);
 }
 
 #endregion

@@ -32,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sEnemy_Pumpkin",
-    "path":"sprites/sEnemy_Pumpkin/sEnemy_Pumpkin.yy",
+    "name":"sEnemy",
+    "path":"sprites/sEnemy/sEnemy.yy",
   },
   "spriteMaskId":null,
   "visible":true,
