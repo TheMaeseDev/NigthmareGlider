@@ -515,6 +515,12 @@ if instance_exists(myFloorPlat)
 
 #endregion
 
+#region Poleas
+
+
+
+#endregion
+
 #region Agarrar y tirar objetos
 
 if !isGrabbing && onGround{
