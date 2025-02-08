@@ -517,7 +517,16 @@ if instance_exists(myFloorPlat)
 
 #region Poleas
 
-
+if myFloorPlat!=noone && myFloorPlat.object_index == oPolleyPlat{
+	onPulleyPlatform = myFloorPlat;
+	onPulleyPlatform.canMove = true;
+}
+else{
+	if onPulleyPlatform != noone{
+		onPulleyPlatform.canMove = false;
+		onPulleyPlatform = noone;
+	}
+}
 
 #endregion
 

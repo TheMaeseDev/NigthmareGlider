@@ -1,16 +1,35 @@
 
-if (moving) {
-    // Aumentar velocidad progresivamente hasta el máximo
-    currentSpeed = min(currentSpeed + acceleration, speedMax);
-} else {
-    // Si no está en movimiento, reducir velocidad gradualmente
-    currentSpeed = max(currentSpeed - acceleration, 0);
+if (canMove) {
+    ysp = lerp(ysp, speedMax, acceleration); // Aceleración progresiva
+	pairedPlatform.ysp = -ysp; //Mover la otra plataforma
+}else{
+    ysp = lerp(ysp, 0, acceleration);
+    pairedPlatform.ysp = -ysp;
 }
 
-// Mover la plataforma si está en el rango permitido
-var nextY = y + currentSpeed * sign(direction);
-if (nextY >= topLimit && nextY <= bottomLimit) {
-    y = nextY;
+
+// Si llega al límite, detener ambas plataformas
+if (y + ysp >= bottomLimit) /*|| (y + ysp <= topLimit)*/ {
+	while !y+sign(ysp)>= bottomLimit{
+		y += sign(ysp);	
+	}
+    ysp = 0;
+    speedMax = 0;
+	pairedPlatform.y = topLimit;
+    pairedPlatform.ysp = 0;
+    pairedPlatform.speedMax = 0;
 } else {
-    direction *= -1; // Cambiar dirección si llegó a un límite
+	y+=ysp;
+    speedMax = 2;
+    pairedPlatform.speedMax = 2;
 }
+
+if pairedPlatform.y == topLimit y=bottomLimit-0.001;
+
+//Retornar a la posicion inicial
+if polleyAttached.returnToRest && !canMove && !pairedPlatform.canMove{
+	
+}
+
+
+

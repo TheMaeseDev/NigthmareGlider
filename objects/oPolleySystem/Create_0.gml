@@ -1,6 +1,6 @@
 
-rangeY = 120;   // Altura máxima que pueden moverse
-separation = 80; // Distancia entre plataformas
+rangeY = 50;   // Altura máxima que pueden moverse
+separation = 100; // Distancia entre plataformas
 
 // Crear plataformas en posiciones relativas al controlador
 platA = instance_create_layer(x, y, depth, oPolleyPlat);
@@ -10,15 +10,26 @@ platB = instance_create_layer(x+separation, y, depth, oPolleyPlat);
 platA.pairedPlatform = platB;
 platB.pairedPlatform = platA;
 
+// Asignar polea a la que esta atada
+platA.polleyAttached = id;
+platB.polleyAttached = id;
+
 // Definir límites de movimiento
 platA.topLimit = y - rangeY;
 platA.bottomLimit = y + rangeY;
-platB.topLimit = y - rangeY + separation;
-platB.bottomLimit = y + rangeY + separation;
+platB.topLimit = y - rangeY;
+platB.bottomLimit = y + rangeY;
 
 // Indicar que inicialmente están detenidas
 platA.moving = false;
 platB.moving = false;
 
+//Indicar grosor
+widthPlatA = 3;
+widthPlatB = 3;
+platA.image_xscale = widthPlatA;
+platB.image_xscale = widthPlatB;
+
 returnToRest = true; // Si es `true`, las plataformas vuelven al mismo nivel al soltar
+getBackToRest = true;
 restY = y; // Nivel de reposo

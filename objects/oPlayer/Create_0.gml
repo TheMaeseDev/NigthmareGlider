@@ -182,6 +182,9 @@ forgetSemiSolid = noone;
 movePlatXspd = 0;
 moveplatMaxYspd = termVel;
 
+//Polley PLatforms
+onPulleyPlatform = noone; // Almacena la referencia de la plataforma en la que está parado
+
 //Death Event
 roomTransition_delay = 60;
 
