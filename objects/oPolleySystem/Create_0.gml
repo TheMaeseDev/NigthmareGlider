@@ -38,3 +38,5 @@ returnToRest = true; // Si es `true`, las plataformas vuelven al mismo nivel al 
 restY = y; // Nivel de reposo
 maxReturnSpeed = 0.5;
 
+depth=depth+1;
+
