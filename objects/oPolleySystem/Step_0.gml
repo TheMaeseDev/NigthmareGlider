@@ -1,4 +1,4 @@
-
+/*
 // Si el sistema tiene activado el retorno a reposo
 if (returnToRest && !platA.canMove && !platB.canMove) {
 	// Calcular distancia a la posición de reposo
@@ -16,4 +16,4 @@ if (returnToRest && !platA.canMove && !platB.canMove) {
     // Detenerse si están cerca del punto de reposo
     if (distA < 0.5) platA.y = restY;
     if (distB < 0.5) platB.y = restY;
-}
+}*/

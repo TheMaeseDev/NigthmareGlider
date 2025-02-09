@@ -21,8 +21,12 @@ platB.topLimit = y - rangeY;
 platB.bottomLimit = y + rangeY;
 
 // Indicar que inicialmente están detenidas
-platA.moving = false;
-platB.moving = false;
+platA.state = "idle";
+platB.state = "idle";
+
+//Establecer roles
+platA.rol = "activo";
+platB.rol = "pasivo";
 
 //Indicar grosor
 widthPlatA = 3;
@@ -31,6 +35,6 @@ platA.image_xscale = widthPlatA;
 platB.image_xscale = widthPlatB;
 
 returnToRest = true; // Si es `true`, las plataformas vuelven al mismo nivel al soltar
-getBackToRest = true;
 restY = y; // Nivel de reposo
 maxReturnSpeed = 0.5;
+

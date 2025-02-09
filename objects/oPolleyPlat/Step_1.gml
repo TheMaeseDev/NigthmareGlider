@@ -1,34 +1,65 @@
 
-if (canMove) {
-    ysp = lerp(ysp, speedMax, acceleration); // Aceleración progresiva
-	pairedPlatform.ysp = -ysp; //Mover la otra plataforma
+if (canMove){
+    rol="activo";
+	pairedPlatform.rol="pasivo";
+	state = "isMoving"
 }else{
-    ysp = lerp(ysp, 0, acceleration);
-    pairedPlatform.ysp = -ysp;
+	state="idle";
 }
 
-if ysp == 0 canReturn=true;
-else canReturn = false;
 
-
-// Si llega al límite, detener ambas plataformas
-if (y + ysp >= bottomLimit) /*|| (y + ysp <= topLimit)*/ {
-	while !y+sign(ysp)>= bottomLimit{
-		y += sign(ysp);	
+//Se mueve si el jugador la pisa
+if canMove && rol=="activo"{
+	
+	//Si se encuentra en los limites
+	if y+ysp<=bottomLimit{
+		ysp+=grv;
+	}else{
+		ysp=0;
 	}
-    ysp = 0;
-    speedMax = 0;
-	y=bottomLimit-0.001
-	
-	
-	pairedPlatform.y = topLimit;
-    pairedPlatform.ysp = 0;
-    pairedPlatform.speedMax = 0;
-} else {
-	y+=ysp;
-    speedMax = 2;
-    pairedPlatform.speedMax = 2;
+}
+/*
+if !canMove && rol=="activo"{
+	if y==0{
+		ysp=0;
+	}else{
+		if(y>startY){
+			ysp+=returnSpeed;
+			if y<=startY+1{
+				ysp=0;
+				y=startY;
+				
+			}
+		}
+		if(y<startY){
+			ysp-=returnSpeed;
+			if y>=startY-1{
+				ysp=0;
+				y=startY;
+			}
+		}
+	}
+}*/
+
+if !canMove && rol=="activo"{
+	if(y>startY){
+		ysp+=returnSpeed;
+		if y+ysp<=startY+1{
+			ysp=0;
+			y=startY;
+			pairedPlatform.y=y;
+		}
+	}
+	if(y<startY){
+		ysp-=returnSpeed;
+		if y+ysp>=startY-1{
+			ysp=0;
+			y=startY;
+			pairedPlatform.y=y;
+		}
+	}
 }
 
 
-
+y+=ysp;
+pairedPlatform.ysp = -ysp;
