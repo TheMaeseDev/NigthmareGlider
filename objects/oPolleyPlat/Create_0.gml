@@ -25,3 +25,5 @@ canReturn = true;
 state = "idle";
 rol = noone;
 mensajeLoco= "";
+
+showCables=true;
