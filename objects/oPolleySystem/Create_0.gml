@@ -1,5 +1,5 @@
 
-rangeY = 50;   // Altura máxima que pueden moverse
+rangeY = 100;   // Altura máxima que pueden moverse
 separation = 100; // Distancia entre plataformas
 
 // Crear plataformas en posiciones relativas al controlador
@@ -33,3 +33,4 @@ platB.image_xscale = widthPlatB;
 returnToRest = true; // Si es `true`, las plataformas vuelven al mismo nivel al soltar
 getBackToRest = true;
 restY = y; // Nivel de reposo
+maxReturnSpeed = 0.5;

@@ -11,5 +11,5 @@ moved = false; // Se esta moviendo?
 topLimit = 0;   // Se asignará desde el controlador
 bottomLimit = 0;
 
-
+canReturn = true;
 mensajeLoco= "";

@@ -7,6 +7,9 @@ if (canMove) {
     pairedPlatform.ysp = -ysp;
 }
 
+if ysp == 0 canReturn=true;
+else canReturn = false;
+
 
 // Si llega al límite, detener ambas plataformas
 if (y + ysp >= bottomLimit) /*|| (y + ysp <= topLimit)*/ {
@@ -15,6 +18,9 @@ if (y + ysp >= bottomLimit) /*|| (y + ysp <= topLimit)*/ {
 	}
     ysp = 0;
     speedMax = 0;
+	y=bottomLimit-0.001
+	
+	
 	pairedPlatform.y = topLimit;
     pairedPlatform.ysp = 0;
     pairedPlatform.speedMax = 0;
@@ -22,13 +28,6 @@ if (y + ysp >= bottomLimit) /*|| (y + ysp <= topLimit)*/ {
 	y+=ysp;
     speedMax = 2;
     pairedPlatform.speedMax = 2;
-}
-
-if pairedPlatform.y == topLimit y=bottomLimit-0.001;
-
-//Retornar a la posicion inicial
-if polleyAttached.returnToRest && !canMove && !pairedPlatform.canMove{
-	
 }
 
 
