@@ -12,23 +12,9 @@ if canMove && rol=="activo"{
 	yspd+=grv;
 }
 
-if !canMove && rol=="activo"{
-	if(y>startY){
-		yspd+=returnSpeed;
-		if y+yspd<=startY+1{
-			yspd=0;
-			y=startY;
-			pairedPlatform.y=y;
-		}
-	}
-	if(y<startY){
-		yspd-=returnSpeed;
-		if y+yspd>=startY-1{
-			yspd=0;
-			y=startY;
-			pairedPlatform.y=y;
-		}
-	}
+if (!canMove && rol == "activo") {
+    var dist = startY - y; // Distancia a la posición de reposo
+    yspd = lerp(yspd, sign(dist) * min(abs(dist) * 0.05, returnSpeed), 0.015);
 }
 
 //Si se encuentra en los limites

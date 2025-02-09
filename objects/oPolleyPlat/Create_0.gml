@@ -6,8 +6,8 @@ pairedPlatform = noone; // Se asignará desde el controlador
 
 //speedMax = 2;   // Velocidad máxima
 
-grv = 0.05; // Cuán rápido acelera
-returnSpeed = -0.02;
+grv = 0.02; // Cuán rápido acelera
+returnSpeed = 1;
 
 maxUpSpdDefault = 2.5;
 maxFallSpdDefault = -2.5;
@@ -25,3 +25,5 @@ canReturn = true;
 state = "idle";
 rol = noone;
 mensajeLoco= "";
+
+showCables=true;

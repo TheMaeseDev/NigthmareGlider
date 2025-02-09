@@ -1,5 +1,5 @@
 
-rangeY = 100;   // Altura máxima que pueden moverse
+rangeY = 65;   // Altura máxima que pueden moverse
 separation = 100; // Distancia entre plataformas
 
 // Crear plataformas en posiciones relativas al controlador
@@ -31,6 +31,7 @@ platB.rol = "pasivo";
 //Indicar grosor
 widthPlatA = 3;
 widthPlatB = 3;
+
 platA.image_xscale = widthPlatA;
 platB.image_xscale = widthPlatB;
 
