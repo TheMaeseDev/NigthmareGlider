@@ -6,8 +6,8 @@ pairedPlatform = noone; // Se asignará desde el controlador
 
 //speedMax = 2;   // Velocidad máxima
 
-grv = 0.05; // Cuán rápido acelera
-returnSpeed = -0.02;
+grv = 0.02; // Cuán rápido acelera
+returnSpeed = -0.01;
 
 maxUpSpdDefault = 2.5;
 maxFallSpdDefault = -2.5;

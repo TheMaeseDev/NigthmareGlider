@@ -517,9 +517,11 @@ if instance_exists(myFloorPlat)
 
 #region Poleas
 
-if myFloorPlat!=noone && myFloorPlat.object_index == oPolleyPlat{
-	onPulleyPlatform = myFloorPlat;
-	onPulleyPlatform.canMove = true;
+if instance_exists(myFloorPlat){
+	if myFloorPlat.object_index == oPolleyPlat{
+		onPulleyPlatform = myFloorPlat;
+		onPulleyPlatform.canMove = true;
+	}
 }
 else{
 	if onPulleyPlatform != noone{
@@ -595,6 +597,7 @@ if glideKey && _moveObject!=noone && onGround && moveDir!=0{
 		if !instance_place(x+(1*other.face),y,oWall){
 			self.x += other.moveDir*1;
 			self.hsp = other.moveDir*1;
+			cameraShake(0.3,1);
 			if self.objTop != noone{
 				self.objTop.face = other.face;
 				if self.objTop.canMove{
@@ -605,7 +608,6 @@ if glideKey && _moveObject!=noone && onGround && moveDir!=0{
 			//Aca se podria hacer que se puedan mover de a varias horizontalmente
 		}
 	}
-	cameraShake(0.3,1);
 }
 
 #endregion

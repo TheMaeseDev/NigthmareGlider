@@ -1,5 +1,5 @@
 
-rangeY = 100;   // Altura máxima que pueden moverse
+rangeY = 65;   // Altura máxima que pueden moverse
 separation = 100; // Distancia entre plataformas
 
 // Crear plataformas en posiciones relativas al controlador

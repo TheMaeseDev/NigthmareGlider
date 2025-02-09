@@ -1,5 +1,5 @@
 draw_self();
-
+/*
 // Variables de posición
 var x1 = platA.x + platA.sprite_width / 2;
 var y1 = platA.y + platA.sprite_height / 2;
@@ -21,4 +21,4 @@ draw_vertex(x2 + perp_x, y2 + perp_y);
 draw_vertex(x2 - perp_x, y2 - perp_y);
 draw_vertex(x1 - perp_x, y1 - perp_y);
 draw_vertex(x2 + perp_x, y2 + perp_y);
-draw_primitive_end();
+draw_primitive_end();*/
