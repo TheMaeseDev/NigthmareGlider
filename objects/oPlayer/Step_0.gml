@@ -515,6 +515,21 @@ if instance_exists(myFloorPlat)
 
 #endregion
 
+#region Poleas
+
+if myFloorPlat!=noone && myFloorPlat.object_index == oPolleyPlat{
+	onPulleyPlatform = myFloorPlat;
+	onPulleyPlatform.canMove = true;
+}
+else{
+	if onPulleyPlatform != noone{
+		onPulleyPlatform.canMove = false;
+		onPulleyPlatform = noone;
+	}
+}
+
+#endregion
+
 #region Agarrar y tirar objetos
 
 if !isGrabbing && onGround{
