@@ -18,6 +18,7 @@ if(place_meeting(x,y,oBomb)) Destroy();
 
 if flying{
 	x+=hsp*face;
+	
 	vsp += grv;
 	
 	//Si "pisa" una cajita, explota.
