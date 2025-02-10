@@ -1,7 +1,7 @@
 
 function Collected(){
-	hsp=-2*sign(oPlayer.x - x);
-	vsp=-2;
+	hsp=-3*-oPlayer.face
+	vsp=-4;
 }
 
 enum Behaviour{
@@ -17,4 +17,5 @@ grv= 0.5;
 face = 1;
 
 xFriction = 0.8; //Reduccion de velocidad horizontal
-bounce_factor = 0.6;
+bounce_factor = 0.7;
+min_bounce_speed = 0.5;

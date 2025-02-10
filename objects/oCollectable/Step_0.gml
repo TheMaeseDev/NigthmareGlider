@@ -41,26 +41,21 @@ if behaviour==Behaviour.bounce{
 
 	vsp += grv;
 	
-	//Si toca el suelo, rebota.
-	if ( place_meeting(x,y+vsp,oWall) || place_meeting(x,y+vsp,oSemiSolidWall) ){
-		vsp = max(vsp*-bounce_factor, -8);
-		hsp *= xFriction;
-		
-		//Detener si la energia de rebote es muy baja
-		if(abs(vsp)<1){
-			vsp = 0;
-		}
-		if(abs(hsp)< 0.2){
-			hsp = 0;	
-		}
-	}
-	
 	//Y Collision
 	if (place_meeting(x, y + vsp, oWall) || place_meeting(x, y + vsp, oSemiSolidWall)) {
 	    while (!place_meeting(x, y + sign(vsp), oWall) && !place_meeting(x, y + sign(vsp), oSemiSolidWall)) {
 	        y += sign(vsp);
 	    }
-	    vsp = 0;
+		//Aca poner el codigo de que pasa cuando toca el piso, debe rebotar cada vez menos.
+		vsp = max(vsp*-bounce_factor, -8);
+		hsp=hsp*xFriction;
+		
+		// Si la velocidad es muy baja, detener el rebote
+	    var min_bounce_speed = 1;
+	    if (abs(vsp) < min_bounce_speed){
+	        vsp = 0;
+			hsp = 0;
+	    }
 	}
 	y += vsp;
 }
