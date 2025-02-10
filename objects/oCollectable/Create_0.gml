@@ -1,6 +1,7 @@
 
 function Collected(){
-	instance_destroy();
+	hsp=-2*sign(oPlayer.x - x);
+	vsp=-2;
 }
 
 enum Behaviour{

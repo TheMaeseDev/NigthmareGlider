@@ -32,14 +32,12 @@ if behaviour==Behaviour.bounce{
 					x+=_pixelCheck;
 				}
 				//Set xspd to zero to "collide"
-				face= -face;
-				vsp+=0.5;
-				hsp+=0.5;
+				hsp=-hsp;
+				vsp-=1;
 			}
 		}	
 	}
-	
-	x+= hsp*face;
+	x+= hsp;
 
 	vsp += grv;
 	
@@ -66,5 +64,3 @@ if behaviour==Behaviour.bounce{
 	}
 	y += vsp;
 }
-
-global.mensaje=hsp*face;
