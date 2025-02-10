@@ -1,0 +1,1 @@
+alarm[0] = 0; // Finaliza la espera, permitiendo que el ataque comience
