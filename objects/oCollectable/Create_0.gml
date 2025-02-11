@@ -1,7 +1,6 @@
 
 function Collected(){
-	hsp=-3*-oPlayer.face
-	vsp=-4;
+	
 }
 
 enum Behaviour{
