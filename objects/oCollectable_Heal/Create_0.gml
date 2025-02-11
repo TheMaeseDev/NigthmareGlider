@@ -4,3 +4,5 @@ function Collected(){
 	oPlayer.hp += 3;
 	instance_destroy();
 }
+
+behaviour=Behaviour.bounce;

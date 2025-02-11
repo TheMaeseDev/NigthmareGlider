@@ -1,6 +1,6 @@
 
 function Collected(){
-	instance_destroy();
+	
 }
 
 enum Behaviour{
@@ -16,4 +16,5 @@ grv= 0.5;
 face = 1;
 
 xFriction = 0.8; //Reduccion de velocidad horizontal
-bounce_factor = 0.6;
+bounce_factor = 0.7;
+min_bounce_speed = 0.5;
