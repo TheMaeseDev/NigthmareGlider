@@ -537,24 +537,27 @@ else{
 if !isGrabbing && onGround{
 	if instance_place(x+(1*face),y,oGrabbable) && glideKey{
 		grabbed = instance_place(x+(1*face),y,oGrabbable);
-		if(!grabbed.flying){
+		if(grabbed.estado==States.IdleOn || grabbed.estado==States.IdleOff ){
 			isGrabbing = true;
-			with (grabbed){
-				self.owner = other;
-				self.grabbed = true;
-			}
+			grabbed.estado = States.Grabbed;
+			grabbed.owner = id;
 		}
 	}
 }
 if isGrabbing && attackKey{
-	with grabbed{
+	/*with grabbed{
 		self.grabbed = false;
 		self.owner = noone;
 		self.face = other.face;
 		self.flying = true;
 		self.hsp += (other.xspd/3)*other.face;
-	}
-	airAttackDelay = airAttackFrame;
+	}*/
+	grabbed.hsp += grabbed.throwHsp*face;
+	grabbed.vsp = grabbed.throwVsp;
+	grabbed.estado = States.Flying;
+	grabbed.x += 3*face;
+	
+	airAttackDelay = airAttackFrame; //Evita que player pegue al soltar
 	isGrabbing = false;
 }
 
