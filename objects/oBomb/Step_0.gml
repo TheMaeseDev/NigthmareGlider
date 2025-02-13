@@ -1,80 +1,62 @@
 
-//Follow Player
-if(grabbed){
-	x=owner.x + 15*owner.face;
-	y=owner.y-5;
-	flying = false;
-	hsp = hspDefault;
-	vsp = vspDefault;
-	mask_index = sNoMask;
-	timerStart = true;
-}
-else{
-	mask_index = sBomb;	
-}
-
-//Si "pisa" una bomba, explota
-if(place_meeting(x,y,oBomb)) Destroy();
-
-if flying{
-	x+=hsp*face;
-	
-	vsp += grv;
-	
-	//Si "pisa" una cajita, explota.
-	if(place_meeting(x,y+vsp,oSmallBox)) Destroy();
-	
-	//Si "pisa" una bomba, explota.
-	if(place_meeting(x,y+vsp,oBomb)) Destroy();
-	
-	//Si toca el suelo, rebota.
-	if ( place_meeting(x,y+vsp,oWall) || place_meeting(x,y+vsp,oSemiSolidWall) ){
-		vsp = max(vsp*-bounce_factor, -8);
-		hsp *= xFriction;
+switch (estado){
+	case States.IdleOff:
+		break;
 		
-		//Detener si la energia de rebote es muy baja
-		if(abs(vsp)<1){
-			vsp = 0;
-		}
-		if(abs(hsp)< 0.2){
-			hsp = 0;	
+	case States.Grabbed:
+		//No gana velocidad
+		hsp = 0;
+		vsp = 0;
+		
+		//Sigue al Player
+		x=owner.x + 15*owner.face;
+		y=owner.y-5;
+
+		//Desactiva la colision
+		mask_index = sNoMask;
+		
+		//Enciende la bomba
+		timerStart=true;
+		
+		break;
+	case States.Flying:
+		//Activo la colision
+		mask_index=sBomb;
+		
+		//Situaciones en la que explota
+		if place_meeting(x,y,oPlayer)	//Si choca al player
+		|| place_meeting(x,y+vsp+1,oGrabbable) //Si "pisa" con algun objeto agarrable
+		|| place_meeting(x-(0.5*sign(hsp)),y,oPlayer) //Si el chocar la choca desde atras
+		|| place_meeting(x+hsp,y,oWall) //Si choca una pared de costado
+		|| place_meeting(x+hsp,y,oSemiSolidWall)
+		|| place_meeting(x,y,oEnemyBase) //Si choca con un enemigo
+		|| place_meeting(x,y,oNitroBox) //Si choca con una nitro
+		{
+			Destroy();	
 		}
 		
-		if vsp == 0 || hsp == 0{
-			flying = false;
-		}
-	}
-	
-	//Y Collision
-	if (place_meeting(x, y + vsp, oWall) || place_meeting(x, y + vsp, oSemiSolidWall)) {
-	    while (!place_meeting(x, y + sign(vsp), oWall) && !place_meeting(x, y + sign(vsp), oSemiSolidWall)) {
-	        y += sign(vsp);
-	    }
-	    vsp = 0;
-	}
-	y += vsp;
-	
-	//Si toca cualquier "pared" de costado, explota.
-	if place_meeting(x+(1*face),y,oWall) || place_meeting(x+(1*face),y,oSemiSolidWall){
-		Destroy();
-	}
-	
-	//Si choca un enemigo, explota
-	if(place_meeting(x,y,oEnemyBase)) Destroy();
-	
-	//Colision con el player
-	if(place_meeting(x,y,oPlayer)) Destroy();
-	if(place_meeting(x,y-1,oPlayer)) Destroy();
-	if(place_meeting(x+(-2*face),y,oPlayer)) Destroy();
+		//Cuando para de rebotar cambia de estado
+		if vsp==0 && hsp==0 estado=States.IdleOn;
+		break;
+	case States.IdleOn:
+		if(place_meeting(x,y-1,oPlayer)) Destroy(); //Si el player la pisa estando ON
+		break;
 }
+
+//Se aplica el movimiento
+movement = bounce_behaviour(hsp,vsp,grv,face,bounceFactor,xFriction);
+hsp=movement[0];
+vsp=movement[1];
 
 //Codigo de explosion por tiempo
 if timerStart{
-	timerFrames--
+	timerFrames--;
+	
 	//Sprite Control
 	sprite_index = sBomb_On;
-	if(place_meeting(x,y-1,oPlayer)) Destroy();
+	
 }
+
 if timerFrames<=0{
 	Destroy();
 }
