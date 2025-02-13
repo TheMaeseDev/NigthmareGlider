@@ -1,7 +1,7 @@
 event_inherited();
 
 function Collected(){
-	oPlayer.Lives++;
+	global.Player_Lives = min(global.Player_Lives + 3, global.Player_LivesMax);
 	instance_destroy();
 }
 

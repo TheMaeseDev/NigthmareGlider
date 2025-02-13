@@ -12,7 +12,8 @@ switch(state){
 	break;
 	case states.IN:
 		if subImage_index>0{
-			subImage_index -= subImage_index_inc;	
+			subImage_index -= subImage_index_inc;
+			global.Player_Hp = global.Player_HpMax;
 		}else{
 			instance_destroy();
 		}

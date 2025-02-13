@@ -61,6 +61,7 @@
     {"id":{"name":"oEnemy_Pumpkin","path":"objects/oEnemy_Pumpkin/oEnemy_Pumpkin.yy",},},
     {"id":{"name":"oEnemy_Vertical_Fly","path":"objects/oEnemy_Vertical_Fly/oEnemy_Vertical_Fly.yy",},},
     {"id":{"name":"oEnemyBase","path":"objects/oEnemyBase/oEnemyBase.yy",},},
+    {"id":{"name":"oGame_Manager","path":"objects/oGame_Manager/oGame_Manager.yy",},},
     {"id":{"name":"oGrabbable","path":"objects/oGrabbable/oGrabbable.yy",},},
     {"id":{"name":"oMoveObject","path":"objects/oMoveObject/oMoveObject.yy",},},
     {"id":{"name":"oMovePlat","path":"objects/oMovePlat/oMovePlat.yy",},},

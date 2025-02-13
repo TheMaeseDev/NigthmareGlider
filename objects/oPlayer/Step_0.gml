@@ -635,7 +635,7 @@ if (invulTimer <= 0) {
 
 #region Muerte de Player
 
-if hp<=0 && onGround{
+if global.Player_Hp<=0 && onGround{
 	isDead = true;
 }
 	

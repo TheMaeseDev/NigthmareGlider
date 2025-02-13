@@ -6,6 +6,7 @@ function Destroy(){
 	}
 	with instance_create_depth(x,y-(sprite_height/2),depth,oSmallBox_Smoke) image_blend = c_aqua;
 	cameraShake(1,5);
+	global.Room_SpecialBox_Broken++;
 	instance_destroy();	
 }
 
