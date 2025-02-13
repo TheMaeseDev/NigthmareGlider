@@ -10,9 +10,8 @@ function Destroy(){
 }
 
 //Box Throwed Mechanic
-hsp = 0;
-vsp = 0;
 grv = 0.275;
 
-quietState = true;
-isFlying = false;
+//Velocidades al ser lanzadas
+throwHsp = 5;
+throwVsp = -4;
