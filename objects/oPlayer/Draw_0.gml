@@ -19,7 +19,11 @@ if (global.mensaje != "") {
     draw_text(texto_x, texto_y, global.mensaje); // Dibuja el texto en el centro
 }
 
-// Mostrar salud
+
+
+// Mostrar  y monedas
 if global.showDebug{
-	draw_text(x, y-sprite_height+3, string(hp));
+	draw_text(x, y-sprite_height+3, "hp: "+string(hp));
+	draw_text(view_x + 50, view_y + view_h - 20, "Coins: "+string(coins));
+	
 }
