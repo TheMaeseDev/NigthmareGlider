@@ -99,6 +99,7 @@ depth = -30;
 
 hp = 7;
 coins = 0;
+Lives = 2;
 
 beingHitted = false;
 alreadyHit = false;
