@@ -1,6 +1,7 @@
 event_inherited();
 
 function Collected(){
+	oPlayer.coins++;
 	instance_destroy();
 }
 

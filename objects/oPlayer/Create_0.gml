@@ -98,6 +98,7 @@ function checkForSemiSolidPlatform(_x,_y){
 depth = -30;
 
 hp = 7;
+coins = 0;
 
 beingHitted = false;
 alreadyHit = false;
