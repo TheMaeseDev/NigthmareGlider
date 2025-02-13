@@ -63,6 +63,7 @@
     {"id":{"name":"oEnemyBase","path":"objects/oEnemyBase/oEnemyBase.yy",},},
     {"id":{"name":"oGame_Manager","path":"objects/oGame_Manager/oGame_Manager.yy",},},
     {"id":{"name":"oGrabbable","path":"objects/oGrabbable/oGrabbable.yy",},},
+    {"id":{"name":"oHud","path":"objects/oHud/oHud.yy",},},
     {"id":{"name":"oMoveObject","path":"objects/oMoveObject/oMoveObject.yy",},},
     {"id":{"name":"oMovePlat","path":"objects/oMovePlat/oMovePlat.yy",},},
     {"id":{"name":"oNitro_Explosion","path":"objects/oNitro_Explosion/oNitro_Explosion.yy",},},
