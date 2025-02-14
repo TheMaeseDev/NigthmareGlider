@@ -19,7 +19,7 @@ draw_sprite(sSpecialBox, 0, cam_x + padding + 5, cam_y + cam_h - padding + 3); /
 draw_sprite(sBomb, 0, cam_x + cam_w - icon_size - padding + 2, cam_y + cam_h - padding + 3); // Esquina inferior derecha
 
 //Obtener posicion para la barra de vida
-var bar_x = cam_x + (cam_w / 2) + sHealthBar.sprite_width/2; // Centrar la barra de vida
+var bar_x = cam_x + (cam_w / 2) /*+ sHealthBar.sprite_width/2*/; // Centrar la barra de vida
 var bar_y = cam_y + 10 + sHealthBar.sprite_height/2; // Posición arriba
 
 // Dibujar la barra de vida con la subimagen correspondiente

@@ -3,7 +3,7 @@
   "%Name":"sEnemy_BomberMan_Run",
   "bboxMode":2,
   "bbox_bottom":57,
-  "bbox_left":25,
+  "bbox_left":24,
   "bbox_right":47,
   "bbox_top":4,
   "collisionKind":1,
