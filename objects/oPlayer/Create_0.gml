@@ -36,7 +36,7 @@ function takeDamage(_dmg,_attackX){
 		//if airAttackHB instance_destroy(airAttackHB);
 		
 		//Restar vida
-		global.Player_Hp -= _dmg;
+		global.Player_Hp = max(global.Player_Hp - _dmg, 0);
 		
 		/*------- Y Knockback ----------- */
 		grav = defaultGrav/1.5; //opcional si queremos la caida mas lenta

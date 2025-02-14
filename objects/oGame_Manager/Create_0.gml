@@ -1,5 +1,5 @@
 
-global.Player_HpMax = 7;
+global.Player_HpMax = 6;
 global.Player_Hp = global.Player_HpMax;
 global.Player_LivesMax = 99;
 global.Player_Lives = 2;
