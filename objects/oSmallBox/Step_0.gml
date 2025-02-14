@@ -47,7 +47,7 @@ switch (estado){
 //Si es atacada por el Player
 if place_meeting(x,y,oPlayer_Attack_HB) || place_meeting(x,y,oPlayer_Air_Attack_HB){
 		Destroy();	
-}	
+}
 
 //Aplica movimiento;
 var movement = object_movement(hsp,vsp,grv,face);
