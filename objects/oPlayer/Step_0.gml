@@ -2,7 +2,7 @@
 getControls();
 
 //Restart Game
-if restartKey room_restart();
+if restartKey game_restart();
 
 #region Glide Mechanic
 if !onGround && glideKey && !airAttackStart && !isGrabbing && !beingHitted{

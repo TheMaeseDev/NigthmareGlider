@@ -24,6 +24,4 @@ if (global.mensaje != "") {
 // Mostrar  y monedas
 if global.showDebug{
 	draw_text(x, y-sprite_height+3, "hp: "+string(global.Player_Hp));
-	draw_text(view_x + 50, view_y + view_h - 20, "Coins: "+string(global.Player_Coins));
-	
 }
