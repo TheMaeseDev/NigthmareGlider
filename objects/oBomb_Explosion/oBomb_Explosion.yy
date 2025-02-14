@@ -9,8 +9,8 @@
   "name":"oBomb_Explosion",
   "overriddenProperties":[],
   "parent":{
-    "name":"Enemies",
-    "path":"folders/Objects/Enemies.yy",
+    "name":"Particles",
+    "path":"folders/Objects/Particles.yy",
   },
   "parentObjectId":null,
   "persistent":false,
