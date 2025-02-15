@@ -9,8 +9,8 @@
   "name":"oBounce_Barrel",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Projectiles",
+    "path":"folders/Objects/Enemies/Projectiles.yy",
   },
   "parentObjectId":null,
   "persistent":false,

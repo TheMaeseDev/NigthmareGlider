@@ -53,8 +53,8 @@
   },
   "origin":7,
   "parent":{
-    "name":"Enemies",
-    "path":"folders/Sprites/Enemies.yy",
+    "name":"Bomb",
+    "path":"folders/Sprites/Enemies/Bomb.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

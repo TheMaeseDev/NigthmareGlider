@@ -28,7 +28,7 @@ function object_movement(_hsp, _vsp, _grv, _face) {
 		}	
 	}
 	
-	x+= _hsp*face;
+	x+= _hsp;
 	
     // Aplicar gravedad
     _vsp += _grv;

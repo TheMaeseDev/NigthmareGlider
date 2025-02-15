@@ -6,8 +6,8 @@
   "name":"oTrampoline",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Boxes",
+    "path":"folders/Objects/Boxes.yy",
   },
   "parentObjectId":{
     "name":"oWall",

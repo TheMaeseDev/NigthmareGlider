@@ -9,8 +9,8 @@
   "name":"oCollectable_Heal",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Collectables",
+    "path":"folders/Objects/Collectables.yy",
   },
   "parentObjectId":{
     "name":"oCollectable",
