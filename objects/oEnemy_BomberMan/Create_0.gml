@@ -28,6 +28,8 @@ hspBase = 2;
 face = 1;
 vsp = 0;
 grv = 0.5;
+hspDer=1;
+hspIzq=-1;
 
 idlePauseTimer = 0;
 idlePauseFrames = 180;

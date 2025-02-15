@@ -1,5 +1,5 @@
-var suelo_frente = place_meeting(x+3+hsp*face, y + 1, oWall);
-var suelo_atras = place_meeting(x+hsp+2*-face,y+1,oWall);
+var suelo_frente = place_meeting(x+3*face, y + 1, oWall);
+var suelo_atras = place_meeting(x+3*-face,y+1,oWall);
 var suelo_abajo = place_meeting(x, y + 1, oWall);
 var playerDistance = abs(oPlayer.x - x);
 
@@ -20,7 +20,7 @@ switch (state) {
 			face=-face;
 			state = EnemyState.Idle;
 		}
-		hsp=1;
+		hsp=1*face;
 		if (distance_to_object(oPlayer) < 125) state=EnemyState.Raway;
 		break;
 		
@@ -28,46 +28,48 @@ switch (state) {
 		//Cambio de sprite
 		sprite_index=sprWalk;
 		
-		face = sign(oPlayer.x - x)*-1;
+		//Mirar en direccion opuesta al player
+		face = -sign(oPlayer.x - x);
 		
 		//Si el player esta lo suficientemente lejos cambia de estado
-		if playerDistance>minPlayerDistance state=EnemyState.isAway;
+		if playerDistance>minPlayerDistance hsp=0;
+		else{
+			//Se mueve si hay suelo
+			if suelo_frente{
+				hsp=1*face;	
+			}else state=EnemyState.Trapped;
+		}
 		
-		//Se mueve si hay suelo
-		if suelo_frente{
-			hsp=2;	
-		}else state=EnemyState.Trapped;
+		
 	break;
 	
 	case EnemyState.isAway:
+		hsp=0;
+		sprite_index=sprIdle;
+		//Mira en direccion del player
 		face=sign(oPlayer.x - x)*1;
 		
 		if !suelo_atras state=EnemyState.Trapped;
 		
-		//Si el player esta muy cerca cambia de estado para alejarse
 		// Si el jugador se acerca, intentar huir
 	    if (playerDistance < minPlayerDistance && suelo_atras) {
-	        // Solo cambiar de estado si el enemigo realmente tiene hacia dónde moverse
-	        if (suelo_atras) {
-	            state = EnemyState.Raway;
-	        }
+	        state = EnemyState.Raway;
 	    }
-		
+		/*
 		if playerDistance>minPlayerDistance{
 			face = sign(oPlayer.x - x)*1;
-			hsp = 2;
-		}
+			hsp = 2*face;
+		}*/
 		
-		hsp=0;
-		sprite_index=sprIdle;
+		
 	break;
 	
 	case EnemyState.Trapped:
 		hsp=0;
-		sprite_index = sprIdle;
 		face = sign(oPlayer.x - x)*1;
+		sprite_index = sprIdle;
 		
-		if suelo_atras state=EnemyState.Raway;
+		//if suelo_atras state=EnemyState.Raway;
 	case EnemyState.Attack:
 		
 	break;
@@ -84,4 +86,5 @@ var _movement = object_movement(hsp,vsp,grv,face);
 hsp = _movement[0];
 vsp = _movement[1];
 
-global.mensaje = state;
+//global.mensaje = "SA: "+string(suelo_atras);
+global.mensaje = face;
