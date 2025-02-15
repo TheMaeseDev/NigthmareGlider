@@ -24,6 +24,11 @@ switch (state) {
 	break;
 		
     case EnemyState.Angry:
+		BombTimer--;
+		if BombTimer<=0{
+			throwBomb(4.5*sign(oPlayer.x - x),-4.5);
+			BombTimer=150;
+		}
 	    // Determinar dirección
 		if (playerDistance <= minPlayerDistance) {
 			sprite_index = sprWalk;
@@ -87,13 +92,6 @@ switch (state) {
 		
 	break;
 }
-
-/*
-BombTimer--;
-if BombTimer<=0{
-	throwBomb(4.5*-face,-4.5)	
-	BombTimer=180;
-}*/
 
 var _movement = object_movement(hsp,vsp,grv,face);
 hsp = _movement[0];
