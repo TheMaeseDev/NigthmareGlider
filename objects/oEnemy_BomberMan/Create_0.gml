@@ -1,10 +1,8 @@
 enum EnemyState {
     Idle,
 	Walk,
-    Raway,
-	isAway,
-	Trapped,
-	Attack
+    Angry,
+	Back
 }
 
 function throwBomb(bombHsp,bombVsp){
@@ -22,8 +20,10 @@ sprHit = sEnemy_BomberMan_Hit;
 sprAttack= sEnemy_BomberMan_Attack;
 
 state = EnemyState.Idle;
-
+runSpeed=1.8;
+runSpeed2=3;
 hsp = 0;
+newHsp=2;
 hspBase = 2;
 face = 1;
 vsp = 0;
@@ -36,7 +36,8 @@ idlePauseFrames = 180;
 initialDistance = 100;
 
 minPlayerDistance = 125;
-maxPlayerDistance = 150;
+maxPlayerDistance = 250;
 xStart = x;
 
 BombTimer = 120;
+lookDirection = 1;

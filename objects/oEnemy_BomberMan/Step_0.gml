@@ -1,75 +1,89 @@
-var suelo_frente = place_meeting(x+3*face, y + 1, oWall);
-var suelo_atras = place_meeting(x+3*-face,y+1,oWall);
-var suelo_abajo = place_meeting(x, y + 1, oWall);
 var playerDistance = abs(oPlayer.x - x);
-var PlayerIsNear = playerDistance<=minPlayerDistance;
+var suelo_frente = place_meeting(x+hsp,y+1,oWall);
 
 switch (state) {
     case EnemyState.Idle:
-		//sprite_index = sprIdle;
+		sprite_index = sprIdle;
 		if(image_index >= image_number-1){
 			state = EnemyState.Walk;	
 		}
 		hsp=0;
+		lookDirection=face;
 		
-		if (distance_to_object(oPlayer) < 120) state=EnemyState.Raway;
-        break;
+		if (distance_to_object(oPlayer) < 175) state=EnemyState.Angry;
+	break;
 		
 	case EnemyState.Walk:
-		//sprite_index = sprWalk;
+		sprite_index = sprWalk;
 		if initialDistance<=abs(x-xStart) || !suelo_frente{
 			face=-face;
 			state = EnemyState.Idle;
 		}
 		hsp=1*face;
-		if (distance_to_object(oPlayer) < 120) state=EnemyState.Raway;
-		break;
+		if (distance_to_object(oPlayer) < 175) state=EnemyState.Angry;
+	break;
 		
-    case EnemyState.Raway:
-        sprite_index = sprWalk;
-        
-        // Se aleja del jugador
-        face = sign(oPlayer.x - x) * -1; 
-        hsp = 1 * face; 
-        
-        // Si no hay suelo atrás, pasa a "Acorralado"
-        if (!suelo_frente){
-            state = EnemyState.Trapped;
-        }
+    case EnemyState.Angry:
+	    // Determinar dirección
+		if (playerDistance <= minPlayerDistance) {
+			sprite_index = sprWalk;
+		    // El enemigo se aleja del player
+		    face = (x < oPlayer.x) ? -1 : 1;
+		    //hsp = runSpeed * face; // Corre en sentido opuesto al jugador
+			
+			// Si el player está a menos de la mitad de la distancia mínima, corre más rápido
+		    if (playerDistance <= minPlayerDistance / 2) {
+		        hsp = runSpeed2 * face; 
+		    } else {
+		        hsp = runSpeed * face; 
+		    }
+			lookDirection = -sign(oPlayer.x - x);
+		} 
+		else if (playerDistance > minPlayerDistance + 25) {
+			sprite_index = sprWalk;
+		    // El enemigo persigue al player
+		    face = (x < oPlayer.x) ? 1 : -1;
+		    hsp = runSpeed * face;
+			lookDirection = sign(oPlayer.x - x);
+		} 
+		else {
+			sprite_index = sprIdle;
+		    hsp = 0; // Se detiene
+			lookDirection = sign(oPlayer.x - x);
+		}
+
+		// Comprobar bordes
+		if (!place_meeting(x + hsp, y+1, oWall)) {
+		    hsp = 0; // Detenerse en el borde
+			lookDirection = sign(oPlayer.x - x);
+			if(sprite_index == sprWalk) sprite_index = sprIdle;
+		}
 		
-        // Si se alejó lo suficiente, pasa a "Distanciado"
-        else if (playerDistance > minPlayerDistance) {
-            state = EnemyState.isAway;
-        }
-        break;
-
-    case EnemyState.isAway:
-        sprite_index = sprIdle;
-        hsp = 0;
-        
-        // Mirar al jugador
-        face = sign(oPlayer.x - x);
-        
-        // Si el jugador se acerca de nuevo y hay suelo atrás, volver a "Huyendo"
-        if (playerDistance < minPlayerDistance && suelo_atras) {
-            state = EnemyState.Raway;
-        }
-        break;
-
-    case EnemyState.Trapped:
-        sprite_index = sprIdle;
-        hsp = 0;
-        
-        // Se queda en el borde mirando al jugador
-        face = sign(oPlayer.x - x);
-        
-        // Si el jugador se aleja, cambiar a "Distanciado"
-        if (playerDistance > minPlayerDistance) {
-            state = EnemyState.isAway;
-        }
-        break;
+		// Si el player se aleja demasiado, cambiar a Idle
+	    if (playerDistance > maxPlayerDistance) {
+	        state = EnemyState.Back;
+	        hsp = 0;
+	    }
+    break;
 	
-	case EnemyState.Attack:
+	case EnemyState.Back:
+		sprite_index = sprWalk;
+		// Determinar la dirección en la que debe moverse
+	    var nueva_face = sign(xStart - x);
+	    if (nueva_face != 0) {
+	        face = nueva_face;
+	    }
+		// Moverse hacia la posición inicial
+		hsp = runSpeed/2 * face;
+		lookDirection = face;
+		
+		// Si llega a su posición inicial, vuelve a Idle
+	    if (abs(x - xStart) < 1) {
+	        x = xStart; // Asegurar que no oscile
+	        hsp = 0;
+	        state = EnemyState.Idle;
+	    }
+		if (distance_to_object(oPlayer) < 175) state=EnemyState.Angry;
 		
 	break;
 }
@@ -85,5 +99,5 @@ var _movement = object_movement(hsp,vsp,grv,face);
 hsp = _movement[0];
 vsp = _movement[1];
 
-//global.mensaje = "SA: "+string(suelo_atras);
-global.mensaje = playerDistance<=minPlayerDistance;
+
+global.mensaje = hsp;
