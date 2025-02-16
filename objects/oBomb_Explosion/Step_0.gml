@@ -1,5 +1,5 @@
 //No hace daño en sus ultimos frames
-if(floor(image_index)>=9){
+if(floor(image_index)>=3){
 	mask_index = sNoMask;
 }
 
