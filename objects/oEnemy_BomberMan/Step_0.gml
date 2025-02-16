@@ -24,11 +24,7 @@ switch (state) {
 	break;
 		
     case EnemyState.Angry:
-		BombTimer--;
-		if BombTimer<=0{
-			throwBomb(4.5*sign(oPlayer.x - x),-4.5);
-			BombTimer=150;
-		}
+		prepareBomb(); //Funcion que prepara y tira la bomba
 	    // Determinar dirección
 		if (playerDistance <= minPlayerDistance) {
 			sprite_index = sprWalk;
@@ -98,4 +94,4 @@ hsp = _movement[0];
 vsp = _movement[1];
 
 
-global.mensaje = hsp;
+global.mensaje = BombTimer;

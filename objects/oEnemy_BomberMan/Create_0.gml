@@ -6,11 +6,20 @@ enum EnemyState {
 }
 
 function throwBomb(bombHsp,bombVsp){
-	var bomb = instance_create_depth(x,y,depth,oBomb);
+	var bomb = instance_create_depth(x,y-20,depth,oBomb);
 	bomb.estado = States.Flying;
 	bomb.timerStart = true;
+	bomb.timerFrames=150;
 	bomb.hsp = bombHsp;
 	bomb.vsp = bombVsp;
+}
+
+function prepareBomb(){
+	BombTimer--;
+	if BombTimer<=0{
+		throwBomb(bombHsp*sign(oPlayer.x - x),bombVsp);
+		BombTimer=bombFrames;
+	}
 }
 
 //Manejo de Sprites
@@ -39,5 +48,8 @@ minPlayerDistance = 125;
 maxPlayerDistance = 250;
 xStart = x;
 
-BombTimer = 120;
+BombTimer = 30;
+bombFrames=180;
 lookDirection = 1;
+bombHsp=6;
+bombVsp=-4.5;
