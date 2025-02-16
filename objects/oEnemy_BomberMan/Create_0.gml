@@ -2,7 +2,8 @@ enum EnemyState {
     Idle,
 	Walk,
     Angry,
-	Back
+	Back,
+	Attack
 }
 
 function throwBomb(bombHsp,bombVsp){
@@ -17,6 +18,7 @@ function throwBomb(bombHsp,bombVsp){
 function prepareBomb(){
 	BombTimer--;
 	if BombTimer<=0{
+		state=EnemyState.Attack;
 		throwBomb(bombHsp*sign(oPlayer.x - x),bombVsp);
 		BombTimer=bombFrames;
 	}

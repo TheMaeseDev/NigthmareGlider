@@ -87,6 +87,13 @@ switch (state) {
 		if (distance_to_object(oPlayer) < 175) state=EnemyState.Angry;
 		
 	break;
+	
+	case EnemyState.Attack:
+		sprite_index = sprAttack;
+		if(image_index >= image_number-1){
+			state = EnemyState.Angry;	
+		}
+	break;
 }
 
 var _movement = object_movement(hsp,vsp,grv,face);
