@@ -1,3 +1,5 @@
+event_inherited();
+
 var playerDistance = abs(oPlayer.x - x);
 var suelo_frente = place_meeting(x+hsp,y+1,oWall);
 
@@ -90,15 +92,11 @@ switch (state) {
 	
 	case EnemyState.Attack:
 		sprite_index = sprAttack;
+		hsp=0;
 		if(image_index >= image_number-1){
 			state = EnemyState.Angry;	
 		}
 	break;
 }
-
-var _movement = object_movement(hsp,vsp,grv,face);
-hsp = _movement[0];
-vsp = _movement[1];
-
 
 global.mensaje = BombTimer;

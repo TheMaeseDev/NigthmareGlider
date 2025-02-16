@@ -1,3 +1,5 @@
+event_inherited();
+
 enum EnemyState {
     Idle,
 	Walk,
@@ -7,7 +9,7 @@ enum EnemyState {
 }
 
 function throwBomb(bombHsp,bombVsp){
-	var bomb = instance_create_depth(x,y-20,depth,oBomb);
+	var bomb = instance_create_depth(x,y-27,depth,oBomb);
 	bomb.estado = States.Flying;
 	bomb.timerStart = true;
 	bomb.timerFrames=150;
@@ -23,6 +25,9 @@ function prepareBomb(){
 		BombTimer=bombFrames;
 	}
 }
+
+hp=3;
+color = c_red;
 
 //Manejo de Sprites
 sprIdle = sEnemy_BomberMan_Idle;
@@ -51,7 +56,7 @@ maxPlayerDistance = 250;
 xStart = x;
 
 BombTimer = 30;
-bombFrames=180;
+bombFrames=150;
 lookDirection = 1;
-bombHsp=6;
-bombVsp=-4.5;
+bombHsp=5;
+bombVsp=-4;
