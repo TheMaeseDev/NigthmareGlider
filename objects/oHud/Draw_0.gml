@@ -20,7 +20,12 @@ draw_sprite(sBomb, 0, cam_x + cam_w - icon_size - padding + 2, cam_y + cam_h - p
 
 //Obtener posicion para la barra de vida
 var bar_x = cam_x + (cam_w / 2) /*+ sHealthBar.sprite_width/2*/; // Centrar la barra de vida
-var bar_y = cam_y + 10 + sHealthBar.sprite_height/2; // Posición arriba
+//var bar_y = cam_y + 10 + sHealthBar.sprite_height/2; // Posición arriba
+if (sprite_exists(sHealthBar)) {
+    var bar_y = cam_y + 10 + sprite_get_height(sHealthBar) / 2;
+} else {
+    show_debug_message("Error: sHealthBar no está cargado en este Room.");
+}
 
 // Dibujar la barra de vida con la subimagen correspondiente
 draw_sprite(sHealthBar, global.Player_Hp, bar_x, bar_y);
