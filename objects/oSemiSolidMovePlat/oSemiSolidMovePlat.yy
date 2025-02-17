@@ -32,6 +32,7 @@
   "properties":[
     {"$GMObjectProperty":"v1","%Name":"movementType","filters":[],"listItems":[],"multiselect":false,"name":"movementType","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"circular","varType":2,},
     {"$GMObjectProperty":"v1","%Name":"radius","filters":[],"listItems":[],"multiselect":false,"name":"radius","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"32","varType":0,},
+    {"$GMObjectProperty":"v1","%Name":"rotSpd","filters":[],"listItems":[],"multiselect":false,"name":"rotSpd","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"360 / (180)","varType":0,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
