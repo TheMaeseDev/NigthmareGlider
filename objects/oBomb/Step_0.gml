@@ -27,6 +27,7 @@ switch (estado){
 		if place_meeting(x,y,oPlayer)	//Si choca al player
 		|| place_meeting(x,y+vsp+1,oGrabbable) //Si "pisa" con algun objeto agarrable
 		|| place_meeting(x-(0.5*sign(hsp)),y,oPlayer) //Si el chocar la choca desde atras
+		|| place_meeting(x+(1*sign(hsp)),y,oPlayer) //Si el chocar la choca desde atras
 		|| place_meeting(x+hsp,y,oWall) //Si choca una pared de costado
 		|| place_meeting(x+hsp,y,oSemiSolidWall)
 		|| place_meeting(x,y,oEnemyBase) //Si choca con un enemigo

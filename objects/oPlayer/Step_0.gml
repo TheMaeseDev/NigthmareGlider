@@ -517,17 +517,25 @@ if instance_exists(myFloorPlat)
 
 #region Poleas
 
-if instance_exists(myFloorPlat){
-	if myFloorPlat.object_index == oPolleyPlat{
-		onPulleyPlatform = myFloorPlat;
-		onPulleyPlatform.canMove = true;
-	}
-}
-else{
-	if onPulleyPlatform != noone{
-		onPulleyPlatform.canMove = false;
-		onPulleyPlatform = noone;
-	}
+if instance_exists(myFloorPlat) {
+    // Si estamos sobre una plataforma del tipo oPolleyPlat
+    if myFloorPlat.object_index == oPolleyPlat {
+        if onPulleyPlatform != myFloorPlat {
+            // Solo asignamos si no es la misma plataforma de antes
+            onPulleyPlatform = myFloorPlat;
+            onPulleyPlatform.canMove = true;
+        }
+    } else if instance_exists(onPulleyPlatform) {
+        // Si hemos cambiado de plataforma y antes estábamos en una Polley, la desactivamos
+        onPulleyPlatform.canMove = false;
+        onPulleyPlatform = noone;
+    }
+} else {
+    // Si ya no estamos sobre ninguna plataforma, desactivamos la anterior si existía
+    if instance_exists(onPulleyPlatform) {
+        onPulleyPlatform.canMove = false;
+    }
+    onPulleyPlatform = noone;
 }
 
 #endregion
@@ -595,7 +603,7 @@ if instance_place(x,y+1,oTrampoline) && !beingHitted{
 #region Mover Objetos
 
 var _moveObject = instance_place(x+(1*face),y,oMoveObject);
-if glideKey && _moveObject!=noone && onGround && moveDir!=0{
+if glideKey && _moveObject!=noone && onGround && moveDir!=0 && !isGrabbing{
 	with(_moveObject){
 		if !instance_place(x+(1*other.face),y,oWall){
 			self.x += other.moveDir*1;
@@ -703,4 +711,3 @@ mask_index = idleSpr;
 if crouching{mask_index=crouchSpr};
 
 #endregion
-
