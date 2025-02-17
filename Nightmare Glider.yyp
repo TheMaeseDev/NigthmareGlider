@@ -100,6 +100,7 @@
     {"id":{"name":"oTransition","path":"objects/oTransition/oTransition.yy",},},
     {"id":{"name":"oWall","path":"objects/oWall/oWall.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+    {"id":{"name":"rTest","path":"rooms/rTest/rTest.yy",},},
     {"id":{"name":"blink_effect","path":"scripts/blink_effect/blink_effect.yy",},},
     {"id":{"name":"bounce_behaviour","path":"scripts/bounce_behaviour/bounce_behaviour.yy",},},
     {"id":{"name":"cameraShake","path":"scripts/cameraShake/cameraShake.yy",},},
@@ -165,6 +166,7 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
+    {"roomId":{"name":"rTest","path":"rooms/rTest/rTest.yy",},},
     {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
   ],
   "templateType":"game",

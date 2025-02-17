@@ -6,12 +6,24 @@ dir+= rotSpd;
 var _targetX = xstart + lengthdir_x(radius,dir);
 var _targetY = ystart + lengthdir_y(radius,dir);
 
-//Get our xspd and yspd
-xspd = _targetX - x;
-//xspd = 0;
-yspd = _targetY - y;
-//yspd = 0;
+// Determinar la velocidad en base al tipo de movimiento
+switch (movementType) {
+    case "circular":
+        xspd = _targetX - x;
+        yspd = _targetY - y;
+        break;
+        
+    case "horizontal":
+        xspd = _targetX - x;
+        yspd = 0;
+        break;
 
-//Move
-x+=xspd;
-y+=yspd;
+    case "vertical":
+        xspd = 0;
+        yspd = _targetY - y;
+        break;
+}
+
+// Aplicar el movimiento
+x += xspd;
+y += yspd;
