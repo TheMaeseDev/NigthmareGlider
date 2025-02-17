@@ -27,11 +27,12 @@ if instance_place(x,y,oPlayer_Air_Attack_HB) || instance_place(x,y,oPlayer_Attac
 
 if canAttack with instance_place(x,y,oPlayer) self.takeDamage(1,other.x);
 
+/*
 //Explosion de Bomba
 var _collision = instance_place(x,y,oBomb_Explosion)
 if instance_exists(_collision){
 	enemy_take_damage(self.id, 3, knockback,5,3,_collision.x, 180);
-}
+}*/
 
 //Smallbox
 var _collision = instance_place(x,y,oSmallBox)

@@ -62,6 +62,12 @@ switch (state) {
 			if(sprite_index == sprWalk) sprite_index = sprIdle;
 		}
 		
+		if (place_meeting(x + hsp, y, oWall)) {
+		    hsp = 0; // Detenerse en el borde
+			lookDirection = sign(oPlayer.x - x);
+			if(sprite_index == sprWalk) sprite_index = sprIdle;
+		}
+		
 		// Si el player se aleja demasiado, cambiar a Idle
 	    if (playerDistance > maxPlayerDistance) {
 	        state = EnemyState.Back;
@@ -98,5 +104,19 @@ switch (state) {
 		}
 	break;
 }
+
+//Explosion de Bomba
+var _collision = instance_place(x,y,oBomb_Explosion)
+if instance_exists(_collision){
+	enemy_take_damage(self.id, 1, knockback,0,3,_collision.x, 180);
+}
+
+//Modificar la velocidad de la bomba segun la cercania con el player
+var dist = point_distance(x, y, oPlayer.x, oPlayer.y);
+var maxDist = minPlayerDistance; // Distancia máxima para la velocidad más alta
+
+// Escalar la velocidad según la distancia
+bombHsp = 0.5 + ((6 - 0.5) * clamp(dist / maxDist, 0, 1));
+
 
 global.mensaje = BombTimer;
