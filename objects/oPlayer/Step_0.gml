@@ -603,7 +603,7 @@ if instance_place(x,y+1,oTrampoline) && !beingHitted{
 #region Mover Objetos
 
 var _moveObject = instance_place(x+(1*face),y,oMoveObject);
-if glideKey && _moveObject!=noone && onGround && moveDir!=0{
+if glideKey && _moveObject!=noone && onGround && moveDir!=0 && !isGrabbing{
 	with(_moveObject){
 		if !instance_place(x+(1*other.face),y,oWall){
 			self.x += other.moveDir*1;
