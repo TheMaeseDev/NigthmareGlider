@@ -136,6 +136,7 @@
     {"id":{"name":"sNoMask","path":"sprites/sNoMask/sNoMask.yy",},},
     {"id":{"name":"sPirateShip","path":"sprites/sPirateShip/sPirateShip.yy",},},
     {"id":{"name":"sPirateTerrain","path":"sprites/sPirateTerrain/sPirateTerrain.yy",},},
+    {"id":{"name":"sPlatform1","path":"sprites/sPlatform1/sPlatform1.yy",},},
     {"id":{"name":"sPlayer_Air_Attack_HB","path":"sprites/sPlayer_Air_Attack_HB/sPlayer_Air_Attack_HB.yy",},},
     {"id":{"name":"sPlayer_Air_Attack","path":"sprites/sPlayer_Air_Attack/sPlayer_Air_Attack.yy",},},
     {"id":{"name":"sPlayer_Attack_HB","path":"sprites/sPlayer_Attack_HB/sPlayer_Attack_HB.yy",},},
@@ -160,6 +161,7 @@
     {"id":{"name":"sSmallBox_Breaked","path":"sprites/sSmallBox_Breaked/sSmallBox_Breaked.yy",},},
     {"id":{"name":"sSmallBox_Smoke","path":"sprites/sSmallBox_Smoke/sSmallBox_Smoke.yy",},},
     {"id":{"name":"sSmallBox","path":"sprites/sSmallBox/sSmallBox.yy",},},
+    {"id":{"name":"sSolidPlatform1","path":"sprites/sSolidPlatform1/sSolidPlatform1.yy",},},
     {"id":{"name":"sSpecialBox","path":"sprites/sSpecialBox/sSpecialBox.yy",},},
     {"id":{"name":"sTntBox_Breaked","path":"sprites/sTntBox_Breaked/sTntBox_Breaked.yy",},},
     {"id":{"name":"sTntBox","path":"sprites/sTntBox/sTntBox.yy",},},
@@ -173,8 +175,8 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
-    {"roomId":{"name":"rTest","path":"rooms/rTest/rTest.yy",},},
     {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+    {"roomId":{"name":"rTest","path":"rooms/rTest/rTest.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[
