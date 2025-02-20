@@ -61,6 +61,7 @@
     {"id":{"name":"oCamera","path":"objects/oCamera/oCamera.yy",},},
     {"id":{"name":"oCollectable_Coin_Taked","path":"objects/oCollectable_Coin_Taked/oCollectable_Coin_Taked.yy",},},
     {"id":{"name":"oCollectable_Coin","path":"objects/oCollectable_Coin/oCollectable_Coin.yy",},},
+    {"id":{"name":"oCollectable_Heal_Taked","path":"objects/oCollectable_Heal_Taked/oCollectable_Heal_Taked.yy",},},
     {"id":{"name":"oCollectable_Heal","path":"objects/oCollectable_Heal/oCollectable_Heal.yy",},},
     {"id":{"name":"oCollectable_Live","path":"objects/oCollectable_Live/oCollectable_Live.yy",},},
     {"id":{"name":"oCollectable","path":"objects/oCollectable/oCollectable.yy",},},
@@ -114,6 +115,7 @@
     {"id":{"name":"sBounce_Barrel","path":"sprites/sBounce_Barrel/sBounce_Barrel.yy",},},
     {"id":{"name":"sCollectable_Coin_Taked","path":"sprites/sCollectable_Coin_Taked/sCollectable_Coin_Taked.yy",},},
     {"id":{"name":"sCollectable_Coin","path":"sprites/sCollectable_Coin/sCollectable_Coin.yy",},},
+    {"id":{"name":"sCollectable_Heal_Taked","path":"sprites/sCollectable_Heal_Taked/sCollectable_Heal_Taked.yy",},},
     {"id":{"name":"sCollectable_Heal","path":"sprites/sCollectable_Heal/sCollectable_Heal.yy",},},
     {"id":{"name":"sCollectable_Live","path":"sprites/sCollectable_Live/sCollectable_Live.yy",},},
     {"id":{"name":"sEnemy_BomberMan_Attack","path":"sprites/sEnemy_BomberMan_Attack/sEnemy_BomberMan_Attack.yy",},},
@@ -175,8 +177,8 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
-    {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"roomId":{"name":"rTest","path":"rooms/rTest/rTest.yy",},},
+    {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[
