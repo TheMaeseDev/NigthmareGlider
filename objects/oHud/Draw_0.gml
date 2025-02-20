@@ -13,7 +13,7 @@ var padding = 20; // Margen desde los bordes
 draw_set_alpha(transparencia);
 
 // Dibujar los íconos en las cuatro esquinas
-draw_sprite(sCollectable_Coin, 0, cam_x + padding, cam_y + padding); // Esquina superior izquierda
+draw_sprite_ext(sCollectable_Coin, 0, cam_x + padding, cam_y + padding, 1.5, 1.5, 0, c_white, 1); // Esquina superior izquierda
 draw_sprite(sCollectable_Live, 0, cam_x + cam_w - icon_size - padding, cam_y + padding); // Esquina superior derecha
 draw_sprite(sSpecialBox, 0, cam_x + padding + 5, cam_y + cam_h - padding + 3); // Esquina inferior izquierda
 draw_sprite(sBomb, 0, cam_x + cam_w - icon_size - padding + 2, cam_y + cam_h - padding + 3); // Esquina inferior derecha
@@ -35,10 +35,31 @@ draw_set_alpha(1);
 
 // Dibujar los números al lado de cada ícono
 draw_set_color(c_white);
-draw_text(cam_x + icon_size + 7, cam_y + padding, string(global.Player_Coins)); // Monedas
-draw_text(cam_x + cam_w - icon_size - padding + 20, cam_y + padding, string(global.Player_Lives)); // Vidas
-draw_text(cam_x + padding + icon_size + 5,  cam_y + cam_h - padding - 7, string(global.Room_SpecialBox_inRoom - global.Room_SpecialBox_Broken)); // Cajas rotas
-draw_text(cam_x + cam_w - icon_size - padding + 20, cam_y + cam_h - padding - 7, string(global.Player_Power)); // Power
+draw_text(cam_x + icon_size + 7, cam_y + padding - 8, string(global.Player_Coins)); // Monedas
+draw_text(cam_x + cam_w - icon_size - padding + 20, cam_y + padding - 8, string(global.Player_Lives)); // Vidas
+draw_text(cam_x + padding + icon_size -4,  cam_y + cam_h - padding - 15, string(global.Room_SpecialBox_inRoom - global.Room_SpecialBox_Broken)); // Cajas rotas
+draw_text(cam_x + cam_w - icon_size - padding + 20, cam_y + cam_h - padding - 15, string(global.Player_Power)); // Power
 
+
+// Posición del HUD (abajo en el centro)
+var hud_x = cam_x + (cam_w / 2) - 46; // Centrado
+var hud_y = cam_y + cam_h - 27;       // Un poco arriba del bordela
+
+// Si la animación terminó, dibujar el mapa completo y salir
+if (map_merge_progress == 1) {
+    draw_sprite(sCollectable_Map, 0, cam_x + (cam_w / 2), hud_y);
+    exit; // Termina la función aquí para no dibujar los fragmentos
+}
+
+// Dibujar fragmentos del mapa con animación de movimiento al centro
+for (var i = 0; i < 4; i++) {
+    if (global.Room_MapPieces[i]) { 
+        var start_x = hud_x + (i * 32); // Posición inicial de cada fragmento
+        var target_x = cam_x + (cam_w / 2); // Centro del HUD
+        var interp_x = lerp(start_x, target_x, map_merge_progress); // Interpolación suave
+
+        draw_sprite_ext(map_sprites[i], 0, interp_x, hud_y, 1, 1, 0, c_white, 1);
+    }
+}
 
 
