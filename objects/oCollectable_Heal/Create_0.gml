@@ -6,4 +6,7 @@ function Collected(){
 	instance_destroy();
 }
 
-behaviour=Behaviour.bounce;
+behaviour=Behaviour.idle;
+
+delayToBeTaked = 10;
+canBeTaked = false;

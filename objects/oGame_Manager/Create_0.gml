@@ -9,3 +9,6 @@ global.Player_Power = 0;
 global.Room_SpecialBox_inRoom = instance_number(oSpecialBox);
 global.Room_SpecialBox_Broken = 0;
 global.Room_SpecialBox_Completed = false;
+
+global.Room_MapPieces = [false,false,false,false];
+ global.has_full_map = false;
