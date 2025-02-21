@@ -8,3 +8,8 @@ if (global.Room_MapPieces[0] && global.Room_MapPieces[1] && global.Room_MapPiece
         }
     }
 }
+
+hudKey = keyboard_check_pressed(vk_tab) + gamepad_button_check_pressed(0,gp_shoulderlb);
+hudKey = clamp(hudKey,0,1);
+
+if hudKey show=!show;

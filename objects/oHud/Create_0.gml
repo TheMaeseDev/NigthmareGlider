@@ -13,3 +13,7 @@ map_sprites = [
     sCollectable_MapPiece2,
     sCollectable_MapPiece3
 ];
+
+show=true;
+
+hudKey=noone;
