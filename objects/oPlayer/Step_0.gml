@@ -7,7 +7,7 @@ if restartKey game_restart();
 #region Glide Mechanic
 if !onGround && glideKey && !airAttackStart && !isGrabbing && !beingHitted{
 	if !glideStart{
-		if yspd < 0 yspd=0;
+		//if yspd < 0 yspd=0;
 		termVel = glideTermVel;
 		glideStart = true;
 	}
@@ -147,11 +147,15 @@ if onGround && attackKey && attackDelay<=0 && !beingHitted && !isGrabbing && !is
 	}
 }
 
-if attackStart && (!onGround || image_index > image_number-0.5){
-		moveSpd[0]=walkSpd;
-		moveSpd[1] = runSpd;
+if attackStart {
+    xspd = 0; // Asegura que no pueda moverse mientras ataca
+
+    if !onGround || image_index >= image_number - 1 { 
+        moveSpd[0] = walkSpd;
+        moveSpd[1] = runSpd;
 		image_index = 0;
-		attackStart = false;
+        attackStart = false;
+    }
 }
 
 if !attackStart && attackDelay>=0{
@@ -201,8 +205,11 @@ if beingHitted || !airAttackStart{
 	if crouching && !beingHitted  { moveDir = 0;};
 
 	//Get xspd
-	runType = runKey;
-	xspd = moveDir * moveSpd[runType];
+	if !attackStart{
+		runType = runKey;
+		xspd = moveDir * moveSpd[runType];
+	}
+	
 
 	//X collision
 	var _subPixel = .5;
@@ -577,7 +584,7 @@ var _breakThreshold = 3.5; // Velocidad mínima para romperla
 smallBox = instance_place(x,y+yspd,oSmallBox)
 if smallBox != noone && !onGround{
 	if yspd >= _breakThreshold{
-		yspd=-1;
+		yspd=-5;
 		smallBox.Destroy();
 	}
 }

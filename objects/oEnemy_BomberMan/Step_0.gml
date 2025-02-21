@@ -76,6 +76,7 @@ switch (state) {
     break;
 	
 	case EnemyState.Back:
+		BombTimer=bombFrames;
 		sprite_index = sprWalk;
 		// Determinar la dirección en la que debe moverse
 	    var nueva_face = sign(xStart - x);
