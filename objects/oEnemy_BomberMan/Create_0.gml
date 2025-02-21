@@ -43,7 +43,7 @@ sprAttack= sEnemy_BomberMan_Attack;
 
 state = EnemyState.Idle;
 runSpeed=1.8;
-runSpeed2=3;
+runSpeed2=2;
 hsp = 0;
 newHsp=2;
 hspBase = 2;

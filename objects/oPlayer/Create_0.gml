@@ -126,10 +126,10 @@ deathSpr = sPlayer_Death;
 face = 1;
 moveDir = 0;
 runType = 0;
-walkSpd = 2;
-runSpd = 3.5;
+walkSpd = 2.3;
+runSpd = 3;
 moveSpd[0] = walkSpd;	  //Caminando
-moveSpd[1] = runSpd; //Corriendo 3.5 default
+moveSpd[1] = runSpd; //Corriendo 3 default
 xspd = 0;
 yspd = 0;
 
@@ -158,7 +158,7 @@ coyoteJumpTimer = 0;
 
 //Gliding
 glideStart = false; // Controla si se ha comenzado a planear
-glideTermVel = 0.5;
+glideTermVel = 1.5;
 
 //Melee Attack
 attackStart = false; //Controla si se ha comenzado a atacar
