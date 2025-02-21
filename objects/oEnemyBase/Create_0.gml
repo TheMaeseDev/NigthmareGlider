@@ -1,7 +1,7 @@
 
 function enemyDestroy(){
 	instance_destroy();
-	with instance_create_depth(x,y,depth,oSmallBox_Smoke) image_blend = other.color;
+	with instance_create_depth(x,y-(sprite_height/2),depth,oSmallBox_Smoke) image_blend = other.color;
 }
 
 knockback = true;
