@@ -12,6 +12,7 @@ var padding = 20; // Margen desde los bordes
 // Configurar transparencia
 draw_set_alpha(transparencia);
 
+
 // Dibujar los íconos en las cuatro esquinas
 draw_sprite_ext(sCollectable_Coin, 0, cam_x + padding, cam_y + padding, 1.5, 1.5, 0, c_white, 1); // Esquina superior izquierda
 draw_sprite(sCollectable_Live, 0, cam_x + cam_w - icon_size - padding, cam_y + padding); // Esquina superior derecha
