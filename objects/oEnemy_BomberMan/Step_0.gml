@@ -117,6 +117,3 @@ var maxDist = minPlayerDistance; // Distancia máxima para la velocidad más alt
 
 // Escalar la velocidad según la distancia
 bombHsp = 0.5 + ((6 - 0.5) * clamp(dist / maxDist, 0, 1));
-
-
-global.mensaje = BombTimer;
