@@ -8,24 +8,3 @@ if (global.Room_MapPieces[0] && global.Room_MapPieces[1] && global.Room_MapPiece
         }
     }
 }
-
-
-// Mostrar/Ocultar HUD completo
-if (keyboard_check_pressed(vk_tab)) {
-    hud_visible = !hud_visible;
-    hud_timer = 60 * 3; // Mantenerlo visible por 3 segundos
-}
-
-// Reducir el tiempo de cada elemento individual
-for (var i = 0; i < 6; i++) {
-    if (hud_timers[i] > 0) {
-        hud_timers[i]--;
-    }
-}
-
-// Ocultar HUD cuando el tiempo se acaba
-if (hud_timer > 0) {
-    hud_timer--;
-} else {
-    hud_visible = false;
-}
