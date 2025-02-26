@@ -177,7 +177,7 @@ if !onGround && (attackKey || airAttackBuffered) && airAttackDelay<=0 && !isGrab
 if airAttackStart{
 	with(airAttackHB){
 		self.x = other.x;
-		self.y = other.y;
+		self.y = other.y+2;
 	}
 }
 
@@ -582,7 +582,7 @@ if isGrabbing && attackKey{
 
 var _breakThreshold = 3.5; // Velocidad mínima para romperla
 smallBox = instance_place(x,y+yspd,oSmallBox)
-if smallBox != noone && !onGround{
+if smallBox != noone && !onGround && !instance_exists(airAttackHB){
 	if yspd >= _breakThreshold{
 		yspd=-5;
 		smallBox.Destroy();
