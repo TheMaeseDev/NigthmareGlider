@@ -18,6 +18,8 @@ invulnTimer = 0;
 blinkTimer = 0;
 maxBlinkTimer = 0;
 blinkSpeed = 5;
+kbx=3;
+kby=3;
 
 canAttack = true;
 canAttackFrames = 20;

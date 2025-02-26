@@ -22,7 +22,7 @@ if canAttackTimer <= 0{
 if instance_place(x,y,oPlayer_Air_Attack_HB) || instance_place(x,y,oPlayer_Attack_HB){
 	canAttack = false;
 	if !invulnerable canAttackTimer = canAttackFrames;
-	enemy_take_damage(self.id, 1, knockback,3,3,oPlayer.x, 180);
+	enemy_take_damage(self.id, 1, knockback,kbx,kby,oPlayer.x, 180);
 }
 
 if canAttack with instance_place(x,y,oPlayer) self.takeDamage(1,other.x);
@@ -37,7 +37,7 @@ if instance_exists(_collision){
 //Smallbox
 var _collision = instance_place(x,y,oSmallBox)
 if instance_exists(_collision){
-	enemy_take_damage(self.id, 1, knockback,3,3,_collision.x, 180);
+	enemy_take_damage(self.id, 1, knockback,kbx,kby,_collision.x, 180);
 	with _collision Destroy();
 }
 
