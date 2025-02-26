@@ -10,7 +10,8 @@ enum ErizoState {
     Idle,    // Solo para el saltador
     Rolling, // Rodando con púas afuera (daño e invulnerabilidad)
     Stopped, // Momento de vulnerabilidad tras frenar
-    Jumping  // Solo para el saltador
+    Jumping,  // Solo para el saltador
+	Hit
 };
 
 // Definir si es "Rodador" o "Saltador"
@@ -29,6 +30,8 @@ jump_power = -6;
 stopped_frames = 90;
 stopped_timer = stopped_frames;
 jump_timer = stopped_frames;
+
+canTakeDamage = true;
 
 
 // Estado inicial
