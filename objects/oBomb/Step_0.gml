@@ -45,7 +45,7 @@ switch (estado){
 }
 
 //Se aplica el movimiento
-movement = bounce_behaviour(hsp,vsp,grv,face,bounceFactor,xFriction);
+var movement = bounce_behaviour(hsp,vsp,grv,face,bounceFactor,xFriction);
 hsp=movement[0];
 vsp=movement[1];
 

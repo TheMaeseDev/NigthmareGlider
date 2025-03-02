@@ -6,6 +6,14 @@ function Destroy(){
 	instance_destroy();		
 }
 
+hsp=0
+vsp=0
+
+estado = States.IdleOff;
+grv = 0.5;
+xFriction = 0.8;
+bounceFactor = 0.7;
+face = 1;
 //Variables de explosion por tiempo
 timerStart = false;
 timerFrames = 300;
