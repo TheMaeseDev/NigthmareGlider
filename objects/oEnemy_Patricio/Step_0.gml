@@ -34,8 +34,9 @@ switch (state) {
 		sprite_index=sEnemy_Patricio_Idle;
         jump_timer--;
         if (jump_timer <= 0) {
-            state = ErizoState.Jumping;
+            state = is_jumper ? ErizoState.Jumping : ErizoState.JumpAttack;
             vsp = jump_power;
+            if (state == ErizoState.JumpAttack) hsp = jump_attack_hsp * face;
         }
     break;
 
@@ -47,6 +48,21 @@ switch (state) {
             jump_timer = stopped_frames;
         }
     break;
+	
+	case ErizoState.JumpAttack:
+		canTakeDamage=false;
+		sprite_index=sEnemy_Patricio_Spin;
+        // Si ha llegado más lejos de su punto inicial, invierte hsp para regresar
+        if (x >= start_x + 100 || x <= start_x - 100) {
+            hsp *= -1;
+        }
+        if (place_meeting(x, y + 1, oWall)) {
+            state = ErizoState.Idle;
+            jump_timer = 45;
+            hsp = 0; // Se detiene antes de volver a saltar
+        }
+    break;
+	
 	case ErizoState.Hit:
 		sprite_index = sEnemy_Patricio_Hit;
 		if(image_index >= image_number-1){
