@@ -4,7 +4,12 @@ knockback = false;
 
 /// Dispara una bomba y crea el efecto de humo
 function fireBomb() {
-    bombInstance = instance_create_depth(x-20*face, y+2, depth, oBomb);
+    bombInstance = instance_create_depth(x-20*face, y+3, depth, oBomb);
+	with bombInstance{
+		hsp=4*-other.face;
+		vsp=-5;
+	}
+	
 	hasShoot = true;
     with (bombInstance) {
         face = -other.face;

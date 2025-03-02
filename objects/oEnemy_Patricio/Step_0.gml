@@ -91,5 +91,3 @@ if canAttackTimer <= 0{
 if hp<=0 && state!="hurt"{
 	enemyDestroy();	
 }
-
-global.mensaje = state;
