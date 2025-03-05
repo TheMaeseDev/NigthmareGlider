@@ -190,4 +190,9 @@ onPulleyPlatform = noone; // Almacena la referencia de la plataforma en la que e
 //Death Event
 roomTransition_delay = 60;
 
+//Moving objects mechanic
+grabbedObject = noone;
+isMovingObject = false;
+grabSpd = 2.3; // Velocidad de arrastre
+
 global.mensaje = "";

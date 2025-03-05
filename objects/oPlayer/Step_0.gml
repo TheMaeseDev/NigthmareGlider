@@ -195,11 +195,13 @@ if beingHitted || !airAttackStart{
 	}
 	
 	//Cant change face while attacking
-	if(!attackStart && !beingHitted && !isDead){
-		//Get my face
-		if moveDir > 0 face=1;
-		if moveDir < 0 face=-1;
-	}
+	if (!attackStart && !beingHitted && !isDead) {
+    // Solo cambiar la dirección si NO está arrastrando un objeto
+    if (grabbedObject == noone) {
+        if (moveDir > 0) face = 1;
+        if (moveDir < 0) face = -1;
+    }
+}
 	
 	//No movement while crouching
 	if crouching && !beingHitted  { moveDir = 0;};
@@ -560,13 +562,6 @@ if !isGrabbing && onGround{
 	}
 }
 if isGrabbing && attackKey{
-	/*with grabbed{
-		self.grabbed = false;
-		self.owner = noone;
-		self.face = other.face;
-		self.flying = true;
-		self.hsp += (other.xspd/3)*other.face;
-	}*/
 	grabbed.hsp += grabbed.throwHsp*face;
 	grabbed.vsp = grabbed.throwVsp;
 	grabbed.estado = States.Flying;
@@ -609,23 +604,34 @@ if instance_place(x,y+1,oTrampoline) && !beingHitted{
 
 #region Mover Objetos
 
-var _moveObject = instance_place(x+(1*face),y,oMoveObject);
-if glideKey && _moveObject!=noone && onGround && moveDir!=0 && !isGrabbing{
-	with(_moveObject){
-		if !instance_place(x+(1*other.face),y,oWall){
-			self.x += other.moveDir*1;
-			self.hsp = other.moveDir*1;
-			cameraShake(0.3,1);
-			if self.objTop != noone{
-				self.objTop.face = other.face;
-				if self.objTop.canMove{
-					self.objTop.x += other.moveDir*1;
-				}
-			}
-		}else{
-			//Aca se podria hacer que se puedan mover de a varias horizontalmente
-		}
+// Detectar si se puede agarrar el objeto
+if (!isMovingObject && onGround){
+    if instance_place(x+(1*face),y,oMoveObject) && glideKey{
+		grabbedObject=instance_place(x+(1*face),y,oMoveObject);
+		isMovingObject=true;
 	}
+}
+
+// Mover el objeto si se está agarrando
+if (isMovingObject) {
+    // Verificar que el jugador tenga espacio para retroceder
+    if (!instance_place(x - (1 * face), y, oWall)) { 
+        with (grabbedObject) {
+            // Verificar que la caja pueda moverse sin chocar con una pared
+            if (!instance_place(x + (other.moveDir * other.moveSpd[other.runType]), y, oWall)) {
+                self.hsp = other.moveDir * other.moveSpd[other.runType];
+            }
+        }
+    } else {
+        // Si el jugador no tiene espacio para moverse, frenar la caja
+        grabbedObject.hsp = 0;
+    }
+}
+	
+if isMovingObject && (!glideKey || attackKey || !onGround || grabbedObject.vsp!=0 || abs(grabbedObject.x - x) > 28 ){
+	isMovingObject=false;
+	grabbedObject.hsp=0;
+	grabbedObject = noone;
 }
 
 #endregion
@@ -718,3 +724,5 @@ mask_index = idleSpr;
 if crouching{mask_index=crouchSpr};
 
 #endregion
+
+global.mensaje = grabbedObject;
