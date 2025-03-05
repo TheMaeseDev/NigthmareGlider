@@ -17,8 +17,23 @@ enum ErizoState {
 
 // Tipos de comportamiento
 is_roller = false;  // Rodador
-is_jumper = false;  // Saltador vertical
-is_jump_attacker = true; // Nuevo: Salto en parábola
+is_jumper = true;  // Saltador vertical
+is_jump_attacker = false; // Nuevo: Salto en parábola
+
+if (is_jumper) {
+    is_roller = false;
+    is_jump_attacker = false;
+} else if (is_roller) {
+    is_jumper = false;
+    is_jump_attacker = false;
+} else if is_jump_attacker{
+    is_roller = false;
+    is_jumper = false;
+}else {
+    is_roller = false;
+    is_jumper = true; // Si ninguna es true, se asigna por defecto a este
+    is_jump_attacker = false;
+}
 
 // Variables de movimiento
 hsp = 0;
@@ -29,6 +44,7 @@ face = 1; // Dirección inicial
 roll_speed = 4;
 jump_power = -6;
 jump_attack_hsp = 2;
+jump_attack_vsp = -7;
 
 // Temporizadores
 stopped_frames = 90;
@@ -37,9 +53,10 @@ jump_timer = stopped_frames;
 
 canTakeDamage = true;
 
-// Posición inicial (para volver a ella)
-start_x = x;
-start_y = y;
+// saltar a la posicion inicial
+horJumpsFrames=3;
+horJumpsCount = horJumpsFrames;
+needToReturn=false;
 
 
 // Estado inicial

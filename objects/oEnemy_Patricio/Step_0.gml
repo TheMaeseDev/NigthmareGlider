@@ -34,9 +34,15 @@ switch (state) {
 		sprite_index=sEnemy_Patricio_Idle;
         jump_timer--;
         if (jump_timer <= 0) {
-            state = is_jumper ? ErizoState.Jumping : ErizoState.JumpAttack;
-            vsp = jump_power;
-            if (state == ErizoState.JumpAttack) hsp = jump_attack_hsp * face;
+            if is_jumper{
+				vsp=jump_power;
+				state=ErizoState.Jumping;
+			}else if is_jump_attacker{
+				vsp = jump_attack_vsp;
+				if needToReturn hsp = -jump_attack_hsp;
+	            else hsp = jump_attack_hsp;
+				state=ErizoState.JumpAttack;
+			}
         }
     break;
 
@@ -52,11 +58,22 @@ switch (state) {
 	case ErizoState.JumpAttack:
 		canTakeDamage=false;
 		sprite_index=sEnemy_Patricio_Spin;
-        // Si ha llegado más lejos de su punto inicial, invierte hsp para regresar
-        if (x >= start_x + 100 || x <= start_x - 100) {
-            hsp *= -1;
-        }
         if (place_meeting(x, y + 1, oWall)) {
+			horJumpsCount--;
+			//Si ya hizo todos los saltos
+			if(horJumpsCount<=0){
+				if needToReturn{
+					//Si ya volvio, resetear estado
+					state=ErizoState.Idle;
+					needToReturn=false;
+					horJumpsCount = horJumpsFrames;
+					hsp=0;
+				}
+				else{
+					needToReturn=true;
+					horJumpsCount=horJumpsFrames;
+				}
+			}
             state = ErizoState.Idle;
             jump_timer = 45;
             hsp = 0; // Se detiene antes de volver a saltar
@@ -70,11 +87,9 @@ switch (state) {
 			else state=ErizoState.Idle;
 		}
 	break;
-
 }
 
 //Si puede recibir daño ejecuta el script
-
 if canTakeDamage{
 	//Hitbox del player
 	if instance_place(x,y,oPlayer_Air_Attack_HB) || instance_place(x,y,oPlayer_Attack_HB){
@@ -107,3 +122,5 @@ if canAttackTimer <= 0{
 if hp<=0 && state!="hurt"{
 	enemyDestroy();	
 }
+
+global.mensaje = needToReturn;
