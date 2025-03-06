@@ -57,6 +57,7 @@
   },
   "name":"Nightmare Glider",
   "resources":[
+    {"id":{"name":"oBad_Wall","path":"objects/oBad_Wall/oBad_Wall.yy",},},
     {"id":{"name":"oBomb_Explosion","path":"objects/oBomb_Explosion/oBomb_Explosion.yy",},},
     {"id":{"name":"oBomb","path":"objects/oBomb/oBomb.yy",},},
     {"id":{"name":"oBounce_Barrel","path":"objects/oBounce_Barrel/oBounce_Barrel.yy",},},
@@ -116,6 +117,7 @@
     {"id":{"name":"general_functions","path":"scripts/general_functions/general_functions.yy",},},
     {"id":{"name":"object_movement","path":"scripts/object_movement/object_movement.yy",},},
     {"id":{"name":"bgSky","path":"sprites/bgSky/bgSky.yy",},},
+    {"id":{"name":"sBad_Wall","path":"sprites/sBad_Wall/sBad_Wall.yy",},},
     {"id":{"name":"sBomb_Explosion","path":"sprites/sBomb_Explosion/sBomb_Explosion.yy",},},
     {"id":{"name":"sBomb_On","path":"sprites/sBomb_On/sBomb_On.yy",},},
     {"id":{"name":"sBomb","path":"sprites/sBomb/sBomb.yy",},},
@@ -198,9 +200,9 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
+    {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"roomId":{"name":"rTest","path":"rooms/rTest/rTest.yy",},},
     {"roomId":{"name":"rLevel1","path":"rooms/rLevel1/rLevel1.yy",},},
-    {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[
