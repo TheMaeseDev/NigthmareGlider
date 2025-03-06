@@ -3,8 +3,8 @@ rangeY = 65;   // Altura máxima que pueden moverse
 separation = 100; // Distancia entre plataformas
 
 // Crear plataformas en posiciones relativas al controlador
-platA = instance_create_layer(x, y, depth, oPolleyPlat);
-platB = instance_create_layer(x+separation, y, depth, oPolleyPlat);
+platA = instance_create_layer(x, y, layer, oPolleyPlat);
+platB = instance_create_layer(x+separation, y, layer, oPolleyPlat);
 
 // Asignar plataformas como pareja
 platA.pairedPlatform = platB;
