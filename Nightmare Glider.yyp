@@ -167,6 +167,8 @@
     {"id":{"name":"sPlayer_Hit","path":"sprites/sPlayer_Hit/sPlayer_Hit.yy",},},
     {"id":{"name":"sPlayer_Idle","path":"sprites/sPlayer_Idle/sPlayer_Idle.yy",},},
     {"id":{"name":"sPlayer_Jump","path":"sprites/sPlayer_Jump/sPlayer_Jump.yy",},},
+    {"id":{"name":"sPlayer_Pull","path":"sprites/sPlayer_Pull/sPlayer_Pull.yy",},},
+    {"id":{"name":"sPlayer_Push","path":"sprites/sPlayer_Push/sPlayer_Push.yy",},},
     {"id":{"name":"sPlayer_Run","path":"sprites/sPlayer_Run/sPlayer_Run.yy",},},
     {"id":{"name":"sPlayer_Walk","path":"sprites/sPlayer_Walk/sPlayer_Walk.yy",},},
     {"id":{"name":"sPlayerGlid","path":"sprites/sPlayerGlid/sPlayerGlid.yy",},},
