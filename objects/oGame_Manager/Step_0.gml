@@ -9,3 +9,8 @@ if (global.Room_SpecialBox_Broken >= global.Room_SpecialBox_inRoom && !global.Ro
 if array_length(global.Room_MapPieces) == 4 && !array_contains(global.Room_MapPieces, false) {
    global.has_full_map = true;
 }
+
+if global.Player_Coins>=100{
+	global.Player_Lives++;
+	global.Player_Coins=0;
+}

@@ -551,7 +551,7 @@ if instance_exists(myFloorPlat) {
 
 #region Agarrar y tirar objetos
 
-if !isGrabbing && onGround{
+if !isGrabbing && onGround && !isMovingObject{
 	if instance_place(x+(1*face),y,oGrabbable) && glideKey{
 		grabbed = instance_place(x+(1*face),y,oGrabbable);
 		if(grabbed.estado==States.IdleOn || grabbed.estado==States.IdleOff ){
@@ -605,7 +605,7 @@ if instance_place(x,y+1,oTrampoline) && !beingHitted{
 #region Mover Objetos
 
 // Detectar si se puede agarrar el objeto
-if (!isMovingObject && onGround){
+if (!isMovingObject && onGround && !isGrabbing){
     if instance_place(x+(1*face),y,oMoveObject) && glideKey{
 		grabbedObject=instance_place(x+(1*face),y,oMoveObject);
 		isMovingObject=true;

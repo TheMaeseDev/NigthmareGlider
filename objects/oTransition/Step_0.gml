@@ -6,6 +6,7 @@ switch(state){
 			subImage_index += subImage_index_inc;
 		}else{
 			state = states.IN
+			global.Player_Hp = global.Player_HpMax;
 			//goto room
 			if room_exists(targetRoom) room_goto(targetRoom);
 		}
@@ -14,7 +15,6 @@ switch(state){
 		if subImage_index>0{
 			subImage_index -= subImage_index_inc;
 			global.Room_SpecialBox_Broken = 0;
-			global.Player_Hp = global.Player_HpMax;
 			global.Room_SpecialBox = false;
 		}else{
 			instance_destroy();
