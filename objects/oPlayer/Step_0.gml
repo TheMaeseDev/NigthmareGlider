@@ -605,7 +605,7 @@ if instance_place(x,y+1,oTrampoline) && !beingHitted{
 #region Mover Objetos
 
 // Detectar si se puede agarrar el objeto
-if (!isMovingObject && onGround){
+if (!isMovingObject && onGround && !isGrabbing){
     if instance_place(x+(1*face),y,oMoveObject) && glideKey{
 		grabbedObject=instance_place(x+(1*face),y,oMoveObject);
 		isMovingObject=true;
