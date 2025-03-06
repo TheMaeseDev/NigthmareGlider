@@ -18,7 +18,6 @@ function setOnGround(_val = true){
 		coyoteHangTimer=0;
 		airAttackDelay--; //Descuenta el delay de ataque aereo
 		smallBox = noone;
-		//moveSpd[1] = moveSpd[0];
 	}
 }
 
@@ -121,6 +120,7 @@ attackSpr = sPlayer_Attack;
 AirAttackSpr = sPlayer_Air_Attack;
 hittedSpr = sPlayer_Hit;
 deathSpr = sPlayer_Death;
+moveObjectSpr = sPlayer_Push
 
 //Moving
 face = 1;

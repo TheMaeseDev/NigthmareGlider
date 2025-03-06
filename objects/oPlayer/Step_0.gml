@@ -614,6 +614,21 @@ if (!isMovingObject && onGround){
 
 // Mover el objeto si se está agarrando
 if (isMovingObject) {
+	moveSpd[0] = 1;
+	moveSpd[1] = 1;
+	if grabbedObject.hsp=0 moveObjectSpr = sPlayer_Push; // Empujando
+	else if (face == sign(grabbedObject.hsp))*1 {
+        moveObjectSpr = sPlayer_Push; // Empujando
+    } else {
+        moveObjectSpr = sPlayer_Pull; // Tirando
+    }
+	// Si el jugador o la caja no se están moviendo, usar un sprite estático
+    if (xspd == 0 && grabbedObject.hsp == 0) {
+        image_speed = 0; // Detener animación
+        image_index = 2;  // Mantener en el primer frame
+    } else {
+        image_speed = 1; // Permitir animación si hay movimiento
+    }
     // Verificar que el jugador tenga espacio para retroceder
     if (!instance_place(x - (1 * face), y, oWall)) { 
         with (grabbedObject) {
@@ -632,6 +647,8 @@ if isMovingObject && (!glideKey || attackKey || !onGround || grabbedObject.vsp!=
 	isMovingObject=false;
 	grabbedObject.hsp=0;
 	grabbedObject = noone;
+	moveSpd[0] = walkSpd;
+	moveSpd[1] = runSpd;
 }
 
 #endregion
@@ -675,6 +692,7 @@ if roomTransition_delay<=0{
 #endregion
 
 #region Sprite Control
+image_speed = 1
 //Runing
 if(abs(xspd)>=moveSpd[1]){sprite_index = runSpr};
 
@@ -698,6 +716,9 @@ if attackStart {sprite_index = attackSpr};
 
 //Air Attack
 if airAttackStart {sprite_index = AirAttackSpr};
+
+//Moving Object
+if isMovingObject {sprite_index = moveObjectSpr}
 
 if beingHitted{
 	sprite_index = hittedSpr
@@ -724,5 +745,3 @@ mask_index = idleSpr;
 if crouching{mask_index=crouchSpr};
 
 #endregion
-
-global.mensaje = grabbedObject;
