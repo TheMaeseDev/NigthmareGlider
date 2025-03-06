@@ -9,5 +9,3 @@ function Destroy(){
 	global.Room_SpecialBox_Broken++;
 	instance_destroy();	
 }
-
-image_blend = c_aqua;
