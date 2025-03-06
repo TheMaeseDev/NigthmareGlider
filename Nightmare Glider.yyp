@@ -122,6 +122,8 @@
     {"id":{"name":"sBomb_On","path":"sprites/sBomb_On/sBomb_On.yy",},},
     {"id":{"name":"sBomb","path":"sprites/sBomb/sBomb.yy",},},
     {"id":{"name":"sBounce_Barrel","path":"sprites/sBounce_Barrel/sBounce_Barrel.yy",},},
+    {"id":{"name":"sCheckpoint_Off","path":"sprites/sCheckpoint_Off/sCheckpoint_Off.yy",},},
+    {"id":{"name":"sCheckpoint_On","path":"sprites/sCheckpoint_On/sCheckpoint_On.yy",},},
     {"id":{"name":"sCollectable_Coin_Taked","path":"sprites/sCollectable_Coin_Taked/sCollectable_Coin_Taked.yy",},},
     {"id":{"name":"sCollectable_Coin","path":"sprites/sCollectable_Coin/sCollectable_Coin.yy",},},
     {"id":{"name":"sCollectable_Heal_Taked","path":"sprites/sCollectable_Heal_Taked/sCollectable_Heal_Taked.yy",},},
@@ -200,8 +202,8 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
-    {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"roomId":{"name":"rTest","path":"rooms/rTest/rTest.yy",},},
+    {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"roomId":{"name":"rLevel1","path":"rooms/rLevel1/rLevel1.yy",},},
   ],
   "templateType":"game",
