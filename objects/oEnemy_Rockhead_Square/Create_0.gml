@@ -9,5 +9,5 @@ state = "rest"; //"rest" or "moving"
 
 accel = 0.25;  // Aceleración
 maxSpeed = 5; // Velocidad máxima
-dirX = 0;     // Dirección en X (-1, 0, 1)
-dirY = 1;     // Dirección en Y (-1, 0, 1)
+dirX = 1;     // Dirección en X (-1, 0, 1)
+dirY = 0;     // Dirección en Y (-1, 0, 1)

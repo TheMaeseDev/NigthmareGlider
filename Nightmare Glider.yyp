@@ -78,6 +78,8 @@
     {"id":{"name":"oEnemy_Chicken","path":"objects/oEnemy_Chicken/oEnemy_Chicken.yy",},},
     {"id":{"name":"oEnemy_Patricio","path":"objects/oEnemy_Patricio/oEnemy_Patricio.yy",},},
     {"id":{"name":"oEnemy_Pumpkin","path":"objects/oEnemy_Pumpkin/oEnemy_Pumpkin.yy",},},
+    {"id":{"name":"oEnemy_Rockhead_Horizontal","path":"objects/oEnemy_Rockhead_Horizontal/oEnemy_Rockhead_Horizontal.yy",},},
+    {"id":{"name":"oEnemy_Rockhead_Square","path":"objects/oEnemy_Rockhead_Square/oEnemy_Rockhead_Square.yy",},},
     {"id":{"name":"oEnemy_Rockhead_Vertical","path":"objects/oEnemy_Rockhead_Vertical/oEnemy_Rockhead_Vertical.yy",},},
     {"id":{"name":"oEnemy_Vertical_Fly","path":"objects/oEnemy_Vertical_Fly/oEnemy_Vertical_Fly.yy",},},
     {"id":{"name":"oEnemyBase","path":"objects/oEnemyBase/oEnemyBase.yy",},},
