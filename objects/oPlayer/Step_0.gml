@@ -599,6 +599,23 @@ if instance_exists(smallBox) && !glideStart && !airAttackStart{
 
 #endregion
 
+#region Romper cajas cabeceandolas
+
+var _smallBoxOnTop = instance_place(x,y-5,oSmallBox);
+
+if instance_exists(_smallBoxOnTop){
+	if _smallBoxOnTop.vsp!=0 || yspd!=0{
+		with _smallBoxOnTop Destroy();
+	}
+	
+}
+/*
+if (bbox_top >= other.bbox_top && bbox_top < other.bbox_top) { 
+	other.instance_destroy(); // Romper la caja
+}*/
+
+#endregion
+
 #region Trampolin
 
 var _trampolinePower = 0;
