@@ -18,8 +18,9 @@ function Destroy(){
 	instance_destroy();
 }
 
-//Box Throwed Mechanic
-grv = 0.275;
+//noGrv = false;
+if noGrv grv=0;
+else grv = 0.275;
 
 //Velocidades al ser lanzadas
 throwHsp = 5;

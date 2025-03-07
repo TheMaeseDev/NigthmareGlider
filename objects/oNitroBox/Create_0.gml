@@ -1,7 +1,6 @@
 
 hsp = 0;
 vsp = 0;
-grv = 0.275;
 face = 1;
 
 function Destroy(){
@@ -17,5 +16,9 @@ function Destroy(){
 	}
 	instance_destroy();	
 }
+
+//noGrv = false;
+if noGrv grv=0;
+else grv = 0.275;
 
 myId = string(x)+" - "+string(y);

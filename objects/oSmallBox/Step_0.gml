@@ -7,6 +7,7 @@ switch (estado){
 		//No gana velocidad
 		hsp = 0;
 		vsp = 0;
+		grv = 0.275;
 		
 		//Sigue al Player
 		x=owner.x + 15*owner.face;
