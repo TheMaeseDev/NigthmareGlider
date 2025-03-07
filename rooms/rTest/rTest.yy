@@ -261,6 +261,9 @@
     {"name":"inst_485C0E9A","path":"rooms/rTest/rTest.yy",},
     {"name":"inst_6F9E9E80","path":"rooms/rTest/rTest.yy",},
     {"name":"inst_35E9E9F0","path":"rooms/rTest/rTest.yy",},
+    {"name":"inst_50286930","path":"rooms/rTest/rTest.yy",},
+    {"name":"inst_36942797","path":"rooms/rTest/rTest.yy",},
+    {"name":"inst_330B6239","path":"rooms/rTest/rTest.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -619,6 +622,9 @@
         {"$GMRInstance":"v1","%Name":"inst_35E9E9F0","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_35E9E9F0","objectId":{"name":"oCollectable_MapPiece","path":"objects/oCollectable_MapPiece/oCollectable_MapPiece.yy",},"properties":[
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"oCollectable_MapPiece","path":"objects/oCollectable_MapPiece/oCollectable_MapPiece.yy",},"propertyId":{"name":"piece_index","path":"objects/oCollectable_MapPiece/oCollectable_MapPiece.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"3",},
           ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":592.0,"y":720.0,},
+        {"$GMRInstance":"v1","%Name":"inst_50286930","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_50286930","objectId":{"name":"oCheckpoint","path":"objects/oCheckpoint/oCheckpoint.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":0.65591395,"x":1051.0,"y":179.0,},
+        {"$GMRInstance":"v1","%Name":"inst_36942797","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_36942797","objectId":{"name":"oCheckpoint","path":"objects/oCheckpoint/oCheckpoint.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":0.65591395,"x":605.0,"y":434.0,},
+        {"$GMRInstance":"v1","%Name":"inst_330B6239","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_330B6239","objectId":{"name":"oCheckpoint","path":"objects/oCheckpoint/oCheckpoint.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":0.65591395,"x":669.0,"y":836.0,},
       ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRTileLayer":"","%Name":"lFondo","depth":200,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"lFondo","properties":[],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":94,"SerialiseWidth":86,"TileCompressedData":[
           -634,2,50,1220,1221,1220,1221,1220,1221,1220,1221,1220,1221,1220,1221,1220,1221,1220,1221,1220,1221,

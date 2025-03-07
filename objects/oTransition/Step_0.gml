@@ -7,6 +7,9 @@ switch(state){
 		}else{
 			state = states.IN
 			global.Player_Hp = global.Player_HpMax;
+			global.Player_Lives--;
+			oPlayer.x = global.respawnX;
+			oPlayer.y = global.respawnY;
 			//goto room
 			if room_exists(targetRoom) room_goto(targetRoom);
 		}

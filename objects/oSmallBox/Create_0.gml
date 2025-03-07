@@ -12,6 +12,9 @@ function Destroy(){
 		_coin.hsp = random_range(-3,3);
 	}
 	cameraShake(1,5);
+	if (!(ds_list_find_index(global.currentState, myId) >= 0)) { // Si el ID no está en la lista
+	    ds_list_add(global.currentState, myId); // Guardarlo en currentState
+	}
 	instance_destroy();
 }
 
