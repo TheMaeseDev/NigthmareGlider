@@ -574,13 +574,34 @@ if isGrabbing && attackKey{
 #endregion
 
 #region Romper cajas cayendo encima
-
-var _breakThreshold = 3.5; // Velocidad mínima para romperla
+/*
+var _breakThreshold = 1.55; // Velocidad mínima para romperla
 smallBox = instance_place(x,y+yspd,oSmallBox)
 if smallBox != noone && !onGround && !instance_exists(airAttackHB){
-	if yspd >= _breakThreshold{
+	if !glideStart{
 		yspd=-5;
 		smallBox.Destroy();
+	}
+}*/
+
+smallBox = instance_place(x,y+abs(yspd),oSmallBox)
+if instance_exists(smallBox) && !glideStart && !airAttackStart{
+	with(smallBox)	Destroy();
+	if jumpKey _bouncePower = -6;
+	else _bouncePower = -4
+	jumpHoldFrames = 0;
+	jumpKeyBufferTimer = 1;  // Simula el tiempo de presionado
+	yspd=_bouncePower;
+}
+
+#endregion
+
+#region Romper cajas cabeceandolas
+
+var _smallBoxOnTop = instance_place(x,y-5,oSmallBox);
+if instance_exists(_smallBoxOnTop){
+	if _smallBoxOnTop.vsp!=0 || yspd<0{
+		with _smallBoxOnTop Destroy();
 	}
 }
 
