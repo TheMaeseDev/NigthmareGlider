@@ -33,3 +33,6 @@ owner = noone;
 //Velocidades al ser lanzadas
 throwHsp = 4.5;
 throwVsp = -4.5;
+
+
+myId = string(x)+" - "+string(y);

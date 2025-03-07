@@ -62,6 +62,7 @@
     {"id":{"name":"oBomb","path":"objects/oBomb/oBomb.yy",},},
     {"id":{"name":"oBounce_Barrel","path":"objects/oBounce_Barrel/oBounce_Barrel.yy",},},
     {"id":{"name":"oCamera","path":"objects/oCamera/oCamera.yy",},},
+    {"id":{"name":"oCheckpoint","path":"objects/oCheckpoint/oCheckpoint.yy",},},
     {"id":{"name":"oCollectable_Coin_Taked","path":"objects/oCollectable_Coin_Taked/oCollectable_Coin_Taked.yy",},},
     {"id":{"name":"oCollectable_Coin","path":"objects/oCollectable_Coin/oCollectable_Coin.yy",},},
     {"id":{"name":"oCollectable_Heal_Taked","path":"objects/oCollectable_Heal_Taked/oCollectable_Heal_Taked.yy",},},
