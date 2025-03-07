@@ -1,34 +1,39 @@
 
-switch (state){
+switch (state) {
 	case "moving":
-		// Aplicar aceleracion
+		// Aplicar aceleración en la dirección actual
 		xspd += accel * dirX;
-		
+		yspd += accel * dirY;
+
 		// Limitar la velocidad máxima
 		xspd = clamp(xspd, -maxSpeed, maxSpeed);
+		yspd = clamp(yspd, -maxSpeed, maxSpeed);
 
-		// Mover en pasos pequeños para no atravesar la pared
-		var steps = ceil(abs(xspd)); // Determina cuántos pasos dividir el movimiento
+		// Mover en pasos pequeños para no atravesar paredes
+		var steps = ceil(max(abs(xspd), abs(yspd))); 
 		for (var i = 0; i < steps; i++) {
-			if (place_meeting(x+sign(xspd), y, oWall)) {
-				// Si hay colisión, detener y cambiar dirección
-				xspd = 0; // Resetear velocidad para nueva aceleración
-				accel = -accel; // Invertir aceleración para el otro sentido
+			if (place_meeting(x + sign(xspd), y + sign(yspd), oWall)) {
+				// Si colisiona, detenerse y cambiar de dirección
+				xspd = 0;
+				yspd = 0;
 				state = "rest";
 				cameraShake(5, 2);
+				changeDirection();
 				break;
 			} else {
-				x += sign(xspd); // Mover un píxel en la dirección de la velocidad
+				x += sign(xspd);
+				y += sign(yspd);
 			}
 		}
+
 		// Reiniciar el timer de descanso
 		restTimer = restFrames;
 	break;
-	
+
 	case "rest":
 		restTimer--;
-		if restTimer<=0{
-			state="moving";	
+		if (restTimer <= 0) {
+			state = "moving";
 		}
 	break;
 }
