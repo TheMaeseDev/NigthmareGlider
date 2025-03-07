@@ -588,12 +588,9 @@ smallBox = instance_place(x,y+abs(yspd),oSmallBox)
 if instance_exists(smallBox) && !glideStart && !airAttackStart{
 	with(smallBox)	Destroy();
 	if jumpKey _bouncePower = -6;
-	else _bouncePower = -4.5
-	
-	//jumpKeyBuffered = true;  // Activa el buffer de salto
+	else _bouncePower = -4
 	jumpHoldFrames = 0;
 	jumpKeyBufferTimer = 1;  // Simula el tiempo de presionado
-	//jumpCount = min(jumpCount, jumpMax - 1); // Asegura que no se excedan los saltos
 	yspd=_bouncePower;
 }
 
@@ -602,17 +599,12 @@ if instance_exists(smallBox) && !glideStart && !airAttackStart{
 #region Romper cajas cabeceandolas
 
 var _smallBoxOnTop = instance_place(x,y-5,oSmallBox);
-
 if instance_exists(_smallBoxOnTop){
 	if _smallBoxOnTop.vsp!=0 || yspd!=0{
 		with _smallBoxOnTop Destroy();
 	}
 	
 }
-/*
-if (bbox_top >= other.bbox_top && bbox_top < other.bbox_top) { 
-	other.instance_destroy(); // Romper la caja
-}*/
 
 #endregion
 
