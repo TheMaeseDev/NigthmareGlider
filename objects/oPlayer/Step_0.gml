@@ -600,10 +600,9 @@ if instance_exists(smallBox) && !glideStart && !airAttackStart{
 
 var _smallBoxOnTop = instance_place(x,y-5,oSmallBox);
 if instance_exists(_smallBoxOnTop){
-	if _smallBoxOnTop.vsp!=0 || yspd!=0{
+	if _smallBoxOnTop.vsp!=0 || yspd<0{
 		with _smallBoxOnTop Destroy();
 	}
-	
 }
 
 #endregion
