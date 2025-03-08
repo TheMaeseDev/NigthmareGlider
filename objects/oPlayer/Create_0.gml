@@ -195,4 +195,8 @@ grabbedObject = noone;
 isMovingObject = false;
 grabSpd = 2.3; // Velocidad de arrastre
 
+//Crushed mechanic
+crushedFrames = 10;
+crushedTimer = crushedFrames;
+
 global.mensaje = "";
