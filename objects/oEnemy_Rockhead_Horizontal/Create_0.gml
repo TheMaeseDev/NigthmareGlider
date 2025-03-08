@@ -5,10 +5,13 @@ yspd=0;
 restFrames = 90;
 restTimer = restFrames;
 
+sprite_idle = sEnemy_Rockhead;
+sprite_left_hit = sEnemy_Rockhead_lHit;
+sprite_right_hit = sEnemy_Rockhead_rHit;
+
 state = "rest"; //"rest" or "moving"
 
 accel = 0.25;  // Aceleración
 maxSpeed = 5; // Velocidad máxima
-dirX = 1;     // Dirección en X (-1, 0, 1)
+//dirX = 1;     // Dirección en X (-1, 0, 1)
 dirY = 0;     // Dirección en Y (-1, 0, 1)
-
