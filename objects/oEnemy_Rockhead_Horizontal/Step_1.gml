@@ -26,7 +26,14 @@ switch (state){
 				xspd = 0; // Resetear velocidad para nueva aceleración
 				accel = -accel; // Invertir aceleración para el otro sentido
 				state = "hit";
-				cameraShake(5, 2);
+				
+				// Definir un radio dentro del cual el temblor de cámara ocurre
+				var shakeRadius = 200; // Puedes ajustar esto según el tamaño de la pantalla
+				// Verificar si el jugador está dentro del radio
+				if (distance_to_object(oPlayer) < shakeRadius) {
+				    cameraShake(5, 2);
+				}
+				
 				break;
 			} else {
 				x += sign(xspd); // Mover un píxel en la dirección de la velocidad

@@ -100,8 +100,15 @@ if instance_exists(myFloorPlat) && myFloorPlat.xspd !=0 && !place_meeting(x,y+mo
 #endregion
 
 #region Check if im "crushed"
-image_blend = c_white;
-if place_meeting(x,y,oWall) image_blend = c_blue;
+
+if place_meeting(x,y,oWall){
+	crushedTimer--;
+	if(crushedTimer<=0){
+		if global.Player_Hp>0 global.Player_Hp--;
+	}
+}else{
+	crushedTimer = crushedFrames;
+}
 
 #endregion
 

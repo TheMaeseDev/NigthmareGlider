@@ -25,7 +25,14 @@ switch (state) {
 				yspd = 0;
 				accel = -accel; // Invertir dirección
 				state = "hit";
-				cameraShake(5, 2);
+				
+				// Definir un radio dentro del cual el temblor de cámara ocurre
+				var shakeRadius = 200; // Puedes ajustar esto según el tamaño de la pantalla
+				// Verificar si el jugador está dentro del radio
+				if (distance_to_object(oPlayer) < shakeRadius) {
+				    cameraShake(5, 2);
+				}
+				
 				break;
 			} else {
 				y += sign(yspd);
