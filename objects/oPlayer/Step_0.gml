@@ -101,14 +101,39 @@ if instance_exists(myFloorPlat) && myFloorPlat.xspd !=0 && !place_meeting(x,y+mo
 
 #region Check if im "crushed"
 
-if place_meeting(x,y,oWall){
-	crushedTimer--;
-	if(crushedTimer<=0){
-		if global.Player_Hp>0 global.Player_Hp--;
-	}
-}else{
-	crushedTimer = crushedFrames;
+if place_meeting(x, y, oWall) {
+    crushedTimer--;
+
+    // Si el tiempo de atascado llega a 0, perder vida
+    if (crushedTimer <= 0) {
+        if (global.Player_Hp > 0) global.Player_Hp--;
+    }
+
+    var _num = 7;
+    
+    // Intentar desatascarse con prioridad de direcciones
+    if (!place_meeting(x - _num, y, oWall)) {
+        x -= _num;
+    }
+    else if (!place_meeting(x + _num, y, oWall)) {
+        x += _num;
+    }
+    else if (!place_meeting(x, y + _num, oWall)) {
+        y += _num;
+    }
+    else if (!place_meeting(x, y - _num, oWall)) {
+        y -= _num;
+    }
+
+    // Si después del intento sigue atascado, evitar más movimientos
+    if (place_meeting(x, y, oWall)) {
+        canUnstuck = false;
+    }
+} else {
+    crushedTimer = crushedFrames;
+    canUnstuck = true;
 }
+
 
 #endregion
 
