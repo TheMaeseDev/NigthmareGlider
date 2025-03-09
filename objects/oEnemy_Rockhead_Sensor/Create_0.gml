@@ -11,10 +11,10 @@ sprite_downHit = sEnemy_Rockhead_dHit;
 
 state = "idle"; //"rest" or "moving"
 
-accel = 0.25;  // Aceleración
-maxSpeed = 5; // Velocidad máxima
+accel = 0.05;  // Aceleración
+maxSpeed = 3; // Velocidad máxima
 dirX = 0;     // Dirección en X (-1, 0, 1)
 //dirY = 1;     // Dirección en Y (-1, 0, 1)
 
 attackSpeed = 5;    // Velocidad de caída rápida
-returnSpeed = 2;    // Velocidad lenta al volver
+returnSpeed = 0.1;    // Velocidad lenta al volver
