@@ -3,32 +3,46 @@ mask_index = sprite_idle;
 switch (state) {
 	case "idle":
 		// Si el jugador está dentro del rango, iniciar ataque
-		var detectionRange = 200; // Distancia en la que detecta al jugador
+		var detectionRange = 150; // Distancia en la que detecta al jugador
 		if (oPlayer.y > y && oPlayer.y < y + detectionRange && abs(oPlayer.x - x) < 18) {
 			state = "attack";
 			yspd = attackSpeed; // Velocidad rápida de ataque
 		}
+		
+		if (oPlayer.y > y && oPlayer.y < y + detectionRange && abs(oPlayer.x - x) < 50) {
+			sprite_index=sEnemy_Rockhead;
+		}else sprite_index=sEnemy_Rockhead_Sleep;
 	break;
 
 	case "attack":
-		// Aplicar velocidad de ataque
-		y += yspd;
-
-		// Si choca contra el suelo, entra en estado "hit"
-		if (place_meeting(x, y + 1, oWall)) {
-			sprite_index = sprite_downHit;
-			image_speed = 1.5;
-			image_index = 0;
-			yspd = 0;
-			state = "hit";
-			restTimer = restFrames;
-
-			// Temblor de cámara si el jugador está cerca
-			var shakeRadius = 100;
-			if (distance_to_object(oPlayer) < shakeRadius) {
-				cameraShake(5, 2);
+		// Mover en pasos pequeños
+		var steps = ceil(abs(yspd));
+		for (var i = 0; i < steps; i++) {
+			if (place_meeting(x, y + sign(yspd), oWall)) {
+				// Cambiar sprite al chocar
+				sprite_index = sprite_downHit;
+				image_speed = 1.5;
+				image_index = 0;
+				
+				// Detener movimiento
+				yspd = 0;
+				state = "hit";
+				
+				// Definir un radio dentro del cual el temblor de cámara ocurre
+				var shakeRadius = 100; // Puedes ajustar esto según el tamaño de la pantalla
+				// Verificar si el jugador está dentro del radio
+				if (distance_to_object(oPlayer) < shakeRadius) {
+				    cameraShake(5, 2);
+				}
+				
+				break;
+			} else {
+				y += sign(yspd);
 			}
 		}
+
+		// Reiniciar el timer de descanso
+		restTimer = restFrames;
 	break;
 	
 	case "hit":

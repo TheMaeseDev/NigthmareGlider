@@ -159,6 +159,7 @@
     {"id":{"name":"sEnemy_Rockhead_dHit","path":"sprites/sEnemy_Rockhead_dHit/sEnemy_Rockhead_dHit.yy",},},
     {"id":{"name":"sEnemy_Rockhead_lHit","path":"sprites/sEnemy_Rockhead_lHit/sEnemy_Rockhead_lHit.yy",},},
     {"id":{"name":"sEnemy_Rockhead_rHit","path":"sprites/sEnemy_Rockhead_rHit/sEnemy_Rockhead_rHit.yy",},},
+    {"id":{"name":"sEnemy_Rockhead_Sleep","path":"sprites/sEnemy_Rockhead_Sleep/sEnemy_Rockhead_Sleep.yy",},},
     {"id":{"name":"sEnemy_Rockhead_uHit","path":"sprites/sEnemy_Rockhead_uHit/sEnemy_Rockhead_uHit.yy",},},
     {"id":{"name":"sEnemy_Rockhead","path":"sprites/sEnemy_Rockhead/sEnemy_Rockhead.yy",},},
     {"id":{"name":"sEnemy_Vertical_Fly","path":"sprites/sEnemy_Vertical_Fly/sEnemy_Vertical_Fly.yy",},},

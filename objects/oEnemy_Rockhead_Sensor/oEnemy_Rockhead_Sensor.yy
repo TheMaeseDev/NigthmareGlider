@@ -37,8 +37,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sEnemy_Rockhead",
-    "path":"sprites/sEnemy_Rockhead/sEnemy_Rockhead.yy",
+    "name":"sEnemy_Rockhead_Sleep",
+    "path":"sprites/sEnemy_Rockhead_Sleep/sEnemy_Rockhead_Sleep.yy",
   },
   "spriteMaskId":null,
   "visible":true,
