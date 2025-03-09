@@ -106,31 +106,34 @@ if place_meeting(x, y, oWall) {
 
     // Si el tiempo de atascado llega a 0, perder vida
     if (crushedTimer <= 0) {
-       if (global.Player_Hp > 0) global.Player_Hp--;
+        if (global.Player_Hp > 0) global.Player_Hp--;
     }
 
-	var _num = 7;
-    if !place_meeting(x+_num,y,oWall){
-		x+=_num;
-		canUnstuck = false;
-	}
-	if !place_meeting(x-_num,y,oWall){
-		x-=_num;
-		canUnstuck = false;
-	}
-	if !place_meeting(x,y+_num,oWall){
-		y+=_num;
-		canUnstuck = false;
-	}
-	if !place_meeting(x,y-_num,oWall){
-		y-=_num;
-		canUnstuck = false;
-	}
+    var _num = 7;
+    
+    // Intentar desatascarse con prioridad de direcciones
+    if (!place_meeting(x - _num, y, oWall)) {
+        x -= _num;
+    }
+    else if (!place_meeting(x + _num, y, oWall)) {
+        x += _num;
+    }
+    else if (!place_meeting(x, y + _num, oWall)) {
+        y += _num;
+    }
+    else if (!place_meeting(x, y - _num, oWall)) {
+        y -= _num;
+    }
 
+    // Si después del intento sigue atascado, evitar más movimientos
+    if (place_meeting(x, y, oWall)) {
+        canUnstuck = false;
+    }
 } else {
     crushedTimer = crushedFrames;
-	canUnstuck = true;
+    canUnstuck = true;
 }
+
 
 #endregion
 
