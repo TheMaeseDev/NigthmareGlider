@@ -3,6 +3,9 @@ finalCamY = 0;
 
 camTrailSpd = 0.1;
 
+camOffsetX=0;
+camOffsetY=0;
+
 // Variables del temblor
 global.shakeMagnitude = 0; 
 global.shakeDuration = 0;  
