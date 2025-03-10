@@ -1,28 +1,74 @@
-//Fullscreen toggle
+// Fullscreen toggle
 if keyboard_check_pressed(vk_f8){
-	window_set_fullscreen(!window_get_fullscreen());	
+    window_set_fullscreen(!window_get_fullscreen());    
 }
+
+get_cam_controls();
 
 cam = view_camera[0];
 
-//Exit if there is no player
+// Exit if there is no player
 if !instance_exists(oPlayer) exit;
 
-//Get camera size
+// Get camera size
 var _camWidth = camera_get_view_width(cam);
 var _camHeight = camera_get_view_height(cam);
 
-//Get camera target coordinates
-var _camX = oPlayer.x - _camWidth/2;
-var _camY = oPlayer.y - _camHeight/2
+// Definir el área de tolerancia (48% en X y Y)
+var marginX = _camWidth * 0.48;
+var marginY = _camHeight * 0.48;
 
-//Constrain camera to room borders
-_camX = clamp(_camX,0,room_width - _camWidth);
-_camY = clamp(_camY,0,room_height - _camHeight);
+// Obtener la posición de la cámara actual
+var camLeft = finalCamX + marginX;
+var camRight = finalCamX + _camWidth - marginX;
+var camTop = finalCamY + marginY;
+var camBottom = finalCamY + _camHeight - marginY;
 
-//Set cam coordinates variables
-finalCamX += (_camX-finalCamX)*camTrailSpd;
-finalCamY += (_camY-finalCamY)*camTrailSpd;
+// Definir las nuevas coordenadas de la cámara
+var _camX = finalCamX;
+var _camY = finalCamY;
+
+// Comprobar si el jugador está saliendo del área de tolerancia en X
+if (oPlayer.x < camLeft) {
+    _camX = oPlayer.x - marginX;
+} else if (oPlayer.x > camRight) {
+    _camX = oPlayer.x - _camWidth + marginX;
+}
+
+// Comprobar si el jugador está saliendo del área de tolerancia en Y
+if (oPlayer.y < camTop) {
+    _camY = oPlayer.y - marginY;
+} else if (oPlayer.y > camBottom) {
+    _camY = oPlayer.y - _camHeight + marginY;
+}
+
+// Constrain la cámara a los bordes del room
+_camX = clamp(_camX, 0, room_width - _camWidth);
+_camY = clamp(_camY, 0, room_height - _camHeight);
+
+var arrowX = camRightKey - camLeftKey; // → Derecha = 1, Izquierda = -1
+var arrowY = camDownKey - camUpKey;   // ↓ Abajo = 1, Arriba = -1
+
+// Factor de desplazamiento (puedes ajustarlo)
+var maxCamOffsetX = 32;
+var maxCamOffsetY = 32;
+
+// Interpolar suavemente los valores para evitar movimientos bruscos
+camOffsetX += (arrowX * maxCamOffsetX - camOffsetX) * 0.1;
+camOffsetY += (arrowY * maxCamOffsetY - camOffsetY) * 0.1;
+
+// Limitar desplazamiento dentro de los bordes del room
+var minCamX = 0;
+var maxCamX = room_width - _camWidth;
+var minCamY = 0;
+var maxCamY = room_height - _camHeight;
+
+camOffsetX = clamp(camOffsetX, minCamX - finalCamX, maxCamX - finalCamX);
+camOffsetY = clamp(camOffsetY, minCamY - finalCamY, maxCamY - finalCamY);
+
+// Aplicar interpolación suave para la cámara
+finalCamX += (_camX - finalCamX) * camTrailSpd;
+finalCamY += (_camY - finalCamY) * camTrailSpd;
 
 // Agregar temblor si está activo
 var shakeX = 0;
@@ -34,5 +80,5 @@ if (global.shakeTimer > 0) {
     shakeY = random_range(-global.shakeMagnitude, global.shakeMagnitude);
 }
 
-//Set camera coordinates
-camera_set_view_pos(cam, _camX +shakeX, _camY+shakeY);
+// Set camera position con desplazamiento manual
+camera_set_view_pos(cam, finalCamX + camOffsetX + shakeX, finalCamY + camOffsetY + shakeY - 30);

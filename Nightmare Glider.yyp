@@ -121,6 +121,7 @@
     {"id":{"name":"cameraShake","path":"scripts/cameraShake/cameraShake.yy",},},
     {"id":{"name":"enemy_take_damage","path":"scripts/enemy_take_damage/enemy_take_damage.yy",},},
     {"id":{"name":"general_functions","path":"scripts/general_functions/general_functions.yy",},},
+    {"id":{"name":"get_cam_controls","path":"scripts/get_cam_controls/get_cam_controls.yy",},},
     {"id":{"name":"object_movement","path":"scripts/object_movement/object_movement.yy",},},
     {"id":{"name":"bgSky","path":"sprites/bgSky/bgSky.yy",},},
     {"id":{"name":"sBad_Wall","path":"sprites/sBad_Wall/sBad_Wall.yy",},},
