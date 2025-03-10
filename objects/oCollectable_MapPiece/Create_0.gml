@@ -3,8 +3,8 @@ event_inherited();
 function Collected(){
 	instance_create_depth(x,y,depth,oCollectable_MapPiece_Taked);
 	global.Room_MapPieces[piece_index] = true;
-	if (!(ds_list_find_index(global.currentState, myId) >= 0)) { // Si el ID no está en la lista
-	    ds_list_add(global.currentState, myId); // Guardarlo en currentState
+	if (!(ds_list_find_index(global.savedState, myId) >= 0)) { // Si el ID no está en la lista
+	    ds_list_add(global.savedState, myId); // Guardarlo en currentState
 	}
 	instance_destroy();
 	
