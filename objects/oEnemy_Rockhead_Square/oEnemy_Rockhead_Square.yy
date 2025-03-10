@@ -10,8 +10,8 @@
   "name":"oEnemy_Rockhead_Square",
   "overriddenProperties":[],
   "parent":{
-    "name":"Enemies",
-    "path":"folders/Objects/Enemies.yy",
+    "name":"RockHead",
+    "path":"folders/Objects/Enemies/RockHead.yy",
   },
   "parentObjectId":{
     "name":"oMovePlat",

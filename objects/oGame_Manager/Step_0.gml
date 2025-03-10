@@ -14,3 +14,7 @@ if global.Player_Coins>=100{
 	global.Player_Lives++;
 	global.Player_Coins=0;
 }
+
+if global.Player_Lives < 0{
+	game_restart();	
+}

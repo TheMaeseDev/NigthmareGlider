@@ -73,18 +73,18 @@ if show{
 	// Si la animación terminó, dibujar el mapa completo y salir
 	if (map_merge_progress == 1) {
 	    draw_sprite(sCollectable_Map, 0, cam_x + (cam_w / 2), hud_final_y[5]);
-	    exit; // Termina la función aquí para no dibujar los fragmentos
-	}
+	    //exit; // Termina la función aquí para no dibujar los fragmentos
+	}else{
+		// Dibujar fragmentos del mapa con animación de movimiento al centro
+		for (var i = 0; i < 4; i++) {
+		    if (global.Room_MapPieces[i]) { 
+		        var start_x = hud_x[5] + (i * 32); // Posición inicial de cada fragmento
+		        var target_x = cam_x + (cam_w / 2); // Centro del HUD
+		        var interp_x = lerp(start_x, target_x, map_merge_progress); // Interpolación suave
 
-	// Dibujar fragmentos del mapa con animación de movimiento al centro
-	for (var i = 0; i < 4; i++) {
-	    if (global.Room_MapPieces[i]) { 
-	        var start_x = hud_x[5] + (i * 32); // Posición inicial de cada fragmento
-	        var target_x = cam_x + (cam_w / 2); // Centro del HUD
-	        var interp_x = lerp(start_x, target_x, map_merge_progress); // Interpolación suave
-
-	        draw_sprite_ext(map_sprites[i], 0, interp_x, hud_final_y[5], 1, 1, 0, c_white, 1);
-	    }
+		        draw_sprite_ext(map_sprites[i], 0, interp_x, hud_final_y[5], 1, 1, 0, c_white, 1);
+		    }
+		}
 	}
 }
 
