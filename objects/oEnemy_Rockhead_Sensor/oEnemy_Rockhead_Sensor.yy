@@ -10,8 +10,8 @@
   "name":"oEnemy_Rockhead_Sensor",
   "overriddenProperties":[],
   "parent":{
-    "name":"Enemies",
-    "path":"folders/Objects/Enemies.yy",
+    "name":"RockHead",
+    "path":"folders/Objects/Enemies/RockHead.yy",
   },
   "parentObjectId":{
     "name":"oMovePlat",
