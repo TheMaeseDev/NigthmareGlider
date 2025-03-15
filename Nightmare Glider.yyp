@@ -122,6 +122,7 @@
     {"id":{"name":"blink_effect","path":"scripts/blink_effect/blink_effect.yy",},},
     {"id":{"name":"bounce_behaviour","path":"scripts/bounce_behaviour/bounce_behaviour.yy",},},
     {"id":{"name":"cameraShake","path":"scripts/cameraShake/cameraShake.yy",},},
+    {"id":{"name":"draw_sprite_text","path":"scripts/draw_sprite_text/draw_sprite_text.yy",},},
     {"id":{"name":"enemy_take_damage","path":"scripts/enemy_take_damage/enemy_take_damage.yy",},},
     {"id":{"name":"general_functions","path":"scripts/general_functions/general_functions.yy",},},
     {"id":{"name":"get_cam_controls","path":"scripts/get_cam_controls/get_cam_controls.yy",},},

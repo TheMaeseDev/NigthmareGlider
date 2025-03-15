@@ -93,12 +93,12 @@ if show{
 
 #region Dibujar los números al lado de cada ícono
 
-if show{
-	draw_set_color(c_white);
-	draw_text(hud_x[0]+25, hud_final_y[0], string(global.Player_Coins)); // Monedas
-	draw_text(hud_x[1]+25, hud_final_y[1], string(global.Player_Lives)); // Vidas
-	draw_text(hud_x[2]+30, hud_final_y[2]-10, string(global.Room_SpecialBox_inRoom - global.Room_SpecialBox_Broken)); // Cajas rotas
-	draw_text(hud_x[3]+20, hud_final_y[3]-10, string(global.Player_Power)); // Power
+if show {
+    draw_set_color(c_white);
+    draw_sprite_text(string(global.Player_Coins), hud_x[0] + 25, hud_final_y[0], 12); // Monedas
+    draw_sprite_text(string(global.Player_Lives), hud_x[1] + 25, hud_final_y[1], 12); // Vidas
+    draw_sprite_text(string(global.Room_SpecialBox_inRoom - global.Room_SpecialBox_Broken), hud_x[2] + 30, hud_final_y[2] - 10, 12); // Cajas rotas
+    draw_sprite_text(string(global.Player_Power), hud_x[3] + 20, hud_final_y[3] - 10, 12); // Power
 }
 
 #endregion
@@ -114,5 +114,5 @@ if global.paused {
     draw_set_halign(fa_center);
     draw_set_valign(fa_middle);
     draw_set_color(c_white);
-    draw_text(cam_x + cam_w / 2, cam_y + cam_h / 2, "PAUSED");
+    draw_sprite_text("PAUSED", cam_x + cam_w / 2 - 40, cam_y + cam_h / 2, 14);
 }
