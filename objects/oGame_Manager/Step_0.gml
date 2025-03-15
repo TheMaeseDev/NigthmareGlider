@@ -18,3 +18,19 @@ if global.Player_Coins>=100{
 if global.Player_Lives < 0{
 	game_restart();	
 }
+
+
+pauseButton = keyboard_check_pressed(vk_escape) || gamepad_button_check_pressed(0,gp_start);
+if pauseButton{
+	global.paused = !global.paused;
+	
+}
+
+if global.paused{
+	instance_deactivate_all(true);
+	instance_activate_object(oGame_Manager); // Mantiene activado el menú de pausa
+	instance_activate_object(oHud);
+
+}else{
+	instance_activate_all();
+}

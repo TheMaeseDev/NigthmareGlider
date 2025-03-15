@@ -1,5 +1,5 @@
 event_inherited();
-
+if (global.paused==true) exit;
 if jumpDelay<=0{
 	vsp+=jumpSpeed;
 	jumpDelay = jumpFrames;
