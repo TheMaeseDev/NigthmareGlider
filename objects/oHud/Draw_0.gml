@@ -103,3 +103,16 @@ if show{
 
 #endregion
 
+if global.paused {
+    // Dibujar un fondo negro semitransparente sobre la vista actual
+    draw_set_alpha(0.5); // Opacidad del fondo
+    draw_set_color(c_black);
+    draw_rectangle(cam_x, cam_y, cam_x + cam_w, cam_y + cam_h, false); // Fondo semitransparente
+    draw_set_alpha(1); // Restaurar la opacidad
+
+    // Dibujar el texto "Paused" en el centro de la pantalla
+    draw_set_halign(fa_center);
+    draw_set_valign(fa_middle);
+    draw_set_color(c_white);
+    draw_text(cam_x + cam_w / 2, cam_y + cam_h / 2, "PAUSED");
+}
