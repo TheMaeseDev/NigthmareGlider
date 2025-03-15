@@ -64,10 +64,10 @@ hud_start_y[5] = hud_final_y[5] + 50;
 #region Dibujar los íconos
 
 if show{
-	draw_sprite_ext(sCollectable_Coin, 0, hud_x[0], hud_final_y[0], 1.5, 1.5, 0, c_white, 1); // Esquina superior izquierda
-	draw_sprite(sCollectable_Live, 0, hud_x[1], hud_final_y[1]); // Esquina superior derecha
-	draw_sprite(sSpecialBox, 0, hud_x[2], hud_final_y[2]); // Esquina inferior izquierda
-	draw_sprite(sBomb, 0, hud_x[3], hud_final_y[3]); // Esquina inferior derecha
+	draw_sprite_ext(sHud_Coin, 0, hud_x[0], hud_final_y[0], 1.5, 1.5, 0, c_white, 1); // Esquina superior izquierda
+	draw_sprite(sHud_Live, 0, hud_x[1], hud_final_y[1]); // Esquina superior derecha
+	draw_sprite(sHud_SpecialBox, 0, hud_x[2], hud_final_y[2]); // Esquina inferior izquierda
+	draw_sprite(sHud_Power, 0, hud_x[3], hud_final_y[3]-10); // Esquina inferior derecha
 	draw_sprite(sHealthBar, global.Player_Hp, hud_x[4], hud_final_y[4]); //Arriba Centro
 
 	// Si la animación terminó, dibujar el mapa completo y salir
@@ -93,12 +93,12 @@ if show{
 
 #region Dibujar los números al lado de cada ícono
 
-if show{
-	draw_set_color(c_white);
-	draw_text(hud_x[0]+25, hud_final_y[0], string(global.Player_Coins)); // Monedas
-	draw_text(hud_x[1]+25, hud_final_y[1], string(global.Player_Lives)); // Vidas
-	draw_text(hud_x[2]+30, hud_final_y[2]-10, string(global.Room_SpecialBox_inRoom - global.Room_SpecialBox_Broken)); // Cajas rotas
-	draw_text(hud_x[3]+20, hud_final_y[3]-10, string(global.Player_Power)); // Power
+if show {
+    draw_set_color(c_white);
+    draw_sprite_text(string(global.Player_Coins), hud_x[0] + 18, hud_final_y[0], 12); // Monedas
+    draw_sprite_text(string(global.Player_Lives), hud_x[1] + 23, hud_final_y[1], 12); // Vidas
+    draw_sprite_text(string(global.Room_SpecialBox_inRoom - global.Room_SpecialBox_Broken), hud_x[2] + 23, hud_final_y[2] - 10, 12); // Cajas rotas
+    draw_sprite_text(string(global.Player_Power), hud_x[3] + 20, hud_final_y[3] - 10, 12); // Power
 }
 
 #endregion
@@ -114,5 +114,5 @@ if global.paused {
     draw_set_halign(fa_center);
     draw_set_valign(fa_middle);
     draw_set_color(c_white);
-    draw_text(cam_x + cam_w / 2, cam_y + cam_h / 2, "PAUSED");
+    draw_sprite_text("PAUSED", cam_x + cam_w / 2 - 40, cam_y + cam_h / 2, 14);
 }
