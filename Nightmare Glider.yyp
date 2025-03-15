@@ -168,6 +168,7 @@
     {"id":{"name":"sEnemy_Rockhead","path":"sprites/sEnemy_Rockhead/sEnemy_Rockhead.yy",},},
     {"id":{"name":"sEnemy_Vertical_Fly","path":"sprites/sEnemy_Vertical_Fly/sEnemy_Vertical_Fly.yy",},},
     {"id":{"name":"sEnemy","path":"sprites/sEnemy/sEnemy.yy",},},
+    {"id":{"name":"sFont_Orange","path":"sprites/sFont_Orange/sFont_Orange.yy",},},
     {"id":{"name":"sGrabbable","path":"sprites/sGrabbable/sGrabbable.yy",},},
     {"id":{"name":"sHealthBar","path":"sprites/sHealthBar/sHealthBar.yy",},},
     {"id":{"name":"sMoveObject","path":"sprites/sMoveObject/sMoveObject.yy",},},
