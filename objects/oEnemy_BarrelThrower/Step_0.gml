@@ -47,7 +47,7 @@ switch (barrelThroweState){
 		if punchTimer<=0{
 			sprite_index = sEnemy_BarrelThrower_Barrel;
 			if (image_index >= 3 && !alreadyPunch) {
-				golpe = instance_create_depth(x+30*face,y,depth,oEnemyBase);
+				golpe = instance_create_depth(x+30*face,y,depth,oEnemy_Hitbox);
 				golpe.image_yscale*=3;
 				alreadyPunch=true;
 			}

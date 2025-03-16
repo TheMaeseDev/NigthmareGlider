@@ -80,6 +80,7 @@
     {"id":{"name":"oEnemy_Cannon_Fire_Effect","path":"objects/oEnemy_Cannon_Fire_Effect/oEnemy_Cannon_Fire_Effect.yy",},},
     {"id":{"name":"oEnemy_Canon","path":"objects/oEnemy_Canon/oEnemy_Canon.yy",},},
     {"id":{"name":"oEnemy_Chicken","path":"objects/oEnemy_Chicken/oEnemy_Chicken.yy",},},
+    {"id":{"name":"oEnemy_Hitbox","path":"objects/oEnemy_Hitbox/oEnemy_Hitbox.yy",},},
     {"id":{"name":"oEnemy_Patricio","path":"objects/oEnemy_Patricio/oEnemy_Patricio.yy",},},
     {"id":{"name":"oEnemy_Pumpkin","path":"objects/oEnemy_Pumpkin/oEnemy_Pumpkin.yy",},},
     {"id":{"name":"oEnemy_Rockhead_Horizontal","path":"objects/oEnemy_Rockhead_Horizontal/oEnemy_Rockhead_Horizontal.yy",},},

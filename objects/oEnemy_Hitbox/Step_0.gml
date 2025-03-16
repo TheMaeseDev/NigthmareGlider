@@ -1,0 +1,1 @@
+with instance_place(x,y,oPlayer) self.takeDamage(1,other.x);
