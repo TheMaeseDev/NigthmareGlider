@@ -28,3 +28,5 @@ bombThrowFrames=180;
 bombThrowTimer=bombThrowFrames;
 punchFrames=60;
 punchTimer=punchFrames;
+alreadyPunch = false;
+golpe=noone;

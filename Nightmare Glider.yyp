@@ -147,7 +147,7 @@
     {"id":{"name":"sCollectable_MapPiece1","path":"sprites/sCollectable_MapPiece1/sCollectable_MapPiece1.yy",},},
     {"id":{"name":"sCollectable_MapPiece2","path":"sprites/sCollectable_MapPiece2/sCollectable_MapPiece2.yy",},},
     {"id":{"name":"sCollectable_MapPiece3","path":"sprites/sCollectable_MapPiece3/sCollectable_MapPiece3.yy",},},
-    {"id":{"name":"sEnemy_BarrelThrower_Punch","path":"sprites/sEnemy_BarrelThrower_Punch/sEnemy_BarrelThrower_Punch.yy",},},
+    {"id":{"name":"sEnemy_BarrelThrower_Barrel","path":"sprites/sEnemy_BarrelThrower_Barrel/sEnemy_BarrelThrower_Barrel.yy",},},
     {"id":{"name":"sEnemy_BarrelThrower","path":"sprites/sEnemy_BarrelThrower/sEnemy_BarrelThrower.yy",},},
     {"id":{"name":"sEnemy_BomberMan_Attack","path":"sprites/sEnemy_BomberMan_Attack/sEnemy_BomberMan_Attack.yy",},},
     {"id":{"name":"sEnemy_BomberMan_Hit","path":"sprites/sEnemy_BomberMan_Hit/sEnemy_BomberMan_Hit.yy",},},
