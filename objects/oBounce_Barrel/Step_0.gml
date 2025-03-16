@@ -15,10 +15,12 @@ hsp = _movement[0];
 vsp = _movement[1];
 
 if place_meeting(x,y,oPlayer){
-	oPlayer.takeDamage(1,x);	
+	oPlayer.takeDamage(1,x);
+	Destroy();
 }
 
 if place_meeting(x,y,oNitroBox){
 	oPlayer.takeDamage(1,x);	
+	
 }
 
