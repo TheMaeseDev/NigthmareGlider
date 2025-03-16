@@ -17,7 +17,7 @@ switch (barrelThroweState){
             image_index = 0;
 			barrelThrown=false;
         }
-		if(x - oPlayer.x <= 40){
+		if(abs(x - oPlayer.x) <= 40){
 			barrelThroweState = BarrelThrowerState.PUNCHING;
 		}
     break;
@@ -38,7 +38,7 @@ switch (barrelThroweState){
     case BarrelThrowerState.PUNCHING:
 		punchTimer--;
 		bombThrowTimer=bombThrowFrames;
-        if (x - oPlayer.x > 40) { // Si el jugador se aleja, vuelve a tirar barriles
+        if (abs(x - oPlayer.x) > 40) && !punching{ // Si el jugador se aleja, vuelve a tirar barriles
             barrelThroweState = BarrelThrowerState.IDLE;
 			bombThrowTimer=30;
 			punchTimer=60;
@@ -46,6 +46,7 @@ switch (barrelThroweState){
 		
 		if punchTimer<=0{
 			sprite_index = sEnemy_BarrelThrower_Barrel;
+			punching=true;
 			if (image_index >= 3 && !alreadyPunch) {
 				golpe = instance_create_depth(x+30*face,y,depth,oEnemy_Hitbox);
 				golpe.image_yscale*=3;
@@ -56,6 +57,7 @@ switch (barrelThroweState){
 				punchTimer=punchFrames;
 				sprite_index = sEnemy_BarrelThrower;
 				alreadyPunch=false;
+				punching=false;
 				canTakeDamage=true;
 	        }
 		}
@@ -84,12 +86,10 @@ if hp<=0 && state!="hurt"{
 	enemyDestroy();	
 }
 
-image_xscale = 0.8*face;
-image_yscale = 0.8;
+image_xscale = 0.75*face;
+image_yscale = 0.75;
 
 if instance_exists(oPlayer){
 	if (x<oPlayer.x) face=1;
 	if (x>oPlayer.x) face=-1;
 }
-
-global.mensaje = abs(x - oPlayer.x);

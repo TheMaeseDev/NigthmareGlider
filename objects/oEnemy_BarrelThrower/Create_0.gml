@@ -2,7 +2,7 @@ event_inherited();
 
 function throwBarrel(){
 	var _barrel = instance_create_depth(x+(10*face),y-30,depth,oBounce_Barrel);
-	_barrel.hsp = 2*face;
+	_barrel.hsp = 3*face;
 	bombThrowTimer=bombThrowFrames;
 }
 
@@ -24,9 +24,10 @@ kby=3;
 canTakeDamage=true;
 
 
-bombThrowFrames=180;
+bombThrowFrames=120;
 bombThrowTimer=bombThrowFrames;
 punchFrames=60;
 punchTimer=punchFrames;
 alreadyPunch = false;
 golpe=noone;
+punching=false;
