@@ -47,7 +47,7 @@ function Destroy(){
 		instance_create_depth(x,y,depth,oSmallBox_Breaked);
 	}
 	instance_create_depth(x,y-(sprite_height/2),depth,oSmallBox_Smoke);
-	cameraShake(3,5);
+	//cameraShake(3,5);
 	instance_destroy();	
 }
 
