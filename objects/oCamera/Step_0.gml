@@ -86,10 +86,14 @@ if (global.shakeTimer > 0) {
 }
 
 // Interpolar suavemente el desplazamiento de la cámara cuando deadzonePosition cambia
-smoothDeadzoneOffsetX += (deadzonePosition * 40 - smoothDeadzoneOffsetX) * 0.075;
+smoothDeadzoneOffsetX += (deadzonePosition * 40 - smoothDeadzoneOffsetX) * 0.066;
+
+// *** Constrain finalCamX incluyendo el desplazamiento del deadzone ***
+var constrainedFinalCamX = clamp(finalCamX + smoothDeadzoneOffsetX, 0, room_width - _camWidth);
+var constrainedFinalCamY = clamp(finalCamY, 0, room_height - _camHeight);
 
 // Set camera position con desplazamiento manual
-camera_set_view_pos(cam, finalCamX + camOffsetX + shakeX + smoothDeadzoneOffsetX, finalCamY + camOffsetY + shakeY - 30);
+camera_set_view_pos(cam, constrainedFinalCamX + camOffsetX + shakeX, constrainedFinalCamY + camOffsetY + shakeY - 30);
 
 x1=camLeft;
 x2=camRight;
