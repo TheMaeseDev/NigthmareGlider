@@ -14,15 +14,18 @@ if !instance_exists(oPlayer) exit;
 var _camWidth = camera_get_view_width(cam);
 var _camHeight = camera_get_view_height(cam);
 
-// Definir el área de tolerancia (48% en X y Y)
-var marginX = _camWidth * 0.48;
-var marginY = _camHeight * 0.48;
+// Definir el área de tolerancia
+var marginX = _camWidth * 0.4;
+
+// Definir la deadzone en Y con más tolerancia y desplazada hacia abajo
+var marginY_Top = _camHeight * 0.3;   // Menos margen arriba (30%)
+var marginY_Bottom = _camHeight * 0.4; // Más margen abajo (60%)
 
 // Obtener la posición de la cámara actual
 var camLeft = finalCamX + marginX;
 var camRight = finalCamX + _camWidth - marginX;
-var camTop = finalCamY + marginY;
-var camBottom = finalCamY + _camHeight - marginY;
+var camTop = finalCamY + marginY_Top; 
+var camBottom = finalCamY + _camHeight - marginY_Bottom; 
 
 // Definir las nuevas coordenadas de la cámara
 var _camX = finalCamX;
@@ -37,9 +40,9 @@ if (oPlayer.x < camLeft) {
 
 // Comprobar si el jugador está saliendo del área de tolerancia en Y
 if (oPlayer.y < camTop) {
-    _camY = oPlayer.y - marginY;
+    _camY = oPlayer.y - marginY_Top;
 } else if (oPlayer.y > camBottom) {
-    _camY = oPlayer.y - _camHeight + marginY;
+    _camY = oPlayer.y - _camHeight + marginY_Bottom;
 }
 
 // Constrain la cámara a los bordes del room
@@ -80,5 +83,22 @@ if (global.shakeTimer > 0) {
     shakeY = random_range(-global.shakeMagnitude, global.shakeMagnitude);
 }
 
+if oPlayer.onGround{
+	
+}
+
 // Set camera position con desplazamiento manual
 camera_set_view_pos(cam, finalCamX + camOffsetX + shakeX, finalCamY + camOffsetY + shakeY - 30);
+
+// Guardar el color y alpha actuales
+var prevColor = draw_get_color();
+var prevAlpha = draw_get_alpha();
+
+
+x1=camLeft;
+x2=camRight;
+y1=camTop;
+y2=camBottom;
+
+
+//global.mensaje = string(camLeft)+" - "+string(camRight)+" - "+string(oPlayer.x);
