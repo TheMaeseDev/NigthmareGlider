@@ -6,5 +6,5 @@ var touchingLeft   = place_meeting(x+1,y,oPlayer);
 var touchingRight  = place_meeting(x-1,y,oPlayer);
 
 if (touchingTop || touchingBottom || touchingLeft || touchingRight) {
-	oPlayer.takeDamage(1,x);
+	oPlayer.takeDamage(2,x);
 }

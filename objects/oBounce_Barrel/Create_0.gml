@@ -52,7 +52,7 @@ function Destroy(){
 }
 
 //Variables de movimiento
-hspDefault = -2;
+hspDefault = 2;
 vspDefault = 0;
 hsp = hspDefault;
 vsp = vspDefault;
