@@ -190,6 +190,8 @@
     {"id":{"name":"sPlatform1","path":"sprites/sPlatform1/sPlatform1.yy",},},
     {"id":{"name":"sPlayer_Air_Attack_HB","path":"sprites/sPlayer_Air_Attack_HB/sPlayer_Air_Attack_HB.yy",},},
     {"id":{"name":"sPlayer_Air_Attack","path":"sprites/sPlayer_Air_Attack/sPlayer_Air_Attack.yy",},},
+    {"id":{"name":"sPlayer_Attack_1","path":"sprites/sPlayer_Attack_1/sPlayer_Attack_1.yy",},},
+    {"id":{"name":"sPlayer_Attack_2","path":"sprites/sPlayer_Attack_2/sPlayer_Attack_2.yy",},},
     {"id":{"name":"sPlayer_Attack_HB","path":"sprites/sPlayer_Attack_HB/sPlayer_Attack_HB.yy",},},
     {"id":{"name":"sPlayer_Attack","path":"sprites/sPlayer_Attack/sPlayer_Attack.yy",},},
     {"id":{"name":"sPlayer_Crouch","path":"sprites/sPlayer_Crouch/sPlayer_Crouch.yy",},},
