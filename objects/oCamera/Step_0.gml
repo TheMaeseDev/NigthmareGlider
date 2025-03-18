@@ -82,6 +82,12 @@ camOffsetY = clamp(camOffsetY, minCamY - finalCamY, maxCamY - finalCamY);
 if oPlayer.onGround yCamTrailSpd=0.1;
 else yCamTrailSpd=0.85;
 
+// Definir variable de tiempo en plataforma
+if (oPlayer.onGround) {
+    var targetDeadzoneY = oPlayer.y - (_camHeight - marginY_Bottom-10);
+    finalCamY += (targetDeadzoneY - finalCamY) * 0.015; // Suaviza la transición
+}
+
 // Aplicar interpolación suave para la cámara
 finalCamX += (_camX - finalCamX) * xCamTrailSpd;
 finalCamY += (_camY - finalCamY) * yCamTrailSpd;

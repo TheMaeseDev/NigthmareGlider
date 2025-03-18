@@ -8,6 +8,8 @@ deadzonePosition=1; //-1=izquierda | 1=derecha
 smoothDeadzoneOffsetX=0;
 targetDeadzoneOffsetX=0;
 
+idleTimer=0;
+
 
 
 x1=0
