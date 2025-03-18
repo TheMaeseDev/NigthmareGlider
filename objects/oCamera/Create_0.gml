@@ -1,10 +1,12 @@
 finalCamX = 0;
 finalCamY = 0;
 
-camTrailSpd = 0.80;
+xCamTrailSpd = 0.1;
+yCamTrailSpd = 1.5;
 
 deadzonePosition=1; //-1=izquierda | 1=derecha
 smoothDeadzoneOffsetX=0;
+targetDeadzoneOffsetX=0;
 
 
 

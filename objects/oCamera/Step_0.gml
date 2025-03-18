@@ -15,7 +15,7 @@ var _camWidth = camera_get_view_width(cam);
 var _camHeight = camera_get_view_height(cam);
 
 // Definir el área de tolerancia
-var marginX = _camWidth * 0.425;
+var marginX = _camWidth * 0.47;
 
 // Definir la deadzone en Y con más tolerancia y desplazada hacia abajo
 var marginY_Top = _camHeight * 0.30;   // Menos margen arriba (30%)
@@ -31,14 +31,22 @@ var camBottom = finalCamY + _camHeight - marginY_Bottom;
 var _camX = finalCamX;
 var _camY = finalCamY;
 
+// Definir la velocidad de transición de la deadzone
+var deadzoneMoveStep = oPlayer.xspd*oPlayer.face; // Cuánto se mueve por frame
+var deadzoneMaxOffset = 50; // Límite máximo de desplazamiento
+
 // Comprobar si el jugador está saliendo del área de tolerancia en X
 if (oPlayer.x < camLeft) {
     _camX = oPlayer.x - marginX;
-    deadzonePosition = -1;
+    smoothDeadzoneOffsetX -= deadzoneMoveStep;
 } else if (oPlayer.x > camRight) {
     _camX = oPlayer.x - _camWidth + marginX;
-    deadzonePosition = 1;
+    smoothDeadzoneOffsetX += deadzoneMoveStep;
 }
+
+// Limitar el desplazamiento del deadzone dentro de los valores máximos permitidos
+smoothDeadzoneOffsetX = clamp(smoothDeadzoneOffsetX, -deadzoneMaxOffset, deadzoneMaxOffset);
+
 
 // Comprobar si el jugador está saliendo del área de tolerancia en Y
 if (oPlayer.y < camTop) {
@@ -71,9 +79,12 @@ var maxCamY = room_height - _camHeight;
 camOffsetX = clamp(camOffsetX, minCamX - finalCamX, maxCamX - finalCamX);
 camOffsetY = clamp(camOffsetY, minCamY - finalCamY, maxCamY - finalCamY);
 
+if oPlayer.onGround yCamTrailSpd=0.1;
+else yCamTrailSpd=0.85;
+
 // Aplicar interpolación suave para la cámara
-finalCamX += (_camX - finalCamX) * camTrailSpd;
-finalCamY += (_camY - finalCamY) * camTrailSpd;
+finalCamX += (_camX - finalCamX) * xCamTrailSpd;
+finalCamY += (_camY - finalCamY) * yCamTrailSpd;
 
 // Agregar temblor si está activo
 var shakeX = 0;
@@ -84,9 +95,6 @@ if (global.shakeTimer > 0) {
     shakeX = random_range(-global.shakeMagnitude, global.shakeMagnitude);
     shakeY = random_range(-global.shakeMagnitude, global.shakeMagnitude);
 }
-
-// Interpolar suavemente el desplazamiento de la cámara cuando deadzonePosition cambia
-smoothDeadzoneOffsetX += (deadzonePosition * 40 - smoothDeadzoneOffsetX) * 0.066;
 
 // *** Constrain finalCamX incluyendo el desplazamiento del deadzone ***
 var constrainedFinalCamX = clamp(finalCamX + smoothDeadzoneOffsetX, 0, room_width - _camWidth);
