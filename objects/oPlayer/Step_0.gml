@@ -163,47 +163,17 @@ if place_meeting(x, y, oWall) {
 #endregion
 
 #region Melee Attack
-/*
-if onGround && attackKey && attackDelay<=0 && !beingHitted && !isGrabbing && !isDead{
+
+//Disparador de ataque
+if onGround && attackKey && attackDelay<=0 && !beingHitted && !isGrabbing && !isDead{  //Condiciones para poder atacar
+	//Preparacion de ataque
 	image_index = 0;
 	moveSpd[0] = 0;
 	moveSpd[1] = 0;
 	crouching = false;
-	attackStart = true;
-	attackDelay = attackFrames;
-	var _hitbox = instance_create_depth(x,y,self.depth-1,oPlayer_Attack_HB);
-	with(_hitbox){
-		x=other.x+(8*other.face);
-		y=other.y;
-		self.image_xscale = self.image_xscale*other.face;
-	}
-}*/
-
-if attackStart {
-    xspd = 0; // Asegura que no pueda moverse mientras ataca
-
-    if !onGround || image_index >= image_number - 1 { 
-        moveSpd[0] = walkSpd;
-        moveSpd[1] = runSpd;
-		image_index = 0;
-        attackStart = false;
-		canCombo=true;
-		comboTimer=comboFrames;
-    }
-}
-
-if !attackStart && attackDelay>=0{
-	attackDelay--;
-}
-
-if onGround && attackKey && canCombo && attackDelay<=0 && !beingHitted && !isGrabbing && !isDead{
-	image_index = 0;
-	moveSpd[0] = 0;
-	moveSpd[1] = 0;
-	crouching = false;
-	attackStart = true;
-	canCombo=false;
+	attackStart = true; // Indico que comence a atacar
 	
+	//En que parte del combo estamos?
 	switch (attackStep){
 		case 0:
 			attackHitbox = instance_create_depth(x,y,self.depth-1,oPlayer_Attack_HB);
@@ -222,10 +192,10 @@ if onGround && attackKey && canCombo && attackDelay<=0 && !beingHitted && !isGra
 			attackSpr= attackSpr2;
 			attackStep=0;
 			attackDelay=attackFrames;
-			comboTimer=0;
 		break;
 	}
 	
+	//Manejo del hitbox
 	with(attackHitbox){
 		x=other.x+(8*other.face);
 		y=other.y;
@@ -233,14 +203,24 @@ if onGround && attackKey && canCombo && attackDelay<=0 && !beingHitted && !isGra
 	}
 }
 
-if comboTimer<=0{
-	attackStep=0;
-	//comboTimer=comboFrames;
-}else{
-	comboTimer--;
+//Que pasa una vez comenzado el ataque
+if attackStart {
+    xspd = 0; // Asegura que no pueda moverse mientras ataca
+	
+	//Dejar de atacar
+    if !onGround || image_index >= image_number - 1 { 
+        moveSpd[0] = walkSpd;
+        moveSpd[1] = runSpd;
+		image_index = 0;
+        attackStart = false;
+    }
 }
 
-global.mensaje = comboBuffer;
+if !attackStart && attackDelay>=0{
+	attackDelay--;
+}
+
+//global.mensaje = comboBuffer;
 
 #endregion
 
