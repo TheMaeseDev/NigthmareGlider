@@ -187,6 +187,8 @@ if attackStart {
         moveSpd[1] = runSpd;
 		image_index = 0;
         attackStart = false;
+		canCombo=true;
+		comboTimer=comboFrames;
     }
 }
 
@@ -194,35 +196,33 @@ if !attackStart && attackDelay>=0{
 	attackDelay--;
 }
 
-if onGround && attackKey && attackDelay<=0 && !beingHitted && !isGrabbing && !isDead{
+if onGround && attackKey && canCombo && attackDelay<=0 && !beingHitted && !isGrabbing && !isDead{
 	image_index = 0;
 	moveSpd[0] = 0;
 	moveSpd[1] = 0;
 	crouching = false;
 	attackStart = true;
-	attackDelay = attackFrames;
+	canCombo=false;
 	
 	switch (attackStep){
 		case 0:
 			attackHitbox = instance_create_depth(x,y,self.depth-1,oPlayer_Attack_HB);
 			attackStep++;
 			attackSpr= attackSpr0;
-			comboTimer=comboFrames;
 		break;
 		
 		case 1:
 			attackHitbox = instance_create_depth(x,y,self.depth-1,oPlayer_Attack_HB2);
 			attackStep++;
 			attackSpr= attackSpr1;
-			comboTimer=comboFrames;
 		break;
 		
 		case 2:
 			attackHitbox = instance_create_depth(x,y,self.depth-1,oPlayer_Attack_HB3);
 			attackSpr= attackSpr2;
 			attackStep=0;
-			attackDelay=60;
-			comboTimer=comboFrames;
+			attackDelay=attackFrames;
+			comboTimer=0;
 		break;
 	}
 	
@@ -235,12 +235,12 @@ if onGround && attackKey && attackDelay<=0 && !beingHitted && !isGrabbing && !is
 
 if comboTimer<=0{
 	attackStep=0;
-	comboTimer=comboFrames;
+	//comboTimer=comboFrames;
 }else{
 	comboTimer--;
 }
 
-global.mensaje = attackStep;
+global.mensaje = comboBuffer;
 
 #endregion
 
