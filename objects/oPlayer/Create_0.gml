@@ -172,10 +172,16 @@ attackDelay = 0;
 attackFrames = 10;
 attackStep = 0; //En que ataque esta?
 attackHitbox = noone;
-canCombo = true; //Puede realizar otro ataque?
-comboFrames = 180; //Tiempo para encadenar combo
-comboTimer = 0; //Cuenta regresiva para encadenar otro combo
+canCombo = true; //Puede realizar otro ataque
 comboBuffer = false;
+
+comboChainFrames = 35; //Tiempo para encadenar combo
+comboChainTimer = 0; //Cuenta regresiva para encadenar otro combo
+
+attackDurationFrames = 17; //Duracion del ataque
+attackDurationDelay = 0;  //Cuenta regresiva para volver a atacar en el combo
+
+attackBuffer = false;
 
 //Air Attack
 airAttackStart = false; //Controla si se ha comenzado el ataque aereo

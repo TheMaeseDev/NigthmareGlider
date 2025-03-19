@@ -165,26 +165,31 @@ if place_meeting(x, y, oWall) {
 #region Melee Attack
 
 //Disparador de ataque
-if onGround && attackKey && attackDelay<=0 && !beingHitted && !isGrabbing && !isDead{  //Condiciones para poder atacar
+if onGround && (attackKey || attackBuffer) && attackDurationDelay<=0 && attackDelay<=0 && !beingHitted && !isGrabbing && !isDead{  //Condiciones para poder atacar
 	//Preparacion de ataque
 	image_index = 0;
 	moveSpd[0] = 0;
 	moveSpd[1] = 0;
 	crouching = false;
 	attackStart = true; // Indico que comence a atacar
+	attackBuffer=false;
 	
 	//En que parte del combo estamos?
 	switch (attackStep){
 		case 0:
 			attackHitbox = instance_create_depth(x,y,self.depth-1,oPlayer_Attack_HB);
 			attackStep++;
-			attackSpr= attackSpr0;
+			attackSpr=attackSpr0;
+			attackDurationDelay=attackDurationFrames;
+			comboChainTimer=comboChainFrames;
 		break;
 		
 		case 1:
 			attackHitbox = instance_create_depth(x,y,self.depth-1,oPlayer_Attack_HB2);
 			attackStep++;
 			attackSpr= attackSpr1;
+			attackDurationDelay=attackDurationFrames;
+			comboChainTimer=comboChainFrames;
 		break;
 		
 		case 2:
@@ -220,7 +225,16 @@ if !attackStart && attackDelay>=0{
 	attackDelay--;
 }
 
-//global.mensaje = comboBuffer;
+if attackDurationDelay>0{
+	attackDurationDelay--;
+	
+	if attackDurationDelay<7 && attackKey attackBuffer=true;
+}
+
+if comboChainTimer<=0{
+	attackStep=0;
+	attackBuffer=0;
+}else comboChainTimer--;
 
 #endregion
 
