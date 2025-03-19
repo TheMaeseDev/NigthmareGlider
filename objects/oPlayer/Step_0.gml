@@ -163,7 +163,7 @@ if place_meeting(x, y, oWall) {
 #endregion
 
 #region Melee Attack
-
+/*
 if onGround && attackKey && attackDelay<=0 && !beingHitted && !isGrabbing && !isDead{
 	image_index = 0;
 	moveSpd[0] = 0;
@@ -177,7 +177,7 @@ if onGround && attackKey && attackDelay<=0 && !beingHitted && !isGrabbing && !is
 		y=other.y;
 		self.image_xscale = self.image_xscale*other.face;
 	}
-}
+}*/
 
 if attackStart {
     xspd = 0; // Asegura que no pueda moverse mientras ataca
@@ -193,6 +193,54 @@ if attackStart {
 if !attackStart && attackDelay>=0{
 	attackDelay--;
 }
+
+if onGround && attackKey && attackDelay<=0 && !beingHitted && !isGrabbing && !isDead{
+	image_index = 0;
+	moveSpd[0] = 0;
+	moveSpd[1] = 0;
+	crouching = false;
+	attackStart = true;
+	attackDelay = attackFrames;
+	
+	switch (attackStep){
+		case 0:
+			attackHitbox = instance_create_depth(x,y,self.depth-1,oPlayer_Attack_HB);
+			attackStep++;
+			attackSpr= attackSpr0;
+			comboTimer=comboFrames;
+		break;
+		
+		case 1:
+			attackHitbox = instance_create_depth(x,y,self.depth-1,oPlayer_Attack_HB2);
+			attackStep++;
+			attackSpr= attackSpr1;
+			comboTimer=comboFrames;
+		break;
+		
+		case 2:
+			attackHitbox = instance_create_depth(x,y,self.depth-1,oPlayer_Attack_HB3);
+			attackSpr= attackSpr2;
+			attackStep=0;
+			attackDelay=60;
+			comboTimer=comboFrames;
+		break;
+	}
+	
+	with(attackHitbox){
+		x=other.x+(8*other.face);
+		y=other.y;
+		self.image_xscale = self.image_xscale*other.face;
+	}
+}
+
+if comboTimer<=0{
+	attackStep=0;
+	comboTimer=comboFrames;
+}else{
+	comboTimer--;
+}
+
+global.mensaje = attackStep;
 
 #endregion
 
