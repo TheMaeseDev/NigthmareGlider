@@ -99,6 +99,7 @@
     {"id":{"name":"oNitroBox","path":"objects/oNitroBox/oNitroBox.yy",},},
     {"id":{"name":"oPlayer_Air_Attack_HB","path":"objects/oPlayer_Air_Attack_HB/oPlayer_Air_Attack_HB.yy",},},
     {"id":{"name":"oPlayer_Attack_HB","path":"objects/oPlayer_Attack_HB/oPlayer_Attack_HB.yy",},},
+    {"id":{"name":"oPlayer_Attack_HB1","path":"objects/oPlayer_Attack_HB1/oPlayer_Attack_HB1.yy",},},
     {"id":{"name":"oPlayer_Attack_HB2","path":"objects/oPlayer_Attack_HB2/oPlayer_Attack_HB2.yy",},},
     {"id":{"name":"oPlayer_Attack_HB3","path":"objects/oPlayer_Attack_HB3/oPlayer_Attack_HB3.yy",},},
     {"id":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},},

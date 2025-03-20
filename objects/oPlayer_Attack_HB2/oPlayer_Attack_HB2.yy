@@ -12,7 +12,10 @@
     "name":"Player",
     "path":"folders/Objects/Player.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"oPlayer_Attack_HB",
+    "path":"objects/oPlayer_Attack_HB/oPlayer_Attack_HB.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

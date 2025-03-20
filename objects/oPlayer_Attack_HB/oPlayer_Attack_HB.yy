@@ -1,10 +1,7 @@
 {
   "$GMObject":"",
   "%Name":"oPlayer_Attack_HB",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "eventList":[],
   "managed":true,
   "name":"oPlayer_Attack_HB",
   "overriddenProperties":[],
@@ -30,10 +27,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"sPlayer_Attack_HB",
-    "path":"sprites/sPlayer_Attack_HB/sPlayer_Attack_HB.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

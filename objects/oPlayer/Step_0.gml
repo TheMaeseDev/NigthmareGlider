@@ -177,7 +177,7 @@ if onGround && (attackKey || attackBuffer) && attackDurationDelay<=0 && attackDe
 	//En que parte del combo estamos?
 	switch (attackStep){
 		case 0:
-			attackHitbox = instance_create_depth(x,y,self.depth-1,oPlayer_Attack_HB);
+			attackHitbox = instance_create_depth(x,y,self.depth-1,oPlayer_Attack_HB1);
 			attackStep++;
 			attackSpr=attackSpr0;
 			attackDurationDelay=attackDurationFrames;
