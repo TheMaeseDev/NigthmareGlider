@@ -178,7 +178,7 @@ comboBuffer = false;
 comboChainFrames = 35; //Tiempo para encadenar combo
 comboChainTimer = 0; //Cuenta regresiva para encadenar otro combo
 
-attackDurationFrames = 17; //Duracion del ataque
+attackDurationFrames = 18; //Duracion del ataque
 attackDurationDelay = 0;  //Cuenta regresiva para volver a atacar en el combo
 
 attackBuffer = false;

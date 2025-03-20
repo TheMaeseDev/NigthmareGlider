@@ -7,6 +7,6 @@ if debugKey{
 }
 
 object_set_visible(oPlayer_Air_Attack_HB,global.showDebug);
-object_set_visible(oPlayer_Attack_HB,global.showDebug);
+object_set_visible(oPlayer_Attack_HB1,global.showDebug);
 object_set_visible(oPlayer_Attack_HB2,global.showDebug);
 object_set_visible(oPlayer_Attack_HB3,global.showDebug);
