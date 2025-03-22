@@ -94,6 +94,9 @@ function checkForSemiSolidPlatform(_x,_y){
 	return _rtrn;
 }
 
+function playerAttack(){
+		
+}
 depth = -30;
 
 hp = 7;
@@ -117,6 +120,9 @@ jumpSpr = sPlayer_Jump;
 crouchSpr = sPlayer_Crouch;
 glideSpr = sPlayerGlid;
 attackSpr = sPlayer_Attack;
+attackSpr0 = sPlayer_Attack;
+attackSpr1=sPlayer_Attack_1;
+attackSpr2=sPlayer_Attack_2;
 AirAttackSpr = sPlayer_Air_Attack;
 hittedSpr = sPlayer_Hit;
 deathSpr = sPlayer_Death;
@@ -164,6 +170,18 @@ glideTermVel = 1.5;
 attackStart = false; //Controla si se ha comenzado a atacar
 attackDelay = 0;
 attackFrames = 10;
+attackStep = 0; //En que ataque esta?
+attackHitbox = noone;
+canCombo = true; //Puede realizar otro ataque
+comboBuffer = false;
+
+comboChainFrames = 25; //Tiempo para encadenar combo
+comboChainTimer = 0; //Cuenta regresiva para encadenar otro combo
+
+attackDurationFrames = 18; //Duracion del ataque
+attackDurationDelay = 0;  //Cuenta regresiva para volver a atacar en el combo
+
+attackBuffer = false;
 
 //Air Attack
 airAttackStart = false; //Controla si se ha comenzado el ataque aereo

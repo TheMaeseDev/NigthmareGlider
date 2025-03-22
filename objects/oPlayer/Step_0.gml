@@ -164,24 +164,58 @@ if place_meeting(x, y, oWall) {
 
 #region Melee Attack
 
-if onGround && attackKey && attackDelay<=0 && !beingHitted && !isGrabbing && !isDead{
+//Disparador de ataque
+if onGround && (attackKey || attackBuffer) && attackDurationDelay<=0 && attackDelay<=0 && !beingHitted && !isGrabbing && !isDead{  //Condiciones para poder atacar
+	//Preparacion de ataque
 	image_index = 0;
 	moveSpd[0] = 0;
 	moveSpd[1] = 0;
 	crouching = false;
-	attackStart = true;
-	attackDelay = attackFrames;
-	var _hitbox = instance_create_depth(x,y,self.depth-1,oPlayer_Attack_HB);
-	with(_hitbox){
+	attackStart = true; // Indico que comence a atacar
+	attackBuffer=false;
+	
+	//En que parte del combo estamos?
+	switch (attackStep){
+		case 0:
+			attackHitbox = instance_create_depth(x,y,self.depth-1,oPlayer_Attack_HB1);
+			with instance_create_depth(x+12*face,y-7,depth,oPlayer_Attack_0_Particle) image_xscale=other.face;
+			attackStep++;
+			attackSpr=attackSpr0;
+			attackDurationDelay=attackDurationFrames;
+			comboChainTimer=comboChainFrames;
+		break;
+		
+		case 1:
+			attackHitbox = instance_create_depth(x,y,self.depth-1,oPlayer_Attack_HB2);
+			with instance_create_depth(x-3*face,y-15,depth,oPlayer_Attack_1_Particle) image_xscale=other.face;
+			attackStep++;
+			attackSpr= attackSpr1;
+			attackDurationDelay=attackDurationFrames;
+			comboChainTimer=comboChainFrames;
+		break;
+		
+		case 2:
+			attackHitbox = instance_create_depth(x,y,self.depth-1,oPlayer_Attack_HB3);
+			with instance_create_depth(x-3*face,y-10,depth,oPlayer_Attack_2_Particle) image_xscale=other.face;
+			attackSpr= attackSpr2;
+			attackStep=0;
+			attackDelay=attackFrames;
+		break;
+	}
+	
+	//Manejo del hitbox
+	with(attackHitbox){
 		x=other.x+(8*other.face);
 		y=other.y;
 		self.image_xscale = self.image_xscale*other.face;
 	}
 }
 
+//Que pasa una vez comenzado el ataque
 if attackStart {
     xspd = 0; // Asegura que no pueda moverse mientras ataca
-
+	
+	//Dejar de atacar
     if !onGround || image_index >= image_number - 1 { 
         moveSpd[0] = walkSpd;
         moveSpd[1] = runSpd;
@@ -193,6 +227,17 @@ if attackStart {
 if !attackStart && attackDelay>=0{
 	attackDelay--;
 }
+
+if attackDurationDelay>0{
+	attackDurationDelay--;
+	
+	if attackDurationDelay<10 && attackKey attackBuffer=true;
+}
+
+if comboChainTimer<=0{
+	attackStep=0;
+	attackBuffer=0;
+}else comboChainTimer--;
 
 #endregion
 
