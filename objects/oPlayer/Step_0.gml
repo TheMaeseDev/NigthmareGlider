@@ -374,6 +374,7 @@ if beingHitted || !airAttackStart{
 		jumpCount++;
 		//Set the jump hold timer
 		jumpHoldTimer = jumpHoldFrames;
+		instance_create_depth(x,y,depth,oPlayer_Jump_Particle);
 		
 		//Tell ourself we are no longer on the ground
 		setOnGround(false);
