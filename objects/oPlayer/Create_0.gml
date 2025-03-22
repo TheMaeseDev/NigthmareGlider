@@ -11,6 +11,7 @@ function setOnGround(_val = true){
 		grav = defaultGrav;	  //set grv back to default
 		jumpHoldFrames = 10; //reset var
 		moveSpd[1] = runSpd;
+		if(!hasFall) {instance_create_depth(x,y,depth,oPlayer_Fall_Particle); hasFall=true;}
 		
 	}else{
 		onGround = false;
@@ -18,6 +19,7 @@ function setOnGround(_val = true){
 		coyoteHangTimer=0;
 		airAttackDelay--; //Descuenta el delay de ataque aereo
 		smallBox = noone;
+		hasFall=false;
 	}
 }
 
@@ -160,6 +162,7 @@ jumpCount = 0;
 jumpHoldTimer = 0;
 jumpHoldFrames = 10;
 finalJumpImage = true;
+hasFall=false;
 //Coyote Time
 //Hang time
 coyoteHangFrames = 3;
