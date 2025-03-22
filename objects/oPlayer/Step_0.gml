@@ -789,6 +789,26 @@ if roomTransition_delay<=0{
 
 #endregion
 
+#region Particulas
+
+if onGround && abs(xspd)>=0.5{
+	if !walkParticlesExist{
+		walkParticlesExist=true;
+		with instance_create_depth(x,y,depth,oPlayer_Walk_Particle) image_xscale=other.face;
+		walkParticleTimer=walkParticleFrames;
+	}
+	walkParticleTimer--;
+	if walkParticleTimer<=0{
+		with instance_create_depth(x,y,depth,oPlayer_Walk_Particle) image_xscale=other.face;
+		walkParticleTimer=walkParticleFrames;	
+	}
+}else{
+	walkParticlesExist=false;	
+	walkParticleTimer=walkParticleFrames;
+}
+
+#endregion
+
 #region Sprite Control
 image_speed = 1
 //Runing

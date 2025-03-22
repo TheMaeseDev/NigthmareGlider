@@ -139,6 +139,11 @@ moveSpd[1] = runSpd; //Corriendo 3 default
 xspd = 0;
 yspd = 0;
 
+//Particles
+walkParticleFrames=18;
+walkParticleTimer=walkParticleFrames;
+walkParticlesExist=false;
+
 //State variables
 crouching = false;
 isDead = false;
@@ -154,6 +159,7 @@ jumpMax = 1;
 jumpCount = 0;
 jumpHoldTimer = 0;
 jumpHoldFrames = 10;
+finalJumpImage = true;
 //Coyote Time
 //Hang time
 coyoteHangFrames = 3;
