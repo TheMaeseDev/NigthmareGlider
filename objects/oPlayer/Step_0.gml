@@ -178,6 +178,7 @@ if onGround && (attackKey || attackBuffer) && attackDurationDelay<=0 && attackDe
 	switch (attackStep){
 		case 0:
 			attackHitbox = instance_create_depth(x,y,self.depth-1,oPlayer_Attack_HB1);
+			with instance_create_depth(x+12*face,y-7,depth,oPlayer_Attack_0_Particle) image_xscale=other.face;
 			attackStep++;
 			attackSpr=attackSpr0;
 			attackDurationDelay=attackDurationFrames;
@@ -186,6 +187,7 @@ if onGround && (attackKey || attackBuffer) && attackDurationDelay<=0 && attackDe
 		
 		case 1:
 			attackHitbox = instance_create_depth(x,y,self.depth-1,oPlayer_Attack_HB2);
+			with instance_create_depth(x-3*face,y-15,depth,oPlayer_Attack_1_Particle) image_xscale=other.face;
 			attackStep++;
 			attackSpr= attackSpr1;
 			attackDurationDelay=attackDurationFrames;
@@ -194,6 +196,7 @@ if onGround && (attackKey || attackBuffer) && attackDurationDelay<=0 && attackDe
 		
 		case 2:
 			attackHitbox = instance_create_depth(x,y,self.depth-1,oPlayer_Attack_HB3);
+			with instance_create_depth(x-3*face,y-10,depth,oPlayer_Attack_2_Particle) image_xscale=other.face;
 			attackSpr= attackSpr2;
 			attackStep=0;
 			attackDelay=attackFrames;
@@ -228,7 +231,7 @@ if !attackStart && attackDelay>=0{
 if attackDurationDelay>0{
 	attackDurationDelay--;
 	
-	if attackDurationDelay<7 && attackKey attackBuffer=true;
+	if attackDurationDelay<10 && attackKey attackBuffer=true;
 }
 
 if comboChainTimer<=0{

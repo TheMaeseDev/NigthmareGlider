@@ -175,7 +175,7 @@ attackHitbox = noone;
 canCombo = true; //Puede realizar otro ataque
 comboBuffer = false;
 
-comboChainFrames = 35; //Tiempo para encadenar combo
+comboChainFrames = 25; //Tiempo para encadenar combo
 comboChainTimer = 0; //Cuenta regresiva para encadenar otro combo
 
 attackDurationFrames = 18; //Duracion del ataque
